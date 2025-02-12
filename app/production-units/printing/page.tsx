@@ -1,0 +1,17 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Printing from "@/components/production-units/Printing";
+
+import React from "react";
+
+function page() {
+  return (
+    <div>
+      <Header />
+      <Printing />
+      <Footer />
+    </div>
+  );
+}
+
+export default page;
