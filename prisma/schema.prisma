@@ -24,7 +24,7 @@ model banners {
 
 model comments {
   id         Int      @id @default(autoincrement())
-  content    String
+  content    String   @db.Text
   author     String
   photo      String?
   createdAt  DateTime @default(now())
@@ -36,7 +36,7 @@ model courses {
   coursename  String
   duration    String   @db.VarChar(11)
   courseType  String
-  description String
+  description String   @db.Text
   photo       String?  @db.VarChar(255)
   createdAt   DateTime @default(now())
 }
@@ -78,6 +78,8 @@ model recentupdates {
   photo     String?
   date      DateTime @default(now())
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+  slug      String   @unique
 }
 
 model users {
@@ -90,11 +92,10 @@ model users {
 }
 
 model visitor {
-  id        Int      @id @default(autoincrement())
-  ipAddress String   @unique
-  userAgent String?
+  id         Int      @id @default(autoincrement())
+  ipAddress  String   @unique
+  userAgent  String?
   visitCount Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
-

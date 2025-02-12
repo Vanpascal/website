@@ -17,9 +17,11 @@ const fontHeading = Nunito({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://donboscoiringa.org"),
+  keywords:
+    "Don Bosco Iringa,Vocational Training Iringa, Vocational Training Iringa Centers iringa, Youth Center, Education, Vocational Skills Training",
   title: "Don Bosco Iringa",
   description: "Empowering youth with education and technical skills.",
-  keywords: "Don Bosco, Iringa, Youth Center, Education, Skills Training",
 };
 
 export default function RootLayout({

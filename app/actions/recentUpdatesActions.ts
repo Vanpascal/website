@@ -6,6 +6,7 @@ import { getErrorMessages } from "@/lib/errorUtils";
 import { promises as fs } from "fs";
 import path from "path";
 import { randomUUID } from "crypto";
+import slugify from "slugify";
 
 const prisma = new PrismaClient();
 
@@ -18,8 +19,8 @@ export const createRecentUpdate = async (formData: FormData) => {
     if (!title || !content) {
       throw new Error("Invalid form data");
     }
+    const slug = slugify(title, { lower: true, strict: true });
 
-    // Handle the photo file
     let photoFilePath = "";
     if (photo) {
       const photoBuffer = await photo.arrayBuffer();
@@ -36,6 +37,7 @@ export const createRecentUpdate = async (formData: FormData) => {
         title,
         content,
         photo: photoFilePath,
+        slug,
       },
     });
 
@@ -56,13 +58,18 @@ export const updaterecentUpdate = async (id: number, formData: FormData) => {
       throw new Error("Invalid form data");
     }
 
+    // Generate a new slug based on the updated title
+    const slug = slugify(title, { lower: true, strict: true });
+
     const updateData: {
       title: string;
       content: string;
       photo?: string;
+      slug: string;
     } = {
       title,
       content,
+      slug,
     };
 
     // If a new photo is provided, handle the photo

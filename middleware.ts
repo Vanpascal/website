@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { decrypt, refreshSession } from "@/lib/session";
 
 // const protectedRoutes = ["/admin"];
-const publicRoutes = ["/login"];
+// const publicRoutes = ["/login"];
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
   // const isProtectedRoute = protectedRoutes.some((route) =>
   //   path.startsWith(route)
   // );
-  const isPublicRoute = publicRoutes.includes(path);
+  // const isPublicRoute = publicRoutes.includes(path);
 
   const sessionCookie = req.cookies.get("session")?.value;
   const session = sessionCookie ? await decrypt(sessionCookie) : null;
@@ -23,9 +23,9 @@ export default async function middleware(req: NextRequest) {
   //   return NextResponse.redirect(new URL("/login", req.nextUrl));
   // }
 
-  if (isPublicRoute && session?.userId) {
-    return NextResponse.redirect(new URL("/admin", req.nextUrl));
-  }
+  // if (isPublicRoute && session?.userId) {
+  //   return NextResponse.redirect(new URL("/admin", req.nextUrl));
+  // }
 
   return NextResponse.next();
 }

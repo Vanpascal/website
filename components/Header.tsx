@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
@@ -140,7 +140,7 @@ function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo.png"
               width={48}
               height={48}
               alt="DB Logo"
