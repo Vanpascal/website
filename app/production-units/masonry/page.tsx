@@ -1,8 +1,11 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Masonry from "@/components/production-units/Masonry";
+import { Metadata } from "next";
 
-import React from "react";
+export const metadata: Metadata = {
+  title: "Masonry",
+};
 
 function page() {
   return (

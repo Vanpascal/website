@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Map from "@/components/about/Map";
 import Testimonials from "@/components/about/Testimonials";
-import React from "react";
 
 function AboutUs() {
   return (

@@ -7,6 +7,7 @@ import { fetchRecentUpdate } from "@/app/actions/recentUpdatesActions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/legacy/image";
+import Head from "next/head";
 
 type Update = {
   id: number;
@@ -51,7 +52,7 @@ const UpdateDetails: React.FC<UpdateDetailsProps> = ({ params }) => {
             img: updateData.photo
               ? updateData.photo
               : "/images/default-image.png",
-            content: updateData.content ?? "No content available", // Provide a default value
+            content: updateData.content ?? "No content available",
           };
           setUpdate(formattedData);
         }
@@ -83,6 +84,29 @@ const UpdateDetails: React.FC<UpdateDetailsProps> = ({ params }) => {
 
   return (
     <>
+      <Head>
+        <title>{update.title} | DBYTC Updates</title>
+        <meta name="description" content={update.content.slice(0, 150)} />
+        <meta property="og:title" content={update.title} />
+        <meta
+          property="og:description"
+          content={update.content.slice(0, 150)}
+        />
+        <meta property="og:image" content={update.img} />
+        <meta
+          property="og:url"
+          content={`https://donboscoiringa.org/events/${update.id}`}
+        />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={update.title} />
+        <meta
+          name="twitter:description"
+          content={update.content.slice(0, 150)}
+        />
+        <meta name="twitter:image" content={update.img} />
+      </Head>
+
       <Header />
       <div className="container mx-auto min-h-screen flex flex-col pt-14 px-4">
         <div className="flex flex-col lg:flex-row gap-8">
@@ -128,7 +152,7 @@ const UpdateDetails: React.FC<UpdateDetailsProps> = ({ params }) => {
                       {update.title}
                     </a>
                   </Link>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 flex items-center">
                     <FaCalendarAlt className="mr-2 text-purple-600" />
                     Posted On: {update.date}
                   </p>

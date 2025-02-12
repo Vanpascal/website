@@ -1,9 +1,11 @@
 import ManagementAndStaff from "@/components/about/ManagementAndStaff";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { Metadata } from "next";
 
-import React from "react";
-
+export const metadata: Metadata = {
+  title: "Management and Staff",
+};
 const Management = () => {
   return (
     <div>

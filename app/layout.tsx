@@ -18,10 +18,42 @@ const fontHeading = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://donboscoiringa.org"),
+  title: {
+    default: "Don Bosco Youth Training Center - Iringa",
+    template: "%s | Don Bosco Youth Training Center - Iringa",
+  },
+  description:
+    "Don Bosco Youth Training Center in Iringa provides vocational training, technical education, and youth development programs. Established in 1981, we empower young people with essential skills.",
   keywords:
-    "Don Bosco Iringa,Vocational Training Iringa, Vocational Training Iringa Centers iringa, Youth Center, Education, Vocational Skills Training",
-  title: "Don Bosco Iringa",
-  description: "Empowering youth with education and technical skills.",
+    "Don Bosco Iringa, Vocational Training, Technical Education, Youth Center, Skills Development, Training Center",
+  openGraph: {
+    title: "Don Bosco Youth Training Center - Iringa",
+    type: "website",
+    siteName: "Don Bosco Youth Training Center",
+    url: "https://donboscoiringa.org",
+    description:
+      "Empowering young people with vocational skills and technical education since 1981.",
+    images: [
+      {
+        url: "https://donboscoiringa.org/images/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Don Bosco Youth Training Center Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Don Bosco Youth Training Center - Iringa",
+    description:
+      "Empowering young people with vocational skills and technical education since 1981.",
+    images: ["https://donboscoiringa.org/images/logo.png"],
+    creator: "@DonBoscoIringa",
+  },
+  alternates: {
+    canonical: "https://donboscoiringa.org",
+  },
+  robots: "index, follow",
 };
 
 export default function RootLayout({
@@ -30,7 +62,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontHeading.className} ${poppins.variable} ${fontHeading.variable}`}
+        suppressHydrationWarning
+        className={`${fontHeading.className} ${poppins.className}`}
       >
         {children}
         <ToastContainer />
