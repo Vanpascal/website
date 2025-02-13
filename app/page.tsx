@@ -25,73 +25,75 @@ const fadeInUp = {
 
 export default function LandingPage() {
   return (
-    <div className="bg-gray-50">
-      <Header />
-      <VisitorLogger />
+    <>
+      {/* <Header /> */}
       <Hero />
+      <div className="bg-gray-50">
+        <VisitorLogger />
 
-      {/* Applying animations to each section */}
-      <motion.section
-        className="py-16 px-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <div className="container mx-auto">
-          <MessageFromRector />
-        </div>
-      </motion.section>
+        {/* Applying animations to each section */}
+        <motion.section
+          className="py-16 px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
+          <div className="container mx-auto">
+            <MessageFromRector />
+          </div>
+        </motion.section>
 
-      <motion.section
-        className="bg-white py-16 px-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <div className="container mx-auto">
-          <AboutDb />
-        </div>
-      </motion.section>
+        <motion.section
+          className="bg-white py-16 px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
+          <div className="container mx-auto">
+            <AboutDb />
+          </div>
+        </motion.section>
 
-      <motion.section
-        className="py-16 px-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <div className="container mx-auto">
-          <Courses />
-        </div>
-      </motion.section>
+        <motion.section
+          className="py-16 px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
+          <div className="container mx-auto">
+            <Courses />
+          </div>
+        </motion.section>
 
-      <motion.section
-        className="bg-gray-100 py-16 px-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <div className="container mx-auto">
-          <EventsAndNews />
-        </div>
-      </motion.section>
+        <motion.section
+          className="bg-gray-100 py-16 px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
+          <div className="container mx-auto">
+            <EventsAndNews />
+          </div>
+        </motion.section>
 
-      <motion.section
-        className="bg-gray-100 py-16 px-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <div className="container mx-auto">
-          <OurSponsors />
-        </div>
-      </motion.section>
+        <motion.section
+          className="bg-gray-100 py-16 px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
+          <div className="container mx-auto">
+            <OurSponsors />
+          </div>
+        </motion.section>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }
