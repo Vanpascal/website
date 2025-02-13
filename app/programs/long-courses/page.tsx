@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LongCourses from "@/components/academics/LongCourses";
@@ -32,9 +33,11 @@ const LongCourse = () => {
     <div>
       <Header />
       <section className="relative">
-        <img
+        <Image
           src="/images/long.jpg"
           alt="Long Courses Banner"
+          width={1200}
+          height={630}
           className="w-full h-80 md:h-[500px] object-cover"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">

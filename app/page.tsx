@@ -26,7 +26,7 @@ const fadeInUp = {
 export default function LandingPage() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Hero />
       <div className="bg-gray-50">
         <VisitorLogger />

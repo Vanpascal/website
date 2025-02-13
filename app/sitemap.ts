@@ -1,4 +1,15 @@
-import { fetchRecentUpdate } from "./actions/recentUpdatesActions";
+import { fetchRecentUpdate } from "@/app/actions/recentUpdatesActions";
+
+interface Update {
+  id: number;
+  title: string;
+  content: string | null;
+  photo: string | null;
+  date: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  slug: string;
+}
 
 export default async function sitemap() {
   const baseUrl = "https://donboscoiringa.org";
@@ -6,9 +17,9 @@ export default async function sitemap() {
   try {
     const response = await fetchRecentUpdate();
 
-    const updates = response.map((update: any) => ({
+    const updates = response.map((update: Update) => ({
       url: `${baseUrl}/events/${update.slug}`,
-      lastModified: new Date(update?.createdAt).toISOString(),
+      lastModified: new Date(update.createdAt).toISOString(),
       changefreq: "daily",
       priority: 0.9,
     }));

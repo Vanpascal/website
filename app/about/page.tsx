@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Map from "@/components/about/Map";
 import Testimonials from "@/components/about/Testimonials";
+import Image from "next/image";
 
 function AboutUs() {
   return (
@@ -14,10 +15,11 @@ function AboutUs() {
 
       {/* Image Banner with Title */}
       <section className="relative">
-        <img
+        <Image
           src="/images/about.jpg"
           alt="About Us Banner"
-          className="w-full h-80 md:h-[500px] object-cover"
+          fill
+          style={{ objectFit: "cover" }}
         />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
