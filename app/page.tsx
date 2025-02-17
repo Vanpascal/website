@@ -32,7 +32,7 @@ export default function LandingPage() {
       </div>
 
       {/* Responsive padding-top for Hero */}
-      <main className="pt-5 sm:pt-3 md:pt-7 lg:pt-16">
+      <main>
         <Hero />
 
         <div className="bg-gray-50">
