@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { decrypt, refreshSession } from "@/lib/session";
 
-// const protectedRoutes = ["/admin"];
-// const publicRoutes = ["/login"];
+const protectedRoutes = ["/admin"];
+const publicRoutes = ["/login"];
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
-  // const isProtectedRoute = protectedRoutes.some((route) =>
-  //   path.startsWith(route)
-  // );
-  // const isPublicRoute = publicRoutes.includes(path);
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    path.startsWith(route)
+  );
+  const isPublicRoute = publicRoutes.includes(path);
 
   const sessionCookie = req.cookies.get("session")?.value;
   const session = sessionCookie ? await decrypt(sessionCookie) : null;
@@ -19,20 +19,17 @@ export default async function middleware(req: NextRequest) {
     await refreshSession(session.userId as string);
   }
 
-  // if (isProtectedRoute && !session?.userId) {
-  //   return NextResponse.redirect(new URL("/login", req.nextUrl));
-  // }
+  if (isProtectedRoute && !session?.userId) {
+    return NextResponse.redirect(new URL("/login", req.nextUrl));
+  }
 
-  // if (isPublicRoute && session?.userId) {
-  //   return NextResponse.redirect(new URL("/admin", req.nextUrl));
-  // }
+  if (isPublicRoute && session?.userId) {
+    return NextResponse.redirect(new URL("/admin", req.nextUrl));
+  }
 
   return NextResponse.next();
 }
 
-// export const config = {
-//   matcher: [
-//     "/admin/:path*", // Apply middleware to all admin routes
-//     "/dashboard", // Apply middleware to the dashboard route
-//   ],
-// };
+export const config = {
+  matcher: ["/admin/:path*", "/dashboard"],
+};

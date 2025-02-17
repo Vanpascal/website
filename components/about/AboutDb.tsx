@@ -5,7 +5,6 @@ import Testimonials from "./Testimonials";
 function AboutDb() {
   return (
     <div>
-      {/* <Header /> */}
       <section className="py-10 bg-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-10">

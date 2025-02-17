@@ -116,13 +116,8 @@ function MessageFromRector() {
 
           {/* Right Column - Video */}
           <div className="flex-1 flex flex-col items-stretch lg:pt-20 space-y-4">
-            {/* Heading */}
-            <h3 className="text-2xl font-semibold text-purple-900 text-center">
-              How DBYTC - Iringa Looks
-            </h3>
-
             {/* Video Container */}
-            <div className="relative overflow-hidden rounded-lg shadow-lg border-2 border-gray-300 w-full flex-1">
+            <div className="relative overflow-hidden rounded-lg shadow-lg border-2 border-gray-300 w-full h-[32rem]">
               <iframe
                 className="w-full h-full object-cover"
                 src="https://www.youtube.com/embed/PR8WqifFiZY"

@@ -39,7 +39,7 @@ const MotorVehicleMechanics = () => {
     <div className="bg-gray-100">
       {/* Top Section: Full-Width Production Unit Image */}
       <section className="relative">
-        <div className="relative w-full h-80 md:h-[300px]">
+        <div className="relative w-full h-80 md:h-[400px]">
           <Image
             src="/images/long.jpg"
             alt="Motor Vehicle Mechanics Production Unit"

@@ -29,7 +29,6 @@ function AboutUs() {
           </h1>
         </div>
       </section>
-
       {/* About Us Content */}
       <section className="py-20 bg-gray-100">
         <div className="container mx-auto px-4">
