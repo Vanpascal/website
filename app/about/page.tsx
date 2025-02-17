@@ -15,20 +15,20 @@ function AboutUs() {
 
       {/* Image Banner with Title */}
       <section className="relative">
-        <Image
-          src="/images/about.jpg"
-          alt="About Us Banner"
-          fill
-          style={{ objectFit: "cover" }}
-        />
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+        <div className="relative w-full h-80 md:h-[400px]">
+          <Image
+            src="/images/about.jpg" // Replace with the actual image path
+            alt="Motor Vehicle Mechanics Production Unit"
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="absolute inset-0 flex flex-col space-y-5 items-center justify-center bg-black bg-opacity-50">
+          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
             About Us
           </h1>
         </div>
       </section>
-
       {/* About Us Content */}
       <section className="py-20 bg-gray-100">
         <div className="container mx-auto px-4">

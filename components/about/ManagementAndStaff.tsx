@@ -36,7 +36,7 @@ const ManagementAndStaff = () => {
     <div className="py-10 bg-gray-100">
       {/* Banner Section */}
       <section className="relative">
-        <div className="relative w-full h-80 md:h-[500px]">
+        <div className="relative w-full h-80 md:h-[400px]">
           <Image
             src="/images/about.jpg"
             alt="About Us Banner"

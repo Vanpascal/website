@@ -40,7 +40,7 @@ export default function LandingPage() {
 
           {/* Animated Sections */}
           <motion.section
-            className="py-16 px-6"
+            className="py-12 px-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -52,7 +52,7 @@ export default function LandingPage() {
           </motion.section>
 
           <motion.section
-            className="bg-white py-16 px-6"
+            className="bg-white py-12 px-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -64,7 +64,7 @@ export default function LandingPage() {
           </motion.section>
 
           <motion.section
-            className="py-16 px-6"
+            className="py-12 px-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -76,7 +76,7 @@ export default function LandingPage() {
           </motion.section>
 
           <motion.section
-            className="bg-gray-100 py-16 px-6"
+            className="bg-gray-100 py-12 px-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -88,7 +88,7 @@ export default function LandingPage() {
           </motion.section>
 
           <motion.section
-            className="bg-gray-100 py-16 px-6"
+            className="bg-gray-100 py-12 px-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}

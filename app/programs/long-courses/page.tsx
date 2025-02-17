@@ -38,7 +38,7 @@ const LongCourse = () => {
           alt="Long Courses Banner"
           width={1200}
           height={630}
-          className="w-full h-80 md:h-[500px] object-cover"
+          className="w-full h-80 md:h-[400px] object-cover"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
           <h1 className="text-4xl md:text-5xl font-bold text-white">
