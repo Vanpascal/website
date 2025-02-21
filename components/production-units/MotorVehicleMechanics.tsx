@@ -41,7 +41,7 @@ const MotorVehicleMechanics = () => {
       <section className="relative">
         <div className="relative w-full h-80 md:h-[400px]">
           <Image
-            src="/images/long.jpg"
+            src="/images/magari.jpg"
             alt="Motor Vehicle Mechanics Production Unit"
             fill
             style={{ objectFit: "cover" }}

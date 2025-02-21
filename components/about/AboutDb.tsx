@@ -40,22 +40,14 @@ function AboutDb() {
                 Our Vision
               </h2>
               <p className="text-gray-700  text-justify">
-                We at Don Bosco Youth Training Centre believe that we are called
-                to share our lives to empower young people through offering a
-                family atmosphere which fosters mutual understanding and growth
-                depending on their faith. We aim to offer opportunities for
-                wholesome recreation and talent building, inculcating life
-                skills thus enriching their lives and the lives of others.
+              To equip the poor and marginalized boys and girls with marketable skills and empower them with Habit, Values and Character which will make them successful men and women of the Nation.
               </p>
 
               <h2 className="text-xl font-semibold text-purple-900">
                 Our Mission
               </h2>
               <p className="text-gray-700  text-justify">
-                To equip the poor and marginalized boys and girls with
-                marketable skills and empower them with habits, values, and
-                character which will make them successful men and women of the
-                nation.
+              We at Don Bosco Youth Training Centre believe that we are called to share our lives, to empower young people through offering a family atmosphere which fosters mutual understanding and growth depending on their faith and offering opportunities for wholesome recreation and talent-building, inculcating life skills thus enriching their lives and the lives of others.
               </p>
             </div>
           </div>

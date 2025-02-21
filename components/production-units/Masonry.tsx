@@ -66,7 +66,7 @@ function Masonry() {
       <section className="relative">
         <div className="relative w-full h-80 md:h-[400px]">
           <Image
-            src="/images/about.jpg"
+            src="/images/masonry.jpg"
             alt="Masonry and Bricklaying Production Unit"
             fill
             style={{ objectFit: "cover" }}

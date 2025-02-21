@@ -66,7 +66,7 @@ function Carpentry() {
       <section className="relative">
         <div className="relative w-full h-80 md:h-[400px]">
           <Image
-            src="/images/about.jpg"
+            src="/images/carpentry.jpg"
             alt="Carpentry Production Unit"
             fill
             style={{ objectFit: "cover" }}

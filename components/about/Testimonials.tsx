@@ -6,6 +6,8 @@ import "swiper/css/navigation";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { fetchComments } from "@/app/actions/commentsActions"; // Adjust the import path as needed
 import Image from "next/image";
+import AddComment from "@/app/(dashboard)/admin/components/AddComment";
+
 
 // Define the Testimonial type
 type Testimonial = {
@@ -44,6 +46,9 @@ function Testimonials() {
         <h2 className="text-2xl font-bold text-purple-900 mb-10">
           What people say about us
         </h2>
+        
+        <AddComment /> {/* Include the AddComment component */}
+
         <Swiper
           pagination={{ clickable: true }}
           navigation={false}

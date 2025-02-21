@@ -66,7 +66,7 @@ function Welding() {
       <section className="relative">
         <div className="relative w-full h-80 md:h-[400px]">
           <Image
-            src="/images/about.jpg"
+            src="/images/welding.jpg"
             alt="Welding Production Unit"
             fill
             style={{ objectFit: "cover" }}

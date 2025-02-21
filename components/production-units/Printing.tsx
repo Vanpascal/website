@@ -66,7 +66,7 @@ function Printing() {
       <section className="relative">
         <div className="relative w-full h-80 md:h-[400px]">
           <Image
-            src="/images/printing.jpg" // Replace with the actual image path
+            src="/images/about.jpg" // Replace with the actual image path
             alt="Printing Production Unit"
             fill
             style={{ objectFit: "cover" }}
