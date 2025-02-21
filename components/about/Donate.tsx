@@ -128,6 +128,16 @@ const Donate = () => {
                       />
                     </div>
                   </div>
+                  <div>
+                    <label className="block font-medium text-gray-700 mb-2">
+                      Donation For
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter the purpose of your donation"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                  </div>
                   <button className="w-full bg-purple-900 text-white py-4 rounded-lg font-bold hover:bg-purple-700 transition">
                     Pay Now
                   </button>
@@ -156,6 +166,16 @@ const Donate = () => {
                     <input
                       type="text"
                       placeholder="e.g., 255712345678"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-medium text-gray-700 mb-2">
+                      Donation For
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter the purpose of your donation"
                       className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
                   </div>

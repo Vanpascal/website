@@ -231,8 +231,9 @@ export default function EditDialog({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="Management">Management</SelectItem>
+                      <SelectItem value="Management">Management</SelectItem>
                         <SelectItem value="Instructor">Instructor</SelectItem>
+                        <SelectItem value="Non-Teaching Staff">Non-Teaching Staff</SelectItem>
                         <SelectItem value="Production">Production</SelectItem>
                       </SelectContent>
                     </Select>
@@ -281,6 +282,7 @@ export default function EditDialog({
                       </SelectItem>
                       <SelectItem value="Printing">Printing</SelectItem>
                       <SelectItem value="Welding">Welding</SelectItem>
+                      <SelectItem value="Information & Communication Technology">Information & Communication Technology</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

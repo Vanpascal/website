@@ -208,7 +208,8 @@ export default function AddUser() {
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="Management">Management</SelectItem>
-                        <SelectItem value="Staff">Staff</SelectItem>
+                        <SelectItem value="Staff">Instructor</SelectItem>
+                        <SelectItem value="Non-Teaching Staff">Non-Teaching Staff</SelectItem>
                         <SelectItem value="Production">Production</SelectItem>
                       </SelectContent>
                     </Select>
@@ -243,6 +244,7 @@ export default function AddUser() {
                         </SelectItem>
                         <SelectItem value="Printing">Printing</SelectItem>
                         <SelectItem value="Welding">Welding</SelectItem>
+                        <SelectItem value="Information & Communication Technology">Information & Communication Technology</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
