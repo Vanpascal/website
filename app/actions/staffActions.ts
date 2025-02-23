@@ -190,15 +190,96 @@ export const fetchEmployees = async () => {
   }
 };
 
-export const fetchHODByDepartment = async (department: string) => {
+export const fetchCarpentryHOD = async () => {
   try {
-    return await prisma.employees.findMany({
+    const employee = await prisma.employees.findMany({
       where: {
-        department,
+        department: "Carpentry",
         category: "Production",
         position: "Head of Production",
       },
     });
+    return employee;
+  } catch (error) {
+    console.error(getErrorMessages(error));
+    throw error;
+  }
+};
+
+export const fetchPrintingHOD = async () => {
+  try {
+    const employee = await prisma.employees.findMany({
+      where: {
+        department: "Printing",
+        category: "Production",
+        position: "Head of Production",
+      },
+    });
+    return employee;
+  } catch (error) {
+    console.error(getErrorMessages(error));
+    throw error;
+  }
+};
+
+export const fetchWeldingHOD = async () => {
+  try {
+    const employee = await prisma.employees.findMany({
+      where: {
+        department: "Welding",
+        category: "Production",
+        position: "Head of Production",
+      },
+    });
+    return employee;
+  } catch (error) {
+    console.error(getErrorMessages(error));
+    throw error;
+  }
+};
+
+export const fetchTailoringHOD = async () => {
+  try {
+    const employee = await prisma.employees.findMany({
+      where: {
+        department: "Tailoring",
+        category: "Production",
+        position: "Head of Production",
+      },
+    });
+    return employee;
+  } catch (error) {
+    console.error(getErrorMessages(error));
+    throw error;
+  }
+};
+
+export const fetchMotorVehicleHOD = async () => {
+  try {
+    const employee = await prisma.employees.findMany({
+      where: {
+        department: "MVM",
+        category: "Production",
+        position: "Head of Production",
+      },
+    });
+    return employee;
+  } catch (error) {
+    console.error(getErrorMessages(error));
+    throw error;
+  }
+};
+
+export const fetchMasonryHOD = async () => {
+  try {
+    const employee = await prisma.employees.findMany({
+      where: {
+        department: "Masonry",
+        category: "Production",
+        position: "Head of Production",
+      },
+    });
+    return employee;
   } catch (error) {
     console.error(getErrorMessages(error));
     throw error;
