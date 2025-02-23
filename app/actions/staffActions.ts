@@ -9,6 +9,18 @@ import { randomUUID } from "crypto";
 
 const prisma = new PrismaClient();
 
+interface EmployeeData {
+  firstname: string;
+  lastname: string;
+  email: string;
+  category: string;
+  department: string;
+  position?: string;
+  phone: string;
+  updatedAt: Date;
+  photo?: string;
+}
+
 export const createEmployee = async (formData: FormData) => {
   try {
     const firstname = formData.get("firstname") as string | null;
@@ -89,7 +101,7 @@ export const updateEmployee = async (id: number, formData: FormData) => {
       throw new Error("Another employee is already using this email");
     }
 
-    const updateData = {
+    const updateData: EmployeeData = {
       firstname,
       lastname,
       email,
