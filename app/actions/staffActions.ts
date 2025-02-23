@@ -19,11 +19,20 @@ export const createEmployee = async (formData: FormData) => {
     const department = formData.get("department") as string | null;
     const photo = formData.get("photo") as File | null;
 
-    if (!firstname || !lastname || !email || !phone || !department || !category) {
+    if (
+      !firstname ||
+      !lastname ||
+      !email ||
+      !phone ||
+      !department ||
+      !category
+    ) {
       throw new Error("Invalid form data");
     }
 
-    const existingEmployee = await prisma.employees.findUnique({ where: { email } });
+    const existingEmployee = await prisma.employees.findUnique({
+      where: { email },
+    });
     if (existingEmployee) {
       throw new Error("Employee with this email already exists");
     }
@@ -31,7 +40,16 @@ export const createEmployee = async (formData: FormData) => {
     const photoFilePath = await handlePhotoUpload(photo);
 
     await prisma.employees.create({
-      data: { firstname, lastname, email, phone, category, department, photo: photoFilePath, updatedAt: new Date() },
+      data: {
+        firstname,
+        lastname,
+        email,
+        phone,
+        category,
+        department,
+        photo: photoFilePath,
+        updatedAt: new Date(),
+      },
     });
 
     revalidatePath("/admin/settings/employees");
@@ -52,16 +70,35 @@ export const updateEmployee = async (id: number, formData: FormData) => {
     const department = formData.get("department") as string | null;
     const photo = formData.get("photo") as File | null;
 
-    if (!firstname || !lastname || !email || !position || !phone || !category || !department) {
+    if (
+      !firstname ||
+      !lastname ||
+      !email ||
+      !position ||
+      !phone ||
+      !category ||
+      !department
+    ) {
       throw new Error("Invalid form data");
     }
 
-    const existingEmployeeWithEmail = await prisma.employees.findUnique({ where: { email } });
+    const existingEmployeeWithEmail = await prisma.employees.findUnique({
+      where: { email },
+    });
     if (existingEmployeeWithEmail && existingEmployeeWithEmail.id !== id) {
       throw new Error("Another employee is already using this email");
     }
 
-    const updateData = { firstname, lastname, email, category, department, position, phone, updatedAt: new Date() };
+    const updateData = {
+      firstname,
+      lastname,
+      email,
+      category,
+      department,
+      position,
+      phone,
+      updatedAt: new Date(),
+    };
     if (photo && photo.size > 0) {
       updateData.photo = await handlePhotoUpload(photo, id);
     }
@@ -91,9 +128,50 @@ export const deleteEmployee = async (id: number) => {
 
 export const fetchEmployees = async () => {
   try {
-    return await prisma.employees.findMany({
-      orderBy: [{ position: { sort: "asc", nulls: "last" } }],
+    let employees = await prisma.employees.findMany();
+
+    const managementPositions = [
+      "Principal",
+      "Administrator",
+      "Brother Assistant",
+      "Vice Principal",
+      "HR Officer",
+      "Accountant",
+      "Secretary",
+    ];
+
+    const priorityPositions = ["Academic Officer", "Head of Department"];
+
+    employees = employees.sort((a, b) => {
+      const depA = a.department ?? "";
+      const depB = b.department ?? "";
+      const posA = a.position ?? "";
+      const posB = b.position ?? "";
+
+      if (depA === "Management" && depB !== "Management") return -1;
+      if (depB === "Management" && depA !== "Management") return 1;
+
+      const indexA = managementPositions.indexOf(posA);
+      const indexB = managementPositions.indexOf(posB);
+
+      if (depA === "Management" && depB === "Management") {
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+      }
+
+      const priorityIndexA = priorityPositions.indexOf(posA);
+      const priorityIndexB = priorityPositions.indexOf(posB);
+
+      if (priorityIndexA !== -1 && priorityIndexB !== -1)
+        return priorityIndexA - priorityIndexB;
+      if (priorityIndexA !== -1) return -1;
+      if (priorityIndexB !== -1) return 1;
+
+      return posA.localeCompare(posB);
     });
+
+    return employees;
   } catch (error) {
     console.error("Error fetching employees:", error);
     throw error;
@@ -103,7 +181,11 @@ export const fetchEmployees = async () => {
 export const fetchHODByDepartment = async (department: string) => {
   try {
     return await prisma.employees.findMany({
-      where: { department, category: "Production", position: "Head of Production" },
+      where: {
+        department,
+        category: "Production",
+        position: "Head of Production",
+      },
     });
   } catch (error) {
     console.error(getErrorMessages(error));
@@ -115,8 +197,11 @@ const handlePhotoUpload = async (photo: File | null, id?: number) => {
   if (!photo) return "";
 
   if (id) {
-    const existingEmployee = await prisma.employees.findUnique({ where: { id } });
-    if (existingEmployee && existingEmployee.photo) await deleteFile(existingEmployee.photo);
+    const existingEmployee = await prisma.employees.findUnique({
+      where: { id },
+    });
+    if (existingEmployee && existingEmployee.photo)
+      await deleteFile(existingEmployee.photo);
   }
 
   const imagesDir = path.join(process.cwd(), "public/images/employees");
