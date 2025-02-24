@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Short Courses | Don Bosco Youth Training Center-Iringa",
     description:
       "Discover short-term vocational courses at Don Bosco Youth Training Center-Iringa. Gain essential skills and hands-on training for career advancement.",
-    url: "https://donboscoiringa.org/short-courses",
+    url: "https://donboscoiringa.org/programs/short-courses",
     type: "website",
     images: [
       {
@@ -34,7 +34,7 @@ const ShortCourse = () => {
       <Header />
       <section className="relative">
         <Image
-          src="/images/short.jpg"
+          src="/images/courses.jpg"
           alt="Short Courses Banner"
           width={1200}
           height={630}

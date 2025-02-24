@@ -62,9 +62,9 @@ const ManagementAndStaff = () => {
               <Image
                 src={member.photo || "/images/default.jpg"}
                 alt={`${member.firstname} ${member.lastname}`}
-                width={192}
-                height={192}
-                className="w-40 h-40 md:w-48 md:h-48 object-cover rounded-md border"
+                width={256}  // Increased width
+                height={256} // Increased height
+                className="w-64 h-64 md:w-64 md:h-64 object-cover rounded-md border"
               />
               <h3 className="text-2xl font-semibold text-purple-900 mt-4">
                 {member.firstname} {member.lastname}
