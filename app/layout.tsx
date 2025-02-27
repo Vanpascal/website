@@ -61,6 +61,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="canonical" href="https://donboscoiringa.org" />
+      </head>
       <body
         suppressHydrationWarning
         className={`${fontHeading.className} ${poppins.className}`}

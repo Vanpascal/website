@@ -1,47 +1,19 @@
-import { fetchRecentUpdate } from "@/app/actions/recentUpdatesActions";
-
-interface Update {
-  id: number;
-  title: string;
-  content: string | null;
-  photo: string | null;
-  date: Date;
-  createdAt: Date;
-  updatedAt: Date;
-  slug: string;
-}
-
 export default async function sitemap() {
   const baseUrl = "https://donboscoiringa.org";
 
   try {
-    const response = await fetchRecentUpdate();
-
-    const updates = response.map((update: Update) => ({
-      url: `${baseUrl}/events/${update.slug}`,
-      lastModified: new Date(update.createdAt).toISOString(),
-      changefreq: "daily",
-      priority: 0.9,
-    }));
-
     const staticPages = [
       { url: `${baseUrl}/about`, lastModified: new Date().toISOString() },
       { url: `${baseUrl}/contact`, lastModified: new Date().toISOString() },
-      {
-        url: `${baseUrl}/long-courses`,
-        lastModified: new Date().toISOString(),
-      },
-      {
-        url: `${baseUrl}/short-courses`,
-        lastModified: new Date().toISOString(),
-      },
+      { url: `${baseUrl}/long-courses`, lastModified: new Date().toISOString() },
+      { url: `${baseUrl}/short-courses`, lastModified: new Date().toISOString() },
       { url: `${baseUrl}/admission`, lastModified: new Date().toISOString() },
     ];
 
     return [
-      { url: baseUrl, lastModified: new Date().toISOString() },
+      // Added homepage to the sitemap
+      { url: baseUrl, lastModified: new Date().toISOString(), priority: 1.0, changefreq: "daily" },
       ...staticPages,
-      ...updates,
     ];
   } catch (error) {
     console.error("Error generating sitemap:", error);
