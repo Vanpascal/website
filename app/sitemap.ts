@@ -3,10 +3,9 @@ export default async function sitemap() {
 
   try {
     const staticPages = [
-      { url: `${baseUrl}/about`, lastModified: new Date().toISOString() },
       { url: `${baseUrl}/contact`, lastModified: new Date().toISOString() },
-      { url: `${baseUrl}/long-courses`, lastModified: new Date().toISOString() },
-      { url: `${baseUrl}/short-courses`, lastModified: new Date().toISOString() },
+      { url: `${baseUrl}/programs/long-courses`, lastModified: new Date().toISOString() },
+      { url: `${baseUrl}/programs/short-courses`, lastModified: new Date().toISOString() },
       { url: `${baseUrl}/admission`, lastModified: new Date().toISOString() },
     ];
 

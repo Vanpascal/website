@@ -46,7 +46,7 @@ const ManagementAndStaff = () => {
         </div>
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
           <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-            The DBYTC Management & Staff
+            The DBYTC Management Staff
           </h1>
         </div>
       </section>
@@ -59,24 +59,21 @@ const ManagementAndStaff = () => {
               key={member.id}
               className="bg-white p-6 rounded-lg border shadow-md hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
             >
-              <Image
-                src={member.photo || "/images/default.jpg"}
-                alt={`${member.firstname} ${member.lastname}`}
-                width={256}  // Increased width
-                height={256} // Increased height
-                className="w-64 h-64 md:w-64 md:h-64 object-cover rounded-md border"
-              />
+              <div className="w-full aspect-square relative">
+                <Image
+                  src={member.photo || "/images/default.jpg"}
+                  alt={`${member.firstname} ${member.lastname}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  className="rounded-md border"
+                />
+              </div>
               <h3 className="text-2xl font-semibold text-purple-900 mt-4">
                 {member.firstname} {member.lastname}
               </h3>
               <p className="text-lg text-gray-700 mt-1">
                 {member.position || "Position not assigned"}
               </p>
-              {member.department && (
-                <p className="text-sm text-gray-500 mt-1">
-                  {member.department}
-                </p>
-              )}
             </div>
           ))}
         </div>

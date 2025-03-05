@@ -140,47 +140,39 @@ export const deleteEmployee = async (id: number) => {
 
 export const fetchEmployees = async () => {
   try {
-    let employees = await prisma.employees.findMany();
+    let employees = await prisma.employees.findMany({
+      where: {
+        NOT: {
+          position: "Head of Production",
+        },
+      },
+    });
 
-    const managementPositions = [
+    const rankingOrder = [
       "Principal",
       "Administrator",
-      "Brother Assistant",
-      "Vice Principal",
+      "Deputy Principal",
+      "Academic Officer",
       "HR Officer",
-      "Accountant",
+      "Project Coordinator",
       "Secretary",
+      "Accountant",
+      "Liason Officer",
+      "Quality & Assurance",
+      "ICT Officer",
+      "Brother Assistant",
     ];
 
-    const priorityPositions = ["Academic Officer", "Head of Department"];
+    // Sort employees based on their position ranking
+    employees.sort((a, b) => {
+      const rankA = rankingOrder.indexOf(a.position || "");
+      const rankB = rankingOrder.indexOf(b.position || "");
 
-    employees = employees.sort((a, b) => {
-      const depA = a.department ?? "";
-      const depB = b.department ?? "";
-      const posA = a.position ?? "";
-      const posB = b.position ?? "";
+      if (rankA === -1 && rankB === -1) return 0;
+      if (rankA === -1) return 1;
+      if (rankB === -1) return -1;
 
-      if (depA === "Management" && depB !== "Management") return -1;
-      if (depB === "Management" && depA !== "Management") return 1;
-
-      const indexA = managementPositions.indexOf(posA);
-      const indexB = managementPositions.indexOf(posB);
-
-      if (depA === "Management" && depB === "Management") {
-        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-        if (indexA !== -1) return -1;
-        if (indexB !== -1) return 1;
-      }
-
-      const priorityIndexA = priorityPositions.indexOf(posA);
-      const priorityIndexB = priorityPositions.indexOf(posB);
-
-      if (priorityIndexA !== -1 && priorityIndexB !== -1)
-        return priorityIndexA - priorityIndexB;
-      if (priorityIndexA !== -1) return -1;
-      if (priorityIndexB !== -1) return 1;
-
-      return posA.localeCompare(posB);
+      return rankA - rankB;
     });
 
     return employees;
@@ -189,6 +181,8 @@ export const fetchEmployees = async () => {
     throw error;
   }
 };
+
+
 
 export const fetchCarpentryHOD = async () => {
   try {

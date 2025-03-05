@@ -283,6 +283,7 @@ export default function EditDialog({
                       <SelectItem value="Printing">Printing</SelectItem>
                       <SelectItem value="Welding">Welding</SelectItem>
                       <SelectItem value="Information & Communication Technology">Information & Communication Technology</SelectItem>
+                      <SelectItem value="Job Service Office ">Job Service Office </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
