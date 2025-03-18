@@ -140,7 +140,7 @@ export const deleteEmployee = async (id: number) => {
 
 export const fetchEmployees = async () => {
   try {
-    let employees = await prisma.employees.findMany({
+    const employees = await prisma.employees.findMany({
       where: {
         NOT: {
           position: "Head of Production",
@@ -181,8 +181,6 @@ export const fetchEmployees = async () => {
     throw error;
   }
 };
-
-
 
 export const fetchCarpentryHOD = async () => {
   try {

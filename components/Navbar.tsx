@@ -18,16 +18,16 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
   const [loading, setLoading] = useState(false);
   const [, startTransition] = useTransition();
 
-  useEffect(() => {
-    startTransition(async () => {
-      const response = await getLoggedUser();
-      if (response.success) {
-        setAdminName(`${response.firstname} ${response.lastname}`);
-      } else {
-        console.error(response.error);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   startTransition(async () => {
+  //     const response = await getLoggedUser();
+  //     if (response.success) {
+  //       setAdminName(`${response.firstname} ${response.lastname}`);
+  //     } else {
+  //       console.error(response.error);
+  //     }
+  //   });
+  // }, []);
 
   const handleLogout = () => {
     startTransition(async () => {
