@@ -20,7 +20,7 @@ function Footer() {
             <ul className="flex space-x-4">
               {[
                 {
-                  href: "https://www.instagram.com/dbytc_iringa/",
+                  href: "https://www.instagram.com",
                   Icon: FaInstagram,
                   label: "Instagram",
                 },
@@ -40,7 +40,7 @@ function Footer() {
                   label: "Twitter",
                 },
                 {
-                  href: "https://www.youtube.com/@johnboscoiringa",
+                  href: "https://www.youtube.com",
                   Icon: FaYoutube,
                   label: "YouTube",
                 },

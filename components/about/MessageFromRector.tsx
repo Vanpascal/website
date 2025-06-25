@@ -120,8 +120,8 @@ function MessageFromRector() {
             <div className="relative overflow-hidden rounded-lg shadow-lg border-2 border-gray-300 w-full h-[32rem]">
               <iframe
                 className="w-full h-full object-cover"
-                src="https://www.youtube.com/embed/bObZXd9dGgE"
-                title="MAISHA YA BRO PASCAL DON BOSCO IRINGA | THANK YOU."
+                src="https://www.youtube.com/embed/PR8WqifFiZY"
+                title="FOMU ZA KUJIUNGA NA CHUO CHA UFUNDI DON BOSCO IRINGA|ADMISSION FORM FOR 2025|KUJIUNGA NA CHUO"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -133,6 +133,5 @@ function MessageFromRector() {
     </section>
   );
 }
-
 
 export default MessageFromRector;
