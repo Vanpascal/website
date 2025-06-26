@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
 }
 
 datasource db {
@@ -78,8 +79,8 @@ model recentupdates {
   photo     String?
   date      DateTime @default(now())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
   slug      String   @unique
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model users {
@@ -98,4 +99,41 @@ model visitor {
   visitCount Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+model payments {
+  id             Int             @id @default(autoincrement())
+  method         String
+  amount         Float
+  purpose        String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  bankpayments   bankpayments?
+  mobilepayments mobilepayments?
+}
+
+model bankpayments {
+  id          Int      @id @default(autoincrement())
+  bankName    String
+  accountName String
+  accountNo   String
+  reference   String?
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  paymentId   Int      @unique(map: "bankPayments_paymentId_key")
+  payments    payments @relation(fields: [paymentId], references: [id], onDelete: Cascade, map: "bankPayments_paymentId_fkey")
+}
+
+model mobilepayments {
+  id          Int      @id @default(autoincrement())
+  provider    String
+  phone       String
+  localTxnId  String
+  airtelTxnId String?
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  paymentId   Int      @unique(map: "mobilePayments_paymentId_key")
+  payments    payments @relation(fields: [paymentId], references: [id], onDelete: Cascade, map: "mobilePayments_paymentId_fkey")
 }
