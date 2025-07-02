@@ -9,6 +9,8 @@ import { randomUUID } from "crypto";
 
 const prisma = new PrismaClient();
 
+const DEFAULT_PHOTO_PATH = "/images/default-avatar.png";
+
 export const createComment = async (formData: FormData) => {
   try {
     const author = formData.get("author");
@@ -25,8 +27,14 @@ export const createComment = async (formData: FormData) => {
     }
 
     // Handle the photo file
-    let photoFilePath = "";
-    if (photo) {
+    let photoFilePath = DEFAULT_PHOTO_PATH;
+
+    if (photo && photo.size > 0) {
+      const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+      if (photo.size > MAX_FILE_SIZE) {
+        throw new Error("Photo size should not exceed 1MB");
+      }
+
       const photoBuffer = await photo.arrayBuffer();
       const imagesDir = path.join(process.cwd(), "public/images/comments");
       const uniqueFilename = `${randomUUID()}-${photo.name}`;
@@ -74,13 +82,20 @@ export const updateComment = async (id: number, formData: FormData) => {
       whoComment,
     };
 
-    // If a new photo is provided, handle the photo
     if (photo && photo.size > 0) {
+      const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+      if (photo.size > MAX_FILE_SIZE) {
+        throw new Error("Photo size should not exceed 1MB");
+      }
+
       const existingComment = await prisma.comments.findUnique({
         where: { id },
       });
 
-      if (existingComment && existingComment.photo) {
+      if (
+        existingComment?.photo &&
+        existingComment.photo !== DEFAULT_PHOTO_PATH
+      ) {
         const oldPhotoPath = path.join(
           process.cwd(),
           "public",
@@ -93,18 +108,15 @@ export const updateComment = async (id: number, formData: FormData) => {
         }
       }
 
-      // Process the new photo
       const photoBuffer = await photo.arrayBuffer();
       const imagesDir = path.join(process.cwd(), "public/images/comments");
       const uniqueFilename = `${randomUUID()}-${photo.name}`;
       const filePath = path.join(imagesDir, uniqueFilename);
-
       await fs.mkdir(imagesDir, { recursive: true });
       await fs.writeFile(filePath, Buffer.from(photoBuffer));
       updateData.photo = `/images/comments/${uniqueFilename}`;
     }
 
-    // Update the comment in the database
     await prisma.comments.update({
       where: { id },
       data: updateData,
@@ -127,7 +139,7 @@ export const deleteComment = async (id: number) => {
       throw new Error("Comment not found");
     }
 
-    if (comment.photo) {
+    if (comment.photo && comment.photo !== DEFAULT_PHOTO_PATH) {
       const photoPath = path.join(process.cwd(), "public", comment.photo);
       try {
         await fs.unlink(photoPath);

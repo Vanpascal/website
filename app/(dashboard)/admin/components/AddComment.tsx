@@ -18,42 +18,62 @@ import { toast } from "react-toastify";
 import { createComment } from "@/app/actions/commentsActions";
 import { Textarea } from "@/components/ui/textarea";
 
+// 🟡 Optional prop to trigger refresh
+interface AddCommentProps {
+  onCommentAdded?: () => void;
+}
+
+const emojiRegex = /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/u;
+
 const formSchema = z.object({
   author: z
     .string()
-    .min(2, {
-      message: "Your name should be at least 2 characters long.",
-    })
-    .max(50, {
-      message: "Your name should not exceed 50 characters.",
-    })
+    .min(2, { message: "Your name should be at least 2 characters long." })
+    .max(50, { message: "Your name should not exceed 50 characters." })
     .trim()
-    .refine((val) => val.length > 0, {
-      message: "Author name cannot be blank or contain only spaces.",
+    .regex(/^[A-Za-z\s\-']+$/, {
+      message:
+        "Name can only contain letters, spaces, hyphens, and apostrophes.",
+    })
+    .refine((val) => /\s/.test(val), {
+      message: "Please enter your full name (first and last).",
+    })
+    .refine((val) => !emojiRegex.test(val), {
+      message: "Emoji characters are not allowed in the name.",
     }),
 
   content: z
     .string()
-    .min(50, {
-      message: "Comments should be at least 50 characters long.",
-    })
+    .min(100, { message: "Comment should be at least 100 characters long." })
+    .max(1000, { message: "Comment is too long." })
     .trim()
-    .refine((val) => val.length > 0, {
-      message: "Content cannot be blank or contain only spaces.",
+    .refine((val) => /[a-zA-Z]/.test(val), {
+      message: "Comment must include letters.",
+    })
+    .refine((val) => !/(.)\1{3,}/.test(val), {
+      message: "Do not use repeated characters.",
+    })
+    .refine((val) => !emojiRegex.test(val), {
+      message: "Emoji characters are not allowed in the comment.",
     }),
 
   whocomment: z
     .string()
-    .min(8, {
-      message: "Your position should be at least eight characters long.",
-    })
+    .min(8, { message: "Your position should be at least 8 characters." })
+    .max(100, { message: "Position is too long." })
     .trim()
-    .refine((val) => val.length > 0, {
-      message: "Who commented cannot be blank or contain only spaces.",
+    .refine((val) => /[a-zA-Z]/.test(val), {
+      message: "Position must include letters.",
+    })
+    .refine((val) => !/(.)\1{4,}/.test(val), {
+      message: "Do not use repeated characters.",
+    })
+    .refine((val) => !emojiRegex.test(val), {
+      message: "Emoji characters are not allowed in the position.",
     }),
 });
 
-export default function AddComment() {
+export default function AddComment({ onCommentAdded }: AddCommentProps) {
   const [open, setOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -77,7 +97,7 @@ export default function AddComment() {
       'input[name="photo"]'
     ) as HTMLInputElement;
 
-    if (photoInput.files?.length) {
+    if (photoInput?.files?.length) {
       const photoFile = photoInput.files[0];
 
       const MAX_FILE_SIZE = 1 * 1024 * 1024;
@@ -92,6 +112,11 @@ export default function AddComment() {
     try {
       await createComment(formData);
       toast.success("Comment created successfully!");
+
+      // ✅ Refresh testimonials after submission
+      if (onCommentAdded) {
+        onCommentAdded();
+      }
     } catch (error) {
       toast.error(getErrorMessages(error));
     } finally {
@@ -138,7 +163,7 @@ export default function AddComment() {
                     <FormLabel>Who Comment</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Eg. Former Student, Formar employeee, Salesian etc"
+                        placeholder="Eg. Former Student, Former employee, Salesian etc"
                         {...field}
                       />
                     </FormControl>
@@ -164,6 +189,7 @@ export default function AddComment() {
                 </FormItem>
               )}
             />
+
             <FormItem>
               <FormLabel>Photo</FormLabel>
               <FormControl>
@@ -172,15 +198,9 @@ export default function AddComment() {
               <FormMessage />
             </FormItem>
 
-            {isLoading ? (
-              <Button className="w-full" disabled>
-                Submitting...
-              </Button>
-            ) : (
-              <Button type="submit" className="w-full">
-                Submit
-              </Button>
-            )}
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Submitting..." : "Submit"}
+            </Button>
           </form>
         </Form>
       </ActionModal>

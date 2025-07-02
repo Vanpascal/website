@@ -79,8 +79,8 @@ model recentupdates {
   photo     String?
   date      DateTime @default(now())
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
   slug      String   @unique
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model users {
@@ -102,33 +102,17 @@ model visitor {
 }
 
 model payments {
-  id        Int      @id @default(autoincrement())
-  method    String // "mobile" or "bank"
-  amount    Float
-  purpose   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations: one payment can have one mobile or one bank payment detail
-  mobilePayment mobilePayments? @relation("PaymentToMobilePayment")
-  bankPayment   bankPayments?   @relation("PaymentToBankPayment")
+  id             Int             @id @default(autoincrement())
+  method         String
+  amount         Float
+  purpose        String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  bankpayments   bankpayments?
+  mobilepayments mobilepayments?
 }
 
-model mobilePayments {
-  id          Int      @id @default(autoincrement())
-  provider    String // e.g., "airtel-money"
-  phone       String // e.g., "2557XXXXXXXX"
-  localTxnId  String // your internal txn UUID
-  airtelTxnId String? // Airtel's transaction ID, optional at first
-  status      String   @default("PENDING") // e.g. "SUCCESS", "FAILED"
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  paymentId Int      @unique
-  payment   payments @relation("PaymentToMobilePayment", fields: [paymentId], references: [id], onDelete: Cascade)
-}
-
-model bankPayments {
+model bankpayments {
   id          Int      @id @default(autoincrement())
   bankName    String
   accountName String
@@ -136,8 +120,20 @@ model bankPayments {
   reference   String?
   status      String   @default("PENDING")
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  updatedAt   DateTime
+  paymentId   Int      @unique(map: "bankPayments_paymentId_key")
+  payments    payments @relation(fields: [paymentId], references: [id], onDelete: Cascade, map: "bankPayments_paymentId_fkey")
+}
 
-  paymentId Int      @unique
-  payment   payments @relation("PaymentToBankPayment", fields: [paymentId], references: [id], onDelete: Cascade)
+model mobilepayments {
+  id          Int      @id @default(autoincrement())
+  provider    String
+  phone       String
+  localTxnId  String
+  airtelTxnId String?
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  paymentId   Int      @unique(map: "mobilePayments_paymentId_key")
+  payments    payments @relation(fields: [paymentId], references: [id], onDelete: Cascade, map: "mobilePayments_paymentId_fkey")
 }

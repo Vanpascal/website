@@ -69,15 +69,15 @@ export type visitor = $Result.DefaultSelection<Prisma.$visitorPayload>
  */
 export type payments = $Result.DefaultSelection<Prisma.$paymentsPayload>
 /**
- * Model mobilePayments
+ * Model bankpayments
  * 
  */
-export type mobilePayments = $Result.DefaultSelection<Prisma.$mobilePaymentsPayload>
+export type bankpayments = $Result.DefaultSelection<Prisma.$bankpaymentsPayload>
 /**
- * Model bankPayments
+ * Model mobilepayments
  * 
  */
-export type bankPayments = $Result.DefaultSelection<Prisma.$bankPaymentsPayload>
+export type mobilepayments = $Result.DefaultSelection<Prisma.$mobilepaymentsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -313,24 +313,24 @@ export class PrismaClient<
   get payments(): Prisma.paymentsDelegate<ExtArgs>;
 
   /**
-   * `prisma.mobilePayments`: Exposes CRUD operations for the **mobilePayments** model.
+   * `prisma.bankpayments`: Exposes CRUD operations for the **bankpayments** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more MobilePayments
-    * const mobilePayments = await prisma.mobilePayments.findMany()
+    * // Fetch zero or more Bankpayments
+    * const bankpayments = await prisma.bankpayments.findMany()
     * ```
     */
-  get mobilePayments(): Prisma.mobilePaymentsDelegate<ExtArgs>;
+  get bankpayments(): Prisma.bankpaymentsDelegate<ExtArgs>;
 
   /**
-   * `prisma.bankPayments`: Exposes CRUD operations for the **bankPayments** model.
+   * `prisma.mobilepayments`: Exposes CRUD operations for the **mobilepayments** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more BankPayments
-    * const bankPayments = await prisma.bankPayments.findMany()
+    * // Fetch zero or more Mobilepayments
+    * const mobilepayments = await prisma.mobilepayments.findMany()
     * ```
     */
-  get bankPayments(): Prisma.bankPaymentsDelegate<ExtArgs>;
+  get mobilepayments(): Prisma.mobilepaymentsDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -782,8 +782,8 @@ export namespace Prisma {
     users: 'users',
     visitor: 'visitor',
     payments: 'payments',
-    mobilePayments: 'mobilePayments',
-    bankPayments: 'bankPayments'
+    bankpayments: 'bankpayments',
+    mobilepayments: 'mobilepayments'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -799,7 +799,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "announcements" | "banners" | "comments" | "courses" | "documents" | "employees" | "products" | "recentupdates" | "users" | "visitor" | "payments" | "mobilePayments" | "bankPayments"
+      modelProps: "announcements" | "banners" | "comments" | "courses" | "documents" | "employees" | "products" | "recentupdates" | "users" | "visitor" | "payments" | "bankpayments" | "mobilepayments"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1529,135 +1529,135 @@ export namespace Prisma {
           }
         }
       }
-      mobilePayments: {
-        payload: Prisma.$mobilePaymentsPayload<ExtArgs>
-        fields: Prisma.mobilePaymentsFieldRefs
+      bankpayments: {
+        payload: Prisma.$bankpaymentsPayload<ExtArgs>
+        fields: Prisma.bankpaymentsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.mobilePaymentsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload> | null
+            args: Prisma.bankpaymentsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.mobilePaymentsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload>
+            args: Prisma.bankpaymentsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload>
           }
           findFirst: {
-            args: Prisma.mobilePaymentsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload> | null
+            args: Prisma.bankpaymentsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.mobilePaymentsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload>
+            args: Prisma.bankpaymentsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload>
           }
           findMany: {
-            args: Prisma.mobilePaymentsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload>[]
+            args: Prisma.bankpaymentsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload>[]
           }
           create: {
-            args: Prisma.mobilePaymentsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload>
+            args: Prisma.bankpaymentsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload>
           }
           createMany: {
-            args: Prisma.mobilePaymentsCreateManyArgs<ExtArgs>
+            args: Prisma.bankpaymentsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.mobilePaymentsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload>
+            args: Prisma.bankpaymentsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload>
           }
           update: {
-            args: Prisma.mobilePaymentsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload>
+            args: Prisma.bankpaymentsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload>
           }
           deleteMany: {
-            args: Prisma.mobilePaymentsDeleteManyArgs<ExtArgs>
+            args: Prisma.bankpaymentsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.mobilePaymentsUpdateManyArgs<ExtArgs>
+            args: Prisma.bankpaymentsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.mobilePaymentsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$mobilePaymentsPayload>
+            args: Prisma.bankpaymentsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$bankpaymentsPayload>
           }
           aggregate: {
-            args: Prisma.MobilePaymentsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateMobilePayments>
+            args: Prisma.BankpaymentsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBankpayments>
           }
           groupBy: {
-            args: Prisma.mobilePaymentsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<MobilePaymentsGroupByOutputType>[]
+            args: Prisma.bankpaymentsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BankpaymentsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.mobilePaymentsCountArgs<ExtArgs>
-            result: $Utils.Optional<MobilePaymentsCountAggregateOutputType> | number
+            args: Prisma.bankpaymentsCountArgs<ExtArgs>
+            result: $Utils.Optional<BankpaymentsCountAggregateOutputType> | number
           }
         }
       }
-      bankPayments: {
-        payload: Prisma.$bankPaymentsPayload<ExtArgs>
-        fields: Prisma.bankPaymentsFieldRefs
+      mobilepayments: {
+        payload: Prisma.$mobilepaymentsPayload<ExtArgs>
+        fields: Prisma.mobilepaymentsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.bankPaymentsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload> | null
+            args: Prisma.mobilepaymentsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.bankPaymentsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload>
+            args: Prisma.mobilepaymentsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload>
           }
           findFirst: {
-            args: Prisma.bankPaymentsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload> | null
+            args: Prisma.mobilepaymentsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.bankPaymentsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload>
+            args: Prisma.mobilepaymentsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload>
           }
           findMany: {
-            args: Prisma.bankPaymentsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload>[]
+            args: Prisma.mobilepaymentsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload>[]
           }
           create: {
-            args: Prisma.bankPaymentsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload>
+            args: Prisma.mobilepaymentsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload>
           }
           createMany: {
-            args: Prisma.bankPaymentsCreateManyArgs<ExtArgs>
+            args: Prisma.mobilepaymentsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.bankPaymentsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload>
+            args: Prisma.mobilepaymentsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload>
           }
           update: {
-            args: Prisma.bankPaymentsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload>
+            args: Prisma.mobilepaymentsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload>
           }
           deleteMany: {
-            args: Prisma.bankPaymentsDeleteManyArgs<ExtArgs>
+            args: Prisma.mobilepaymentsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.bankPaymentsUpdateManyArgs<ExtArgs>
+            args: Prisma.mobilepaymentsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.bankPaymentsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$bankPaymentsPayload>
+            args: Prisma.mobilepaymentsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mobilepaymentsPayload>
           }
           aggregate: {
-            args: Prisma.BankPaymentsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBankPayments>
+            args: Prisma.MobilepaymentsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMobilepayments>
           }
           groupBy: {
-            args: Prisma.bankPaymentsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BankPaymentsGroupByOutputType>[]
+            args: Prisma.mobilepaymentsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MobilepaymentsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.bankPaymentsCountArgs<ExtArgs>
-            result: $Utils.Optional<BankPaymentsCountAggregateOutputType> | number
+            args: Prisma.mobilepaymentsCountArgs<ExtArgs>
+            result: $Utils.Optional<MobilepaymentsCountAggregateOutputType> | number
           }
         }
       }
@@ -8007,8 +8007,8 @@ export namespace Prisma {
     photo: string | null
     date: Date | null
     createdAt: Date | null
-    updatedAt: Date | null
     slug: string | null
+    updatedAt: Date | null
   }
 
   export type RecentupdatesMaxAggregateOutputType = {
@@ -8018,8 +8018,8 @@ export namespace Prisma {
     photo: string | null
     date: Date | null
     createdAt: Date | null
-    updatedAt: Date | null
     slug: string | null
+    updatedAt: Date | null
   }
 
   export type RecentupdatesCountAggregateOutputType = {
@@ -8029,8 +8029,8 @@ export namespace Prisma {
     photo: number
     date: number
     createdAt: number
-    updatedAt: number
     slug: number
+    updatedAt: number
     _all: number
   }
 
@@ -8050,8 +8050,8 @@ export namespace Prisma {
     photo?: true
     date?: true
     createdAt?: true
-    updatedAt?: true
     slug?: true
+    updatedAt?: true
   }
 
   export type RecentupdatesMaxAggregateInputType = {
@@ -8061,8 +8061,8 @@ export namespace Prisma {
     photo?: true
     date?: true
     createdAt?: true
-    updatedAt?: true
     slug?: true
+    updatedAt?: true
   }
 
   export type RecentupdatesCountAggregateInputType = {
@@ -8072,8 +8072,8 @@ export namespace Prisma {
     photo?: true
     date?: true
     createdAt?: true
-    updatedAt?: true
     slug?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -8170,8 +8170,8 @@ export namespace Prisma {
     photo: string | null
     date: Date
     createdAt: Date
-    updatedAt: Date
     slug: string
+    updatedAt: Date
     _count: RecentupdatesCountAggregateOutputType | null
     _avg: RecentupdatesAvgAggregateOutputType | null
     _sum: RecentupdatesSumAggregateOutputType | null
@@ -8200,8 +8200,8 @@ export namespace Prisma {
     photo?: boolean
     date?: boolean
     createdAt?: boolean
-    updatedAt?: boolean
     slug?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["recentupdates"]>
 
 
@@ -8212,8 +8212,8 @@ export namespace Prisma {
     photo?: boolean
     date?: boolean
     createdAt?: boolean
-    updatedAt?: boolean
     slug?: boolean
+    updatedAt?: boolean
   }
 
 
@@ -8227,8 +8227,8 @@ export namespace Prisma {
       photo: string | null
       date: Date
       createdAt: Date
-      updatedAt: Date
       slug: string
+      updatedAt: Date
     }, ExtArgs["result"]["recentupdates"]>
     composites: {}
   }
@@ -8604,8 +8604,8 @@ export namespace Prisma {
     readonly photo: FieldRef<"recentupdates", 'String'>
     readonly date: FieldRef<"recentupdates", 'DateTime'>
     readonly createdAt: FieldRef<"recentupdates", 'DateTime'>
-    readonly updatedAt: FieldRef<"recentupdates", 'DateTime'>
     readonly slug: FieldRef<"recentupdates", 'String'>
+    readonly updatedAt: FieldRef<"recentupdates", 'DateTime'>
   }
     
 
@@ -10847,8 +10847,8 @@ export namespace Prisma {
     purpose?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    mobilePayment?: boolean | payments$mobilePaymentArgs<ExtArgs>
-    bankPayment?: boolean | payments$bankPaymentArgs<ExtArgs>
+    bankpayments?: boolean | payments$bankpaymentsArgs<ExtArgs>
+    mobilepayments?: boolean | payments$mobilepaymentsArgs<ExtArgs>
   }, ExtArgs["result"]["payments"]>
 
 
@@ -10862,15 +10862,15 @@ export namespace Prisma {
   }
 
   export type paymentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mobilePayment?: boolean | payments$mobilePaymentArgs<ExtArgs>
-    bankPayment?: boolean | payments$bankPaymentArgs<ExtArgs>
+    bankpayments?: boolean | payments$bankpaymentsArgs<ExtArgs>
+    mobilepayments?: boolean | payments$mobilepaymentsArgs<ExtArgs>
   }
 
   export type $paymentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "payments"
     objects: {
-      mobilePayment: Prisma.$mobilePaymentsPayload<ExtArgs> | null
-      bankPayment: Prisma.$bankPaymentsPayload<ExtArgs> | null
+      bankpayments: Prisma.$bankpaymentsPayload<ExtArgs> | null
+      mobilepayments: Prisma.$mobilepaymentsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -11219,8 +11219,8 @@ export namespace Prisma {
    */
   export interface Prisma__paymentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    mobilePayment<T extends payments$mobilePaymentArgs<ExtArgs> = {}>(args?: Subset<T, payments$mobilePaymentArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
-    bankPayment<T extends payments$bankPaymentArgs<ExtArgs> = {}>(args?: Subset<T, payments$bankPaymentArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    bankpayments<T extends payments$bankpaymentsArgs<ExtArgs> = {}>(args?: Subset<T, payments$bankpaymentsArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    mobilepayments<T extends payments$mobilepaymentsArgs<ExtArgs> = {}>(args?: Subset<T, payments$mobilepaymentsArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11555,33 +11555,33 @@ export namespace Prisma {
   }
 
   /**
-   * payments.mobilePayment
+   * payments.bankpayments
    */
-  export type payments$mobilePaymentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type payments$bankpaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the mobilePayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: mobilePaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    where?: mobilePaymentsWhereInput
+    include?: bankpaymentsInclude<ExtArgs> | null
+    where?: bankpaymentsWhereInput
   }
 
   /**
-   * payments.bankPayment
+   * payments.mobilepayments
    */
-  export type payments$bankPaymentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type payments$mobilepaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the mobilepayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: mobilepaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
-    where?: bankPaymentsWhereInput
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    where?: mobilepaymentsWhereInput
   }
 
   /**
@@ -11600,989 +11600,28 @@ export namespace Prisma {
 
 
   /**
-   * Model mobilePayments
+   * Model bankpayments
    */
 
-  export type AggregateMobilePayments = {
-    _count: MobilePaymentsCountAggregateOutputType | null
-    _avg: MobilePaymentsAvgAggregateOutputType | null
-    _sum: MobilePaymentsSumAggregateOutputType | null
-    _min: MobilePaymentsMinAggregateOutputType | null
-    _max: MobilePaymentsMaxAggregateOutputType | null
+  export type AggregateBankpayments = {
+    _count: BankpaymentsCountAggregateOutputType | null
+    _avg: BankpaymentsAvgAggregateOutputType | null
+    _sum: BankpaymentsSumAggregateOutputType | null
+    _min: BankpaymentsMinAggregateOutputType | null
+    _max: BankpaymentsMaxAggregateOutputType | null
   }
 
-  export type MobilePaymentsAvgAggregateOutputType = {
+  export type BankpaymentsAvgAggregateOutputType = {
     id: number | null
     paymentId: number | null
   }
 
-  export type MobilePaymentsSumAggregateOutputType = {
+  export type BankpaymentsSumAggregateOutputType = {
     id: number | null
     paymentId: number | null
   }
 
-  export type MobilePaymentsMinAggregateOutputType = {
-    id: number | null
-    provider: string | null
-    phone: string | null
-    localTxnId: string | null
-    airtelTxnId: string | null
-    status: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    paymentId: number | null
-  }
-
-  export type MobilePaymentsMaxAggregateOutputType = {
-    id: number | null
-    provider: string | null
-    phone: string | null
-    localTxnId: string | null
-    airtelTxnId: string | null
-    status: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    paymentId: number | null
-  }
-
-  export type MobilePaymentsCountAggregateOutputType = {
-    id: number
-    provider: number
-    phone: number
-    localTxnId: number
-    airtelTxnId: number
-    status: number
-    createdAt: number
-    updatedAt: number
-    paymentId: number
-    _all: number
-  }
-
-
-  export type MobilePaymentsAvgAggregateInputType = {
-    id?: true
-    paymentId?: true
-  }
-
-  export type MobilePaymentsSumAggregateInputType = {
-    id?: true
-    paymentId?: true
-  }
-
-  export type MobilePaymentsMinAggregateInputType = {
-    id?: true
-    provider?: true
-    phone?: true
-    localTxnId?: true
-    airtelTxnId?: true
-    status?: true
-    createdAt?: true
-    updatedAt?: true
-    paymentId?: true
-  }
-
-  export type MobilePaymentsMaxAggregateInputType = {
-    id?: true
-    provider?: true
-    phone?: true
-    localTxnId?: true
-    airtelTxnId?: true
-    status?: true
-    createdAt?: true
-    updatedAt?: true
-    paymentId?: true
-  }
-
-  export type MobilePaymentsCountAggregateInputType = {
-    id?: true
-    provider?: true
-    phone?: true
-    localTxnId?: true
-    airtelTxnId?: true
-    status?: true
-    createdAt?: true
-    updatedAt?: true
-    paymentId?: true
-    _all?: true
-  }
-
-  export type MobilePaymentsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which mobilePayments to aggregate.
-     */
-    where?: mobilePaymentsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mobilePayments to fetch.
-     */
-    orderBy?: mobilePaymentsOrderByWithRelationInput | mobilePaymentsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: mobilePaymentsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mobilePayments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mobilePayments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned mobilePayments
-    **/
-    _count?: true | MobilePaymentsCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: MobilePaymentsAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: MobilePaymentsSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: MobilePaymentsMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: MobilePaymentsMaxAggregateInputType
-  }
-
-  export type GetMobilePaymentsAggregateType<T extends MobilePaymentsAggregateArgs> = {
-        [P in keyof T & keyof AggregateMobilePayments]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateMobilePayments[P]>
-      : GetScalarType<T[P], AggregateMobilePayments[P]>
-  }
-
-
-
-
-  export type mobilePaymentsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: mobilePaymentsWhereInput
-    orderBy?: mobilePaymentsOrderByWithAggregationInput | mobilePaymentsOrderByWithAggregationInput[]
-    by: MobilePaymentsScalarFieldEnum[] | MobilePaymentsScalarFieldEnum
-    having?: mobilePaymentsScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: MobilePaymentsCountAggregateInputType | true
-    _avg?: MobilePaymentsAvgAggregateInputType
-    _sum?: MobilePaymentsSumAggregateInputType
-    _min?: MobilePaymentsMinAggregateInputType
-    _max?: MobilePaymentsMaxAggregateInputType
-  }
-
-  export type MobilePaymentsGroupByOutputType = {
-    id: number
-    provider: string
-    phone: string
-    localTxnId: string
-    airtelTxnId: string | null
-    status: string
-    createdAt: Date
-    updatedAt: Date
-    paymentId: number
-    _count: MobilePaymentsCountAggregateOutputType | null
-    _avg: MobilePaymentsAvgAggregateOutputType | null
-    _sum: MobilePaymentsSumAggregateOutputType | null
-    _min: MobilePaymentsMinAggregateOutputType | null
-    _max: MobilePaymentsMaxAggregateOutputType | null
-  }
-
-  type GetMobilePaymentsGroupByPayload<T extends mobilePaymentsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<MobilePaymentsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof MobilePaymentsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], MobilePaymentsGroupByOutputType[P]>
-            : GetScalarType<T[P], MobilePaymentsGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type mobilePaymentsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    provider?: boolean
-    phone?: boolean
-    localTxnId?: boolean
-    airtelTxnId?: boolean
-    status?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    paymentId?: boolean
-    payment?: boolean | paymentsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["mobilePayments"]>
-
-
-  export type mobilePaymentsSelectScalar = {
-    id?: boolean
-    provider?: boolean
-    phone?: boolean
-    localTxnId?: boolean
-    airtelTxnId?: boolean
-    status?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    paymentId?: boolean
-  }
-
-  export type mobilePaymentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    payment?: boolean | paymentsDefaultArgs<ExtArgs>
-  }
-
-  export type $mobilePaymentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "mobilePayments"
-    objects: {
-      payment: Prisma.$paymentsPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      provider: string
-      phone: string
-      localTxnId: string
-      airtelTxnId: string | null
-      status: string
-      createdAt: Date
-      updatedAt: Date
-      paymentId: number
-    }, ExtArgs["result"]["mobilePayments"]>
-    composites: {}
-  }
-
-  type mobilePaymentsGetPayload<S extends boolean | null | undefined | mobilePaymentsDefaultArgs> = $Result.GetResult<Prisma.$mobilePaymentsPayload, S>
-
-  type mobilePaymentsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<mobilePaymentsFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: MobilePaymentsCountAggregateInputType | true
-    }
-
-  export interface mobilePaymentsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['mobilePayments'], meta: { name: 'mobilePayments' } }
-    /**
-     * Find zero or one MobilePayments that matches the filter.
-     * @param {mobilePaymentsFindUniqueArgs} args - Arguments to find a MobilePayments
-     * @example
-     * // Get one MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends mobilePaymentsFindUniqueArgs>(args: SelectSubset<T, mobilePaymentsFindUniqueArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one MobilePayments that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {mobilePaymentsFindUniqueOrThrowArgs} args - Arguments to find a MobilePayments
-     * @example
-     * // Get one MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends mobilePaymentsFindUniqueOrThrowArgs>(args: SelectSubset<T, mobilePaymentsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first MobilePayments that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mobilePaymentsFindFirstArgs} args - Arguments to find a MobilePayments
-     * @example
-     * // Get one MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends mobilePaymentsFindFirstArgs>(args?: SelectSubset<T, mobilePaymentsFindFirstArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first MobilePayments that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mobilePaymentsFindFirstOrThrowArgs} args - Arguments to find a MobilePayments
-     * @example
-     * // Get one MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends mobilePaymentsFindFirstOrThrowArgs>(args?: SelectSubset<T, mobilePaymentsFindFirstOrThrowArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more MobilePayments that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mobilePaymentsFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.findMany()
-     * 
-     * // Get first 10 MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const mobilePaymentsWithIdOnly = await prisma.mobilePayments.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends mobilePaymentsFindManyArgs>(args?: SelectSubset<T, mobilePaymentsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a MobilePayments.
-     * @param {mobilePaymentsCreateArgs} args - Arguments to create a MobilePayments.
-     * @example
-     * // Create one MobilePayments
-     * const MobilePayments = await prisma.mobilePayments.create({
-     *   data: {
-     *     // ... data to create a MobilePayments
-     *   }
-     * })
-     * 
-     */
-    create<T extends mobilePaymentsCreateArgs>(args: SelectSubset<T, mobilePaymentsCreateArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many MobilePayments.
-     * @param {mobilePaymentsCreateManyArgs} args - Arguments to create many MobilePayments.
-     * @example
-     * // Create many MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends mobilePaymentsCreateManyArgs>(args?: SelectSubset<T, mobilePaymentsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a MobilePayments.
-     * @param {mobilePaymentsDeleteArgs} args - Arguments to delete one MobilePayments.
-     * @example
-     * // Delete one MobilePayments
-     * const MobilePayments = await prisma.mobilePayments.delete({
-     *   where: {
-     *     // ... filter to delete one MobilePayments
-     *   }
-     * })
-     * 
-     */
-    delete<T extends mobilePaymentsDeleteArgs>(args: SelectSubset<T, mobilePaymentsDeleteArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one MobilePayments.
-     * @param {mobilePaymentsUpdateArgs} args - Arguments to update one MobilePayments.
-     * @example
-     * // Update one MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends mobilePaymentsUpdateArgs>(args: SelectSubset<T, mobilePaymentsUpdateArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more MobilePayments.
-     * @param {mobilePaymentsDeleteManyArgs} args - Arguments to filter MobilePayments to delete.
-     * @example
-     * // Delete a few MobilePayments
-     * const { count } = await prisma.mobilePayments.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends mobilePaymentsDeleteManyArgs>(args?: SelectSubset<T, mobilePaymentsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more MobilePayments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mobilePaymentsUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends mobilePaymentsUpdateManyArgs>(args: SelectSubset<T, mobilePaymentsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one MobilePayments.
-     * @param {mobilePaymentsUpsertArgs} args - Arguments to update or create a MobilePayments.
-     * @example
-     * // Update or create a MobilePayments
-     * const mobilePayments = await prisma.mobilePayments.upsert({
-     *   create: {
-     *     // ... data to create a MobilePayments
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the MobilePayments we want to update
-     *   }
-     * })
-     */
-    upsert<T extends mobilePaymentsUpsertArgs>(args: SelectSubset<T, mobilePaymentsUpsertArgs<ExtArgs>>): Prisma__mobilePaymentsClient<$Result.GetResult<Prisma.$mobilePaymentsPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of MobilePayments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mobilePaymentsCountArgs} args - Arguments to filter MobilePayments to count.
-     * @example
-     * // Count the number of MobilePayments
-     * const count = await prisma.mobilePayments.count({
-     *   where: {
-     *     // ... the filter for the MobilePayments we want to count
-     *   }
-     * })
-    **/
-    count<T extends mobilePaymentsCountArgs>(
-      args?: Subset<T, mobilePaymentsCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], MobilePaymentsCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a MobilePayments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MobilePaymentsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends MobilePaymentsAggregateArgs>(args: Subset<T, MobilePaymentsAggregateArgs>): Prisma.PrismaPromise<GetMobilePaymentsAggregateType<T>>
-
-    /**
-     * Group by MobilePayments.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {mobilePaymentsGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends mobilePaymentsGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: mobilePaymentsGroupByArgs['orderBy'] }
-        : { orderBy?: mobilePaymentsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, mobilePaymentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMobilePaymentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the mobilePayments model
-   */
-  readonly fields: mobilePaymentsFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for mobilePayments.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__mobilePaymentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    payment<T extends paymentsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, paymentsDefaultArgs<ExtArgs>>): Prisma__paymentsClient<$Result.GetResult<Prisma.$paymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the mobilePayments model
-   */ 
-  interface mobilePaymentsFieldRefs {
-    readonly id: FieldRef<"mobilePayments", 'Int'>
-    readonly provider: FieldRef<"mobilePayments", 'String'>
-    readonly phone: FieldRef<"mobilePayments", 'String'>
-    readonly localTxnId: FieldRef<"mobilePayments", 'String'>
-    readonly airtelTxnId: FieldRef<"mobilePayments", 'String'>
-    readonly status: FieldRef<"mobilePayments", 'String'>
-    readonly createdAt: FieldRef<"mobilePayments", 'DateTime'>
-    readonly updatedAt: FieldRef<"mobilePayments", 'DateTime'>
-    readonly paymentId: FieldRef<"mobilePayments", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * mobilePayments findUnique
-   */
-  export type mobilePaymentsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * Filter, which mobilePayments to fetch.
-     */
-    where: mobilePaymentsWhereUniqueInput
-  }
-
-  /**
-   * mobilePayments findUniqueOrThrow
-   */
-  export type mobilePaymentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * Filter, which mobilePayments to fetch.
-     */
-    where: mobilePaymentsWhereUniqueInput
-  }
-
-  /**
-   * mobilePayments findFirst
-   */
-  export type mobilePaymentsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * Filter, which mobilePayments to fetch.
-     */
-    where?: mobilePaymentsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mobilePayments to fetch.
-     */
-    orderBy?: mobilePaymentsOrderByWithRelationInput | mobilePaymentsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for mobilePayments.
-     */
-    cursor?: mobilePaymentsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mobilePayments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mobilePayments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of mobilePayments.
-     */
-    distinct?: MobilePaymentsScalarFieldEnum | MobilePaymentsScalarFieldEnum[]
-  }
-
-  /**
-   * mobilePayments findFirstOrThrow
-   */
-  export type mobilePaymentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * Filter, which mobilePayments to fetch.
-     */
-    where?: mobilePaymentsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mobilePayments to fetch.
-     */
-    orderBy?: mobilePaymentsOrderByWithRelationInput | mobilePaymentsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for mobilePayments.
-     */
-    cursor?: mobilePaymentsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mobilePayments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mobilePayments.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of mobilePayments.
-     */
-    distinct?: MobilePaymentsScalarFieldEnum | MobilePaymentsScalarFieldEnum[]
-  }
-
-  /**
-   * mobilePayments findMany
-   */
-  export type mobilePaymentsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * Filter, which mobilePayments to fetch.
-     */
-    where?: mobilePaymentsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of mobilePayments to fetch.
-     */
-    orderBy?: mobilePaymentsOrderByWithRelationInput | mobilePaymentsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing mobilePayments.
-     */
-    cursor?: mobilePaymentsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` mobilePayments from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` mobilePayments.
-     */
-    skip?: number
-    distinct?: MobilePaymentsScalarFieldEnum | MobilePaymentsScalarFieldEnum[]
-  }
-
-  /**
-   * mobilePayments create
-   */
-  export type mobilePaymentsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * The data needed to create a mobilePayments.
-     */
-    data: XOR<mobilePaymentsCreateInput, mobilePaymentsUncheckedCreateInput>
-  }
-
-  /**
-   * mobilePayments createMany
-   */
-  export type mobilePaymentsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many mobilePayments.
-     */
-    data: mobilePaymentsCreateManyInput | mobilePaymentsCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * mobilePayments update
-   */
-  export type mobilePaymentsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * The data needed to update a mobilePayments.
-     */
-    data: XOR<mobilePaymentsUpdateInput, mobilePaymentsUncheckedUpdateInput>
-    /**
-     * Choose, which mobilePayments to update.
-     */
-    where: mobilePaymentsWhereUniqueInput
-  }
-
-  /**
-   * mobilePayments updateMany
-   */
-  export type mobilePaymentsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update mobilePayments.
-     */
-    data: XOR<mobilePaymentsUpdateManyMutationInput, mobilePaymentsUncheckedUpdateManyInput>
-    /**
-     * Filter which mobilePayments to update
-     */
-    where?: mobilePaymentsWhereInput
-  }
-
-  /**
-   * mobilePayments upsert
-   */
-  export type mobilePaymentsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * The filter to search for the mobilePayments to update in case it exists.
-     */
-    where: mobilePaymentsWhereUniqueInput
-    /**
-     * In case the mobilePayments found by the `where` argument doesn't exist, create a new mobilePayments with this data.
-     */
-    create: XOR<mobilePaymentsCreateInput, mobilePaymentsUncheckedCreateInput>
-    /**
-     * In case the mobilePayments was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<mobilePaymentsUpdateInput, mobilePaymentsUncheckedUpdateInput>
-  }
-
-  /**
-   * mobilePayments delete
-   */
-  export type mobilePaymentsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-    /**
-     * Filter which mobilePayments to delete.
-     */
-    where: mobilePaymentsWhereUniqueInput
-  }
-
-  /**
-   * mobilePayments deleteMany
-   */
-  export type mobilePaymentsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which mobilePayments to delete
-     */
-    where?: mobilePaymentsWhereInput
-  }
-
-  /**
-   * mobilePayments without action
-   */
-  export type mobilePaymentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mobilePayments
-     */
-    select?: mobilePaymentsSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mobilePaymentsInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model bankPayments
-   */
-
-  export type AggregateBankPayments = {
-    _count: BankPaymentsCountAggregateOutputType | null
-    _avg: BankPaymentsAvgAggregateOutputType | null
-    _sum: BankPaymentsSumAggregateOutputType | null
-    _min: BankPaymentsMinAggregateOutputType | null
-    _max: BankPaymentsMaxAggregateOutputType | null
-  }
-
-  export type BankPaymentsAvgAggregateOutputType = {
-    id: number | null
-    paymentId: number | null
-  }
-
-  export type BankPaymentsSumAggregateOutputType = {
-    id: number | null
-    paymentId: number | null
-  }
-
-  export type BankPaymentsMinAggregateOutputType = {
+  export type BankpaymentsMinAggregateOutputType = {
     id: number | null
     bankName: string | null
     accountName: string | null
@@ -12594,7 +11633,7 @@ export namespace Prisma {
     paymentId: number | null
   }
 
-  export type BankPaymentsMaxAggregateOutputType = {
+  export type BankpaymentsMaxAggregateOutputType = {
     id: number | null
     bankName: string | null
     accountName: string | null
@@ -12606,7 +11645,7 @@ export namespace Prisma {
     paymentId: number | null
   }
 
-  export type BankPaymentsCountAggregateOutputType = {
+  export type BankpaymentsCountAggregateOutputType = {
     id: number
     bankName: number
     accountName: number
@@ -12620,29 +11659,17 @@ export namespace Prisma {
   }
 
 
-  export type BankPaymentsAvgAggregateInputType = {
+  export type BankpaymentsAvgAggregateInputType = {
     id?: true
     paymentId?: true
   }
 
-  export type BankPaymentsSumAggregateInputType = {
+  export type BankpaymentsSumAggregateInputType = {
     id?: true
     paymentId?: true
   }
 
-  export type BankPaymentsMinAggregateInputType = {
-    id?: true
-    bankName?: true
-    accountName?: true
-    accountNo?: true
-    reference?: true
-    status?: true
-    createdAt?: true
-    updatedAt?: true
-    paymentId?: true
-  }
-
-  export type BankPaymentsMaxAggregateInputType = {
+  export type BankpaymentsMinAggregateInputType = {
     id?: true
     bankName?: true
     accountName?: true
@@ -12654,7 +11681,19 @@ export namespace Prisma {
     paymentId?: true
   }
 
-  export type BankPaymentsCountAggregateInputType = {
+  export type BankpaymentsMaxAggregateInputType = {
+    id?: true
+    bankName?: true
+    accountName?: true
+    accountNo?: true
+    reference?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    paymentId?: true
+  }
+
+  export type BankpaymentsCountAggregateInputType = {
     id?: true
     bankName?: true
     accountName?: true
@@ -12667,93 +11706,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type BankPaymentsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BankpaymentsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which bankPayments to aggregate.
+     * Filter which bankpayments to aggregate.
      */
-    where?: bankPaymentsWhereInput
+    where?: bankpaymentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of bankPayments to fetch.
+     * Determine the order of bankpayments to fetch.
      */
-    orderBy?: bankPaymentsOrderByWithRelationInput | bankPaymentsOrderByWithRelationInput[]
+    orderBy?: bankpaymentsOrderByWithRelationInput | bankpaymentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: bankPaymentsWhereUniqueInput
+    cursor?: bankpaymentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` bankPayments from the position of the cursor.
+     * Take `±n` bankpayments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` bankPayments.
+     * Skip the first `n` bankpayments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned bankPayments
+     * Count returned bankpayments
     **/
-    _count?: true | BankPaymentsCountAggregateInputType
+    _count?: true | BankpaymentsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: BankPaymentsAvgAggregateInputType
+    _avg?: BankpaymentsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: BankPaymentsSumAggregateInputType
+    _sum?: BankpaymentsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: BankPaymentsMinAggregateInputType
+    _min?: BankpaymentsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: BankPaymentsMaxAggregateInputType
+    _max?: BankpaymentsMaxAggregateInputType
   }
 
-  export type GetBankPaymentsAggregateType<T extends BankPaymentsAggregateArgs> = {
-        [P in keyof T & keyof AggregateBankPayments]: P extends '_count' | 'count'
+  export type GetBankpaymentsAggregateType<T extends BankpaymentsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBankpayments]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateBankPayments[P]>
-      : GetScalarType<T[P], AggregateBankPayments[P]>
+        : GetScalarType<T[P], AggregateBankpayments[P]>
+      : GetScalarType<T[P], AggregateBankpayments[P]>
   }
 
 
 
 
-  export type bankPaymentsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: bankPaymentsWhereInput
-    orderBy?: bankPaymentsOrderByWithAggregationInput | bankPaymentsOrderByWithAggregationInput[]
-    by: BankPaymentsScalarFieldEnum[] | BankPaymentsScalarFieldEnum
-    having?: bankPaymentsScalarWhereWithAggregatesInput
+  export type bankpaymentsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: bankpaymentsWhereInput
+    orderBy?: bankpaymentsOrderByWithAggregationInput | bankpaymentsOrderByWithAggregationInput[]
+    by: BankpaymentsScalarFieldEnum[] | BankpaymentsScalarFieldEnum
+    having?: bankpaymentsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: BankPaymentsCountAggregateInputType | true
-    _avg?: BankPaymentsAvgAggregateInputType
-    _sum?: BankPaymentsSumAggregateInputType
-    _min?: BankPaymentsMinAggregateInputType
-    _max?: BankPaymentsMaxAggregateInputType
+    _count?: BankpaymentsCountAggregateInputType | true
+    _avg?: BankpaymentsAvgAggregateInputType
+    _sum?: BankpaymentsSumAggregateInputType
+    _min?: BankpaymentsMinAggregateInputType
+    _max?: BankpaymentsMaxAggregateInputType
   }
 
-  export type BankPaymentsGroupByOutputType = {
+  export type BankpaymentsGroupByOutputType = {
     id: number
     bankName: string
     accountName: string
@@ -12763,28 +11802,28 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     paymentId: number
-    _count: BankPaymentsCountAggregateOutputType | null
-    _avg: BankPaymentsAvgAggregateOutputType | null
-    _sum: BankPaymentsSumAggregateOutputType | null
-    _min: BankPaymentsMinAggregateOutputType | null
-    _max: BankPaymentsMaxAggregateOutputType | null
+    _count: BankpaymentsCountAggregateOutputType | null
+    _avg: BankpaymentsAvgAggregateOutputType | null
+    _sum: BankpaymentsSumAggregateOutputType | null
+    _min: BankpaymentsMinAggregateOutputType | null
+    _max: BankpaymentsMaxAggregateOutputType | null
   }
 
-  type GetBankPaymentsGroupByPayload<T extends bankPaymentsGroupByArgs> = Prisma.PrismaPromise<
+  type GetBankpaymentsGroupByPayload<T extends bankpaymentsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<BankPaymentsGroupByOutputType, T['by']> &
+      PickEnumerable<BankpaymentsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof BankPaymentsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof BankpaymentsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], BankPaymentsGroupByOutputType[P]>
-            : GetScalarType<T[P], BankPaymentsGroupByOutputType[P]>
+              : GetScalarType<T[P], BankpaymentsGroupByOutputType[P]>
+            : GetScalarType<T[P], BankpaymentsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type bankPaymentsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type bankpaymentsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     bankName?: boolean
     accountName?: boolean
@@ -12794,11 +11833,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     paymentId?: boolean
-    payment?: boolean | paymentsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bankPayments"]>
+    payments?: boolean | paymentsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bankpayments"]>
 
 
-  export type bankPaymentsSelectScalar = {
+  export type bankpaymentsSelectScalar = {
     id?: boolean
     bankName?: boolean
     accountName?: boolean
@@ -12810,14 +11849,14 @@ export namespace Prisma {
     paymentId?: boolean
   }
 
-  export type bankPaymentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    payment?: boolean | paymentsDefaultArgs<ExtArgs>
+  export type bankpaymentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    payments?: boolean | paymentsDefaultArgs<ExtArgs>
   }
 
-  export type $bankPaymentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "bankPayments"
+  export type $bankpaymentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "bankpayments"
     objects: {
-      payment: Prisma.$paymentsPayload<ExtArgs>
+      payments: Prisma.$paymentsPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -12829,143 +11868,143 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       paymentId: number
-    }, ExtArgs["result"]["bankPayments"]>
+    }, ExtArgs["result"]["bankpayments"]>
     composites: {}
   }
 
-  type bankPaymentsGetPayload<S extends boolean | null | undefined | bankPaymentsDefaultArgs> = $Result.GetResult<Prisma.$bankPaymentsPayload, S>
+  type bankpaymentsGetPayload<S extends boolean | null | undefined | bankpaymentsDefaultArgs> = $Result.GetResult<Prisma.$bankpaymentsPayload, S>
 
-  type bankPaymentsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<bankPaymentsFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: BankPaymentsCountAggregateInputType | true
+  type bankpaymentsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<bankpaymentsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BankpaymentsCountAggregateInputType | true
     }
 
-  export interface bankPaymentsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['bankPayments'], meta: { name: 'bankPayments' } }
+  export interface bankpaymentsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['bankpayments'], meta: { name: 'bankpayments' } }
     /**
-     * Find zero or one BankPayments that matches the filter.
-     * @param {bankPaymentsFindUniqueArgs} args - Arguments to find a BankPayments
+     * Find zero or one Bankpayments that matches the filter.
+     * @param {bankpaymentsFindUniqueArgs} args - Arguments to find a Bankpayments
      * @example
-     * // Get one BankPayments
-     * const bankPayments = await prisma.bankPayments.findUnique({
+     * // Get one Bankpayments
+     * const bankpayments = await prisma.bankpayments.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends bankPaymentsFindUniqueArgs>(args: SelectSubset<T, bankPaymentsFindUniqueArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends bankpaymentsFindUniqueArgs>(args: SelectSubset<T, bankpaymentsFindUniqueArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one BankPayments that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Bankpayments that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {bankPaymentsFindUniqueOrThrowArgs} args - Arguments to find a BankPayments
+     * @param {bankpaymentsFindUniqueOrThrowArgs} args - Arguments to find a Bankpayments
      * @example
-     * // Get one BankPayments
-     * const bankPayments = await prisma.bankPayments.findUniqueOrThrow({
+     * // Get one Bankpayments
+     * const bankpayments = await prisma.bankpayments.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends bankPaymentsFindUniqueOrThrowArgs>(args: SelectSubset<T, bankPaymentsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends bankpaymentsFindUniqueOrThrowArgs>(args: SelectSubset<T, bankpaymentsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
-     * Find the first BankPayments that matches the filter.
+     * Find the first Bankpayments that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {bankPaymentsFindFirstArgs} args - Arguments to find a BankPayments
+     * @param {bankpaymentsFindFirstArgs} args - Arguments to find a Bankpayments
      * @example
-     * // Get one BankPayments
-     * const bankPayments = await prisma.bankPayments.findFirst({
+     * // Get one Bankpayments
+     * const bankpayments = await prisma.bankpayments.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends bankPaymentsFindFirstArgs>(args?: SelectSubset<T, bankPaymentsFindFirstArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends bankpaymentsFindFirstArgs>(args?: SelectSubset<T, bankpaymentsFindFirstArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
-     * Find the first BankPayments that matches the filter or
+     * Find the first Bankpayments that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {bankPaymentsFindFirstOrThrowArgs} args - Arguments to find a BankPayments
+     * @param {bankpaymentsFindFirstOrThrowArgs} args - Arguments to find a Bankpayments
      * @example
-     * // Get one BankPayments
-     * const bankPayments = await prisma.bankPayments.findFirstOrThrow({
+     * // Get one Bankpayments
+     * const bankpayments = await prisma.bankpayments.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends bankPaymentsFindFirstOrThrowArgs>(args?: SelectSubset<T, bankPaymentsFindFirstOrThrowArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends bankpaymentsFindFirstOrThrowArgs>(args?: SelectSubset<T, bankpaymentsFindFirstOrThrowArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
-     * Find zero or more BankPayments that matches the filter.
+     * Find zero or more Bankpayments that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {bankPaymentsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {bankpaymentsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all BankPayments
-     * const bankPayments = await prisma.bankPayments.findMany()
+     * // Get all Bankpayments
+     * const bankpayments = await prisma.bankpayments.findMany()
      * 
-     * // Get first 10 BankPayments
-     * const bankPayments = await prisma.bankPayments.findMany({ take: 10 })
+     * // Get first 10 Bankpayments
+     * const bankpayments = await prisma.bankpayments.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const bankPaymentsWithIdOnly = await prisma.bankPayments.findMany({ select: { id: true } })
+     * const bankpaymentsWithIdOnly = await prisma.bankpayments.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends bankPaymentsFindManyArgs>(args?: SelectSubset<T, bankPaymentsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "findMany">>
+    findMany<T extends bankpaymentsFindManyArgs>(args?: SelectSubset<T, bankpaymentsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "findMany">>
 
     /**
-     * Create a BankPayments.
-     * @param {bankPaymentsCreateArgs} args - Arguments to create a BankPayments.
+     * Create a Bankpayments.
+     * @param {bankpaymentsCreateArgs} args - Arguments to create a Bankpayments.
      * @example
-     * // Create one BankPayments
-     * const BankPayments = await prisma.bankPayments.create({
+     * // Create one Bankpayments
+     * const Bankpayments = await prisma.bankpayments.create({
      *   data: {
-     *     // ... data to create a BankPayments
+     *     // ... data to create a Bankpayments
      *   }
      * })
      * 
      */
-    create<T extends bankPaymentsCreateArgs>(args: SelectSubset<T, bankPaymentsCreateArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends bankpaymentsCreateArgs>(args: SelectSubset<T, bankpaymentsCreateArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
-     * Create many BankPayments.
-     * @param {bankPaymentsCreateManyArgs} args - Arguments to create many BankPayments.
+     * Create many Bankpayments.
+     * @param {bankpaymentsCreateManyArgs} args - Arguments to create many Bankpayments.
      * @example
-     * // Create many BankPayments
-     * const bankPayments = await prisma.bankPayments.createMany({
+     * // Create many Bankpayments
+     * const bankpayments = await prisma.bankpayments.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends bankPaymentsCreateManyArgs>(args?: SelectSubset<T, bankPaymentsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends bankpaymentsCreateManyArgs>(args?: SelectSubset<T, bankpaymentsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a BankPayments.
-     * @param {bankPaymentsDeleteArgs} args - Arguments to delete one BankPayments.
+     * Delete a Bankpayments.
+     * @param {bankpaymentsDeleteArgs} args - Arguments to delete one Bankpayments.
      * @example
-     * // Delete one BankPayments
-     * const BankPayments = await prisma.bankPayments.delete({
+     * // Delete one Bankpayments
+     * const Bankpayments = await prisma.bankpayments.delete({
      *   where: {
-     *     // ... filter to delete one BankPayments
+     *     // ... filter to delete one Bankpayments
      *   }
      * })
      * 
      */
-    delete<T extends bankPaymentsDeleteArgs>(args: SelectSubset<T, bankPaymentsDeleteArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends bankpaymentsDeleteArgs>(args: SelectSubset<T, bankpaymentsDeleteArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
-     * Update one BankPayments.
-     * @param {bankPaymentsUpdateArgs} args - Arguments to update one BankPayments.
+     * Update one Bankpayments.
+     * @param {bankpaymentsUpdateArgs} args - Arguments to update one Bankpayments.
      * @example
-     * // Update one BankPayments
-     * const bankPayments = await prisma.bankPayments.update({
+     * // Update one Bankpayments
+     * const bankpayments = await prisma.bankpayments.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12975,30 +12014,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends bankPaymentsUpdateArgs>(args: SelectSubset<T, bankPaymentsUpdateArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends bankpaymentsUpdateArgs>(args: SelectSubset<T, bankpaymentsUpdateArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
-     * Delete zero or more BankPayments.
-     * @param {bankPaymentsDeleteManyArgs} args - Arguments to filter BankPayments to delete.
+     * Delete zero or more Bankpayments.
+     * @param {bankpaymentsDeleteManyArgs} args - Arguments to filter Bankpayments to delete.
      * @example
-     * // Delete a few BankPayments
-     * const { count } = await prisma.bankPayments.deleteMany({
+     * // Delete a few Bankpayments
+     * const { count } = await prisma.bankpayments.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends bankPaymentsDeleteManyArgs>(args?: SelectSubset<T, bankPaymentsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends bankpaymentsDeleteManyArgs>(args?: SelectSubset<T, bankpaymentsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more BankPayments.
+     * Update zero or more Bankpayments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {bankPaymentsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {bankpaymentsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many BankPayments
-     * const bankPayments = await prisma.bankPayments.updateMany({
+     * // Update many Bankpayments
+     * const bankpayments = await prisma.bankpayments.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -13008,56 +12047,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends bankPaymentsUpdateManyArgs>(args: SelectSubset<T, bankPaymentsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends bankpaymentsUpdateManyArgs>(args: SelectSubset<T, bankpaymentsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one BankPayments.
-     * @param {bankPaymentsUpsertArgs} args - Arguments to update or create a BankPayments.
+     * Create or update one Bankpayments.
+     * @param {bankpaymentsUpsertArgs} args - Arguments to update or create a Bankpayments.
      * @example
-     * // Update or create a BankPayments
-     * const bankPayments = await prisma.bankPayments.upsert({
+     * // Update or create a Bankpayments
+     * const bankpayments = await prisma.bankpayments.upsert({
      *   create: {
-     *     // ... data to create a BankPayments
+     *     // ... data to create a Bankpayments
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the BankPayments we want to update
+     *     // ... the filter for the Bankpayments we want to update
      *   }
      * })
      */
-    upsert<T extends bankPaymentsUpsertArgs>(args: SelectSubset<T, bankPaymentsUpsertArgs<ExtArgs>>): Prisma__bankPaymentsClient<$Result.GetResult<Prisma.$bankPaymentsPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends bankpaymentsUpsertArgs>(args: SelectSubset<T, bankpaymentsUpsertArgs<ExtArgs>>): Prisma__bankpaymentsClient<$Result.GetResult<Prisma.$bankpaymentsPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
-     * Count the number of BankPayments.
+     * Count the number of Bankpayments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {bankPaymentsCountArgs} args - Arguments to filter BankPayments to count.
+     * @param {bankpaymentsCountArgs} args - Arguments to filter Bankpayments to count.
      * @example
-     * // Count the number of BankPayments
-     * const count = await prisma.bankPayments.count({
+     * // Count the number of Bankpayments
+     * const count = await prisma.bankpayments.count({
      *   where: {
-     *     // ... the filter for the BankPayments we want to count
+     *     // ... the filter for the Bankpayments we want to count
      *   }
      * })
     **/
-    count<T extends bankPaymentsCountArgs>(
-      args?: Subset<T, bankPaymentsCountArgs>,
+    count<T extends bankpaymentsCountArgs>(
+      args?: Subset<T, bankpaymentsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], BankPaymentsCountAggregateOutputType>
+          : GetScalarType<T['select'], BankpaymentsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a BankPayments.
+     * Allows you to perform aggregations operations on a Bankpayments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BankPaymentsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {BankpaymentsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -13077,13 +12116,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends BankPaymentsAggregateArgs>(args: Subset<T, BankPaymentsAggregateArgs>): Prisma.PrismaPromise<GetBankPaymentsAggregateType<T>>
+    aggregate<T extends BankpaymentsAggregateArgs>(args: Subset<T, BankpaymentsAggregateArgs>): Prisma.PrismaPromise<GetBankpaymentsAggregateType<T>>
 
     /**
-     * Group by BankPayments.
+     * Group by Bankpayments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {bankPaymentsGroupByArgs} args - Group by arguments.
+     * @param {bankpaymentsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -13098,14 +12137,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends bankPaymentsGroupByArgs,
+      T extends bankpaymentsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: bankPaymentsGroupByArgs['orderBy'] }
-        : { orderBy?: bankPaymentsGroupByArgs['orderBy'] },
+        ? { orderBy: bankpaymentsGroupByArgs['orderBy'] }
+        : { orderBy?: bankpaymentsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -13154,22 +12193,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, bankPaymentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBankPaymentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, bankpaymentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBankpaymentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the bankPayments model
+   * Fields of the bankpayments model
    */
-  readonly fields: bankPaymentsFieldRefs;
+  readonly fields: bankpaymentsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for bankPayments.
+   * The delegate class that acts as a "Promise-like" for bankpayments.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__bankPaymentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__bankpaymentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    payment<T extends paymentsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, paymentsDefaultArgs<ExtArgs>>): Prisma__paymentsClient<$Result.GetResult<Prisma.$paymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    payments<T extends paymentsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, paymentsDefaultArgs<ExtArgs>>): Prisma__paymentsClient<$Result.GetResult<Prisma.$paymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13196,328 +12235,1289 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the bankPayments model
+   * Fields of the bankpayments model
    */ 
-  interface bankPaymentsFieldRefs {
-    readonly id: FieldRef<"bankPayments", 'Int'>
-    readonly bankName: FieldRef<"bankPayments", 'String'>
-    readonly accountName: FieldRef<"bankPayments", 'String'>
-    readonly accountNo: FieldRef<"bankPayments", 'String'>
-    readonly reference: FieldRef<"bankPayments", 'String'>
-    readonly status: FieldRef<"bankPayments", 'String'>
-    readonly createdAt: FieldRef<"bankPayments", 'DateTime'>
-    readonly updatedAt: FieldRef<"bankPayments", 'DateTime'>
-    readonly paymentId: FieldRef<"bankPayments", 'Int'>
+  interface bankpaymentsFieldRefs {
+    readonly id: FieldRef<"bankpayments", 'Int'>
+    readonly bankName: FieldRef<"bankpayments", 'String'>
+    readonly accountName: FieldRef<"bankpayments", 'String'>
+    readonly accountNo: FieldRef<"bankpayments", 'String'>
+    readonly reference: FieldRef<"bankpayments", 'String'>
+    readonly status: FieldRef<"bankpayments", 'String'>
+    readonly createdAt: FieldRef<"bankpayments", 'DateTime'>
+    readonly updatedAt: FieldRef<"bankpayments", 'DateTime'>
+    readonly paymentId: FieldRef<"bankpayments", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * bankPayments findUnique
+   * bankpayments findUnique
    */
-  export type bankPaymentsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * Filter, which bankPayments to fetch.
+     * Filter, which bankpayments to fetch.
      */
-    where: bankPaymentsWhereUniqueInput
+    where: bankpaymentsWhereUniqueInput
   }
 
   /**
-   * bankPayments findUniqueOrThrow
+   * bankpayments findUniqueOrThrow
    */
-  export type bankPaymentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * Filter, which bankPayments to fetch.
+     * Filter, which bankpayments to fetch.
      */
-    where: bankPaymentsWhereUniqueInput
+    where: bankpaymentsWhereUniqueInput
   }
 
   /**
-   * bankPayments findFirst
+   * bankpayments findFirst
    */
-  export type bankPaymentsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * Filter, which bankPayments to fetch.
+     * Filter, which bankpayments to fetch.
      */
-    where?: bankPaymentsWhereInput
+    where?: bankpaymentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of bankPayments to fetch.
+     * Determine the order of bankpayments to fetch.
      */
-    orderBy?: bankPaymentsOrderByWithRelationInput | bankPaymentsOrderByWithRelationInput[]
+    orderBy?: bankpaymentsOrderByWithRelationInput | bankpaymentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for bankPayments.
+     * Sets the position for searching for bankpayments.
      */
-    cursor?: bankPaymentsWhereUniqueInput
+    cursor?: bankpaymentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` bankPayments from the position of the cursor.
+     * Take `±n` bankpayments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` bankPayments.
+     * Skip the first `n` bankpayments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of bankPayments.
+     * Filter by unique combinations of bankpayments.
      */
-    distinct?: BankPaymentsScalarFieldEnum | BankPaymentsScalarFieldEnum[]
+    distinct?: BankpaymentsScalarFieldEnum | BankpaymentsScalarFieldEnum[]
   }
 
   /**
-   * bankPayments findFirstOrThrow
+   * bankpayments findFirstOrThrow
    */
-  export type bankPaymentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * Filter, which bankPayments to fetch.
+     * Filter, which bankpayments to fetch.
      */
-    where?: bankPaymentsWhereInput
+    where?: bankpaymentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of bankPayments to fetch.
+     * Determine the order of bankpayments to fetch.
      */
-    orderBy?: bankPaymentsOrderByWithRelationInput | bankPaymentsOrderByWithRelationInput[]
+    orderBy?: bankpaymentsOrderByWithRelationInput | bankpaymentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for bankPayments.
+     * Sets the position for searching for bankpayments.
      */
-    cursor?: bankPaymentsWhereUniqueInput
+    cursor?: bankpaymentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` bankPayments from the position of the cursor.
+     * Take `±n` bankpayments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` bankPayments.
+     * Skip the first `n` bankpayments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of bankPayments.
+     * Filter by unique combinations of bankpayments.
      */
-    distinct?: BankPaymentsScalarFieldEnum | BankPaymentsScalarFieldEnum[]
+    distinct?: BankpaymentsScalarFieldEnum | BankpaymentsScalarFieldEnum[]
   }
 
   /**
-   * bankPayments findMany
+   * bankpayments findMany
    */
-  export type bankPaymentsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * Filter, which bankPayments to fetch.
+     * Filter, which bankpayments to fetch.
      */
-    where?: bankPaymentsWhereInput
+    where?: bankpaymentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of bankPayments to fetch.
+     * Determine the order of bankpayments to fetch.
      */
-    orderBy?: bankPaymentsOrderByWithRelationInput | bankPaymentsOrderByWithRelationInput[]
+    orderBy?: bankpaymentsOrderByWithRelationInput | bankpaymentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing bankPayments.
+     * Sets the position for listing bankpayments.
      */
-    cursor?: bankPaymentsWhereUniqueInput
+    cursor?: bankpaymentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` bankPayments from the position of the cursor.
+     * Take `±n` bankpayments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` bankPayments.
+     * Skip the first `n` bankpayments.
      */
     skip?: number
-    distinct?: BankPaymentsScalarFieldEnum | BankPaymentsScalarFieldEnum[]
+    distinct?: BankpaymentsScalarFieldEnum | BankpaymentsScalarFieldEnum[]
   }
 
   /**
-   * bankPayments create
+   * bankpayments create
    */
-  export type bankPaymentsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * The data needed to create a bankPayments.
+     * The data needed to create a bankpayments.
      */
-    data: XOR<bankPaymentsCreateInput, bankPaymentsUncheckedCreateInput>
+    data: XOR<bankpaymentsCreateInput, bankpaymentsUncheckedCreateInput>
   }
 
   /**
-   * bankPayments createMany
+   * bankpayments createMany
    */
-  export type bankPaymentsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many bankPayments.
+     * The data used to create many bankpayments.
      */
-    data: bankPaymentsCreateManyInput | bankPaymentsCreateManyInput[]
+    data: bankpaymentsCreateManyInput | bankpaymentsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * bankPayments update
+   * bankpayments update
    */
-  export type bankPaymentsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * The data needed to update a bankPayments.
+     * The data needed to update a bankpayments.
      */
-    data: XOR<bankPaymentsUpdateInput, bankPaymentsUncheckedUpdateInput>
+    data: XOR<bankpaymentsUpdateInput, bankpaymentsUncheckedUpdateInput>
     /**
-     * Choose, which bankPayments to update.
+     * Choose, which bankpayments to update.
      */
-    where: bankPaymentsWhereUniqueInput
+    where: bankpaymentsWhereUniqueInput
   }
 
   /**
-   * bankPayments updateMany
+   * bankpayments updateMany
    */
-  export type bankPaymentsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update bankPayments.
+     * The data used to update bankpayments.
      */
-    data: XOR<bankPaymentsUpdateManyMutationInput, bankPaymentsUncheckedUpdateManyInput>
+    data: XOR<bankpaymentsUpdateManyMutationInput, bankpaymentsUncheckedUpdateManyInput>
     /**
-     * Filter which bankPayments to update
+     * Filter which bankpayments to update
      */
-    where?: bankPaymentsWhereInput
+    where?: bankpaymentsWhereInput
   }
 
   /**
-   * bankPayments upsert
+   * bankpayments upsert
    */
-  export type bankPaymentsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * The filter to search for the bankPayments to update in case it exists.
+     * The filter to search for the bankpayments to update in case it exists.
      */
-    where: bankPaymentsWhereUniqueInput
+    where: bankpaymentsWhereUniqueInput
     /**
-     * In case the bankPayments found by the `where` argument doesn't exist, create a new bankPayments with this data.
+     * In case the bankpayments found by the `where` argument doesn't exist, create a new bankpayments with this data.
      */
-    create: XOR<bankPaymentsCreateInput, bankPaymentsUncheckedCreateInput>
+    create: XOR<bankpaymentsCreateInput, bankpaymentsUncheckedCreateInput>
     /**
-     * In case the bankPayments was found with the provided `where` argument, update it with this data.
+     * In case the bankpayments was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<bankPaymentsUpdateInput, bankPaymentsUncheckedUpdateInput>
+    update: XOR<bankpaymentsUpdateInput, bankpaymentsUncheckedUpdateInput>
   }
 
   /**
-   * bankPayments delete
+   * bankpayments delete
    */
-  export type bankPaymentsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
     /**
-     * Filter which bankPayments to delete.
+     * Filter which bankpayments to delete.
      */
-    where: bankPaymentsWhereUniqueInput
+    where: bankpaymentsWhereUniqueInput
   }
 
   /**
-   * bankPayments deleteMany
+   * bankpayments deleteMany
    */
-  export type bankPaymentsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which bankPayments to delete
+     * Filter which bankpayments to delete
      */
-    where?: bankPaymentsWhereInput
+    where?: bankpaymentsWhereInput
   }
 
   /**
-   * bankPayments without action
+   * bankpayments without action
    */
-  export type bankPaymentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type bankpaymentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bankPayments
+     * Select specific fields to fetch from the bankpayments
      */
-    select?: bankPaymentsSelect<ExtArgs> | null
+    select?: bankpaymentsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: bankPaymentsInclude<ExtArgs> | null
+    include?: bankpaymentsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model mobilepayments
+   */
+
+  export type AggregateMobilepayments = {
+    _count: MobilepaymentsCountAggregateOutputType | null
+    _avg: MobilepaymentsAvgAggregateOutputType | null
+    _sum: MobilepaymentsSumAggregateOutputType | null
+    _min: MobilepaymentsMinAggregateOutputType | null
+    _max: MobilepaymentsMaxAggregateOutputType | null
+  }
+
+  export type MobilepaymentsAvgAggregateOutputType = {
+    id: number | null
+    paymentId: number | null
+  }
+
+  export type MobilepaymentsSumAggregateOutputType = {
+    id: number | null
+    paymentId: number | null
+  }
+
+  export type MobilepaymentsMinAggregateOutputType = {
+    id: number | null
+    provider: string | null
+    phone: string | null
+    localTxnId: string | null
+    airtelTxnId: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    paymentId: number | null
+  }
+
+  export type MobilepaymentsMaxAggregateOutputType = {
+    id: number | null
+    provider: string | null
+    phone: string | null
+    localTxnId: string | null
+    airtelTxnId: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    paymentId: number | null
+  }
+
+  export type MobilepaymentsCountAggregateOutputType = {
+    id: number
+    provider: number
+    phone: number
+    localTxnId: number
+    airtelTxnId: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    paymentId: number
+    _all: number
+  }
+
+
+  export type MobilepaymentsAvgAggregateInputType = {
+    id?: true
+    paymentId?: true
+  }
+
+  export type MobilepaymentsSumAggregateInputType = {
+    id?: true
+    paymentId?: true
+  }
+
+  export type MobilepaymentsMinAggregateInputType = {
+    id?: true
+    provider?: true
+    phone?: true
+    localTxnId?: true
+    airtelTxnId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    paymentId?: true
+  }
+
+  export type MobilepaymentsMaxAggregateInputType = {
+    id?: true
+    provider?: true
+    phone?: true
+    localTxnId?: true
+    airtelTxnId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    paymentId?: true
+  }
+
+  export type MobilepaymentsCountAggregateInputType = {
+    id?: true
+    provider?: true
+    phone?: true
+    localTxnId?: true
+    airtelTxnId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    paymentId?: true
+    _all?: true
+  }
+
+  export type MobilepaymentsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which mobilepayments to aggregate.
+     */
+    where?: mobilepaymentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mobilepayments to fetch.
+     */
+    orderBy?: mobilepaymentsOrderByWithRelationInput | mobilepaymentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: mobilepaymentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mobilepayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mobilepayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned mobilepayments
+    **/
+    _count?: true | MobilepaymentsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MobilepaymentsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MobilepaymentsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MobilepaymentsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MobilepaymentsMaxAggregateInputType
+  }
+
+  export type GetMobilepaymentsAggregateType<T extends MobilepaymentsAggregateArgs> = {
+        [P in keyof T & keyof AggregateMobilepayments]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMobilepayments[P]>
+      : GetScalarType<T[P], AggregateMobilepayments[P]>
+  }
+
+
+
+
+  export type mobilepaymentsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: mobilepaymentsWhereInput
+    orderBy?: mobilepaymentsOrderByWithAggregationInput | mobilepaymentsOrderByWithAggregationInput[]
+    by: MobilepaymentsScalarFieldEnum[] | MobilepaymentsScalarFieldEnum
+    having?: mobilepaymentsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MobilepaymentsCountAggregateInputType | true
+    _avg?: MobilepaymentsAvgAggregateInputType
+    _sum?: MobilepaymentsSumAggregateInputType
+    _min?: MobilepaymentsMinAggregateInputType
+    _max?: MobilepaymentsMaxAggregateInputType
+  }
+
+  export type MobilepaymentsGroupByOutputType = {
+    id: number
+    provider: string
+    phone: string
+    localTxnId: string
+    airtelTxnId: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    paymentId: number
+    _count: MobilepaymentsCountAggregateOutputType | null
+    _avg: MobilepaymentsAvgAggregateOutputType | null
+    _sum: MobilepaymentsSumAggregateOutputType | null
+    _min: MobilepaymentsMinAggregateOutputType | null
+    _max: MobilepaymentsMaxAggregateOutputType | null
+  }
+
+  type GetMobilepaymentsGroupByPayload<T extends mobilepaymentsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MobilepaymentsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MobilepaymentsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MobilepaymentsGroupByOutputType[P]>
+            : GetScalarType<T[P], MobilepaymentsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type mobilepaymentsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    provider?: boolean
+    phone?: boolean
+    localTxnId?: boolean
+    airtelTxnId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    paymentId?: boolean
+    payments?: boolean | paymentsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mobilepayments"]>
+
+
+  export type mobilepaymentsSelectScalar = {
+    id?: boolean
+    provider?: boolean
+    phone?: boolean
+    localTxnId?: boolean
+    airtelTxnId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    paymentId?: boolean
+  }
+
+  export type mobilepaymentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    payments?: boolean | paymentsDefaultArgs<ExtArgs>
+  }
+
+  export type $mobilepaymentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "mobilepayments"
+    objects: {
+      payments: Prisma.$paymentsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      provider: string
+      phone: string
+      localTxnId: string
+      airtelTxnId: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+      paymentId: number
+    }, ExtArgs["result"]["mobilepayments"]>
+    composites: {}
+  }
+
+  type mobilepaymentsGetPayload<S extends boolean | null | undefined | mobilepaymentsDefaultArgs> = $Result.GetResult<Prisma.$mobilepaymentsPayload, S>
+
+  type mobilepaymentsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<mobilepaymentsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MobilepaymentsCountAggregateInputType | true
+    }
+
+  export interface mobilepaymentsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['mobilepayments'], meta: { name: 'mobilepayments' } }
+    /**
+     * Find zero or one Mobilepayments that matches the filter.
+     * @param {mobilepaymentsFindUniqueArgs} args - Arguments to find a Mobilepayments
+     * @example
+     * // Get one Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends mobilepaymentsFindUniqueArgs>(args: SelectSubset<T, mobilepaymentsFindUniqueArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Mobilepayments that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {mobilepaymentsFindUniqueOrThrowArgs} args - Arguments to find a Mobilepayments
+     * @example
+     * // Get one Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends mobilepaymentsFindUniqueOrThrowArgs>(args: SelectSubset<T, mobilepaymentsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Mobilepayments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mobilepaymentsFindFirstArgs} args - Arguments to find a Mobilepayments
+     * @example
+     * // Get one Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends mobilepaymentsFindFirstArgs>(args?: SelectSubset<T, mobilepaymentsFindFirstArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Mobilepayments that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mobilepaymentsFindFirstOrThrowArgs} args - Arguments to find a Mobilepayments
+     * @example
+     * // Get one Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends mobilepaymentsFindFirstOrThrowArgs>(args?: SelectSubset<T, mobilepaymentsFindFirstOrThrowArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Mobilepayments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mobilepaymentsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.findMany()
+     * 
+     * // Get first 10 Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mobilepaymentsWithIdOnly = await prisma.mobilepayments.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends mobilepaymentsFindManyArgs>(args?: SelectSubset<T, mobilepaymentsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Mobilepayments.
+     * @param {mobilepaymentsCreateArgs} args - Arguments to create a Mobilepayments.
+     * @example
+     * // Create one Mobilepayments
+     * const Mobilepayments = await prisma.mobilepayments.create({
+     *   data: {
+     *     // ... data to create a Mobilepayments
+     *   }
+     * })
+     * 
+     */
+    create<T extends mobilepaymentsCreateArgs>(args: SelectSubset<T, mobilepaymentsCreateArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Mobilepayments.
+     * @param {mobilepaymentsCreateManyArgs} args - Arguments to create many Mobilepayments.
+     * @example
+     * // Create many Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends mobilepaymentsCreateManyArgs>(args?: SelectSubset<T, mobilepaymentsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Mobilepayments.
+     * @param {mobilepaymentsDeleteArgs} args - Arguments to delete one Mobilepayments.
+     * @example
+     * // Delete one Mobilepayments
+     * const Mobilepayments = await prisma.mobilepayments.delete({
+     *   where: {
+     *     // ... filter to delete one Mobilepayments
+     *   }
+     * })
+     * 
+     */
+    delete<T extends mobilepaymentsDeleteArgs>(args: SelectSubset<T, mobilepaymentsDeleteArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Mobilepayments.
+     * @param {mobilepaymentsUpdateArgs} args - Arguments to update one Mobilepayments.
+     * @example
+     * // Update one Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends mobilepaymentsUpdateArgs>(args: SelectSubset<T, mobilepaymentsUpdateArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Mobilepayments.
+     * @param {mobilepaymentsDeleteManyArgs} args - Arguments to filter Mobilepayments to delete.
+     * @example
+     * // Delete a few Mobilepayments
+     * const { count } = await prisma.mobilepayments.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends mobilepaymentsDeleteManyArgs>(args?: SelectSubset<T, mobilepaymentsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Mobilepayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mobilepaymentsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends mobilepaymentsUpdateManyArgs>(args: SelectSubset<T, mobilepaymentsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Mobilepayments.
+     * @param {mobilepaymentsUpsertArgs} args - Arguments to update or create a Mobilepayments.
+     * @example
+     * // Update or create a Mobilepayments
+     * const mobilepayments = await prisma.mobilepayments.upsert({
+     *   create: {
+     *     // ... data to create a Mobilepayments
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Mobilepayments we want to update
+     *   }
+     * })
+     */
+    upsert<T extends mobilepaymentsUpsertArgs>(args: SelectSubset<T, mobilepaymentsUpsertArgs<ExtArgs>>): Prisma__mobilepaymentsClient<$Result.GetResult<Prisma.$mobilepaymentsPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Mobilepayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mobilepaymentsCountArgs} args - Arguments to filter Mobilepayments to count.
+     * @example
+     * // Count the number of Mobilepayments
+     * const count = await prisma.mobilepayments.count({
+     *   where: {
+     *     // ... the filter for the Mobilepayments we want to count
+     *   }
+     * })
+    **/
+    count<T extends mobilepaymentsCountArgs>(
+      args?: Subset<T, mobilepaymentsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MobilepaymentsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Mobilepayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MobilepaymentsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MobilepaymentsAggregateArgs>(args: Subset<T, MobilepaymentsAggregateArgs>): Prisma.PrismaPromise<GetMobilepaymentsAggregateType<T>>
+
+    /**
+     * Group by Mobilepayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mobilepaymentsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends mobilepaymentsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: mobilepaymentsGroupByArgs['orderBy'] }
+        : { orderBy?: mobilepaymentsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, mobilepaymentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMobilepaymentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the mobilepayments model
+   */
+  readonly fields: mobilepaymentsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for mobilepayments.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__mobilepaymentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    payments<T extends paymentsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, paymentsDefaultArgs<ExtArgs>>): Prisma__paymentsClient<$Result.GetResult<Prisma.$paymentsPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the mobilepayments model
+   */ 
+  interface mobilepaymentsFieldRefs {
+    readonly id: FieldRef<"mobilepayments", 'Int'>
+    readonly provider: FieldRef<"mobilepayments", 'String'>
+    readonly phone: FieldRef<"mobilepayments", 'String'>
+    readonly localTxnId: FieldRef<"mobilepayments", 'String'>
+    readonly airtelTxnId: FieldRef<"mobilepayments", 'String'>
+    readonly status: FieldRef<"mobilepayments", 'String'>
+    readonly createdAt: FieldRef<"mobilepayments", 'DateTime'>
+    readonly updatedAt: FieldRef<"mobilepayments", 'DateTime'>
+    readonly paymentId: FieldRef<"mobilepayments", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * mobilepayments findUnique
+   */
+  export type mobilepaymentsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * Filter, which mobilepayments to fetch.
+     */
+    where: mobilepaymentsWhereUniqueInput
+  }
+
+  /**
+   * mobilepayments findUniqueOrThrow
+   */
+  export type mobilepaymentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * Filter, which mobilepayments to fetch.
+     */
+    where: mobilepaymentsWhereUniqueInput
+  }
+
+  /**
+   * mobilepayments findFirst
+   */
+  export type mobilepaymentsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * Filter, which mobilepayments to fetch.
+     */
+    where?: mobilepaymentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mobilepayments to fetch.
+     */
+    orderBy?: mobilepaymentsOrderByWithRelationInput | mobilepaymentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for mobilepayments.
+     */
+    cursor?: mobilepaymentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mobilepayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mobilepayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of mobilepayments.
+     */
+    distinct?: MobilepaymentsScalarFieldEnum | MobilepaymentsScalarFieldEnum[]
+  }
+
+  /**
+   * mobilepayments findFirstOrThrow
+   */
+  export type mobilepaymentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * Filter, which mobilepayments to fetch.
+     */
+    where?: mobilepaymentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mobilepayments to fetch.
+     */
+    orderBy?: mobilepaymentsOrderByWithRelationInput | mobilepaymentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for mobilepayments.
+     */
+    cursor?: mobilepaymentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mobilepayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mobilepayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of mobilepayments.
+     */
+    distinct?: MobilepaymentsScalarFieldEnum | MobilepaymentsScalarFieldEnum[]
+  }
+
+  /**
+   * mobilepayments findMany
+   */
+  export type mobilepaymentsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * Filter, which mobilepayments to fetch.
+     */
+    where?: mobilepaymentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mobilepayments to fetch.
+     */
+    orderBy?: mobilepaymentsOrderByWithRelationInput | mobilepaymentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing mobilepayments.
+     */
+    cursor?: mobilepaymentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mobilepayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mobilepayments.
+     */
+    skip?: number
+    distinct?: MobilepaymentsScalarFieldEnum | MobilepaymentsScalarFieldEnum[]
+  }
+
+  /**
+   * mobilepayments create
+   */
+  export type mobilepaymentsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a mobilepayments.
+     */
+    data: XOR<mobilepaymentsCreateInput, mobilepaymentsUncheckedCreateInput>
+  }
+
+  /**
+   * mobilepayments createMany
+   */
+  export type mobilepaymentsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many mobilepayments.
+     */
+    data: mobilepaymentsCreateManyInput | mobilepaymentsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * mobilepayments update
+   */
+  export type mobilepaymentsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a mobilepayments.
+     */
+    data: XOR<mobilepaymentsUpdateInput, mobilepaymentsUncheckedUpdateInput>
+    /**
+     * Choose, which mobilepayments to update.
+     */
+    where: mobilepaymentsWhereUniqueInput
+  }
+
+  /**
+   * mobilepayments updateMany
+   */
+  export type mobilepaymentsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update mobilepayments.
+     */
+    data: XOR<mobilepaymentsUpdateManyMutationInput, mobilepaymentsUncheckedUpdateManyInput>
+    /**
+     * Filter which mobilepayments to update
+     */
+    where?: mobilepaymentsWhereInput
+  }
+
+  /**
+   * mobilepayments upsert
+   */
+  export type mobilepaymentsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the mobilepayments to update in case it exists.
+     */
+    where: mobilepaymentsWhereUniqueInput
+    /**
+     * In case the mobilepayments found by the `where` argument doesn't exist, create a new mobilepayments with this data.
+     */
+    create: XOR<mobilepaymentsCreateInput, mobilepaymentsUncheckedCreateInput>
+    /**
+     * In case the mobilepayments was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<mobilepaymentsUpdateInput, mobilepaymentsUncheckedUpdateInput>
+  }
+
+  /**
+   * mobilepayments delete
+   */
+  export type mobilepaymentsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
+    /**
+     * Filter which mobilepayments to delete.
+     */
+    where: mobilepaymentsWhereUniqueInput
+  }
+
+  /**
+   * mobilepayments deleteMany
+   */
+  export type mobilepaymentsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which mobilepayments to delete
+     */
+    where?: mobilepaymentsWhereInput
+  }
+
+  /**
+   * mobilepayments without action
+   */
+  export type mobilepaymentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mobilepayments
+     */
+    select?: mobilepaymentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mobilepaymentsInclude<ExtArgs> | null
   }
 
 
@@ -13627,8 +13627,8 @@ export namespace Prisma {
     photo: 'photo',
     date: 'date',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    slug: 'slug'
+    slug: 'slug',
+    updatedAt: 'updatedAt'
   };
 
   export type RecentupdatesScalarFieldEnum = (typeof RecentupdatesScalarFieldEnum)[keyof typeof RecentupdatesScalarFieldEnum]
@@ -13670,22 +13670,7 @@ export namespace Prisma {
   export type PaymentsScalarFieldEnum = (typeof PaymentsScalarFieldEnum)[keyof typeof PaymentsScalarFieldEnum]
 
 
-  export const MobilePaymentsScalarFieldEnum: {
-    id: 'id',
-    provider: 'provider',
-    phone: 'phone',
-    localTxnId: 'localTxnId',
-    airtelTxnId: 'airtelTxnId',
-    status: 'status',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    paymentId: 'paymentId'
-  };
-
-  export type MobilePaymentsScalarFieldEnum = (typeof MobilePaymentsScalarFieldEnum)[keyof typeof MobilePaymentsScalarFieldEnum]
-
-
-  export const BankPaymentsScalarFieldEnum: {
+  export const BankpaymentsScalarFieldEnum: {
     id: 'id',
     bankName: 'bankName',
     accountName: 'accountName',
@@ -13697,7 +13682,22 @@ export namespace Prisma {
     paymentId: 'paymentId'
   };
 
-  export type BankPaymentsScalarFieldEnum = (typeof BankPaymentsScalarFieldEnum)[keyof typeof BankPaymentsScalarFieldEnum]
+  export type BankpaymentsScalarFieldEnum = (typeof BankpaymentsScalarFieldEnum)[keyof typeof BankpaymentsScalarFieldEnum]
+
+
+  export const MobilepaymentsScalarFieldEnum: {
+    id: 'id',
+    provider: 'provider',
+    phone: 'phone',
+    localTxnId: 'localTxnId',
+    airtelTxnId: 'airtelTxnId',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    paymentId: 'paymentId'
+  };
+
+  export type MobilepaymentsScalarFieldEnum = (typeof MobilepaymentsScalarFieldEnum)[keyof typeof MobilepaymentsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13822,18 +13822,7 @@ export namespace Prisma {
   export type paymentsOrderByRelevanceFieldEnum = (typeof paymentsOrderByRelevanceFieldEnum)[keyof typeof paymentsOrderByRelevanceFieldEnum]
 
 
-  export const mobilePaymentsOrderByRelevanceFieldEnum: {
-    provider: 'provider',
-    phone: 'phone',
-    localTxnId: 'localTxnId',
-    airtelTxnId: 'airtelTxnId',
-    status: 'status'
-  };
-
-  export type mobilePaymentsOrderByRelevanceFieldEnum = (typeof mobilePaymentsOrderByRelevanceFieldEnum)[keyof typeof mobilePaymentsOrderByRelevanceFieldEnum]
-
-
-  export const bankPaymentsOrderByRelevanceFieldEnum: {
+  export const bankpaymentsOrderByRelevanceFieldEnum: {
     bankName: 'bankName',
     accountName: 'accountName',
     accountNo: 'accountNo',
@@ -13841,7 +13830,18 @@ export namespace Prisma {
     status: 'status'
   };
 
-  export type bankPaymentsOrderByRelevanceFieldEnum = (typeof bankPaymentsOrderByRelevanceFieldEnum)[keyof typeof bankPaymentsOrderByRelevanceFieldEnum]
+  export type bankpaymentsOrderByRelevanceFieldEnum = (typeof bankpaymentsOrderByRelevanceFieldEnum)[keyof typeof bankpaymentsOrderByRelevanceFieldEnum]
+
+
+  export const mobilepaymentsOrderByRelevanceFieldEnum: {
+    provider: 'provider',
+    phone: 'phone',
+    localTxnId: 'localTxnId',
+    airtelTxnId: 'airtelTxnId',
+    status: 'status'
+  };
+
+  export type mobilepaymentsOrderByRelevanceFieldEnum = (typeof mobilepaymentsOrderByRelevanceFieldEnum)[keyof typeof mobilepaymentsOrderByRelevanceFieldEnum]
 
 
   /**
@@ -14315,8 +14315,8 @@ export namespace Prisma {
     photo?: StringNullableFilter<"recentupdates"> | string | null
     date?: DateTimeFilter<"recentupdates"> | Date | string
     createdAt?: DateTimeFilter<"recentupdates"> | Date | string
-    updatedAt?: DateTimeFilter<"recentupdates"> | Date | string
     slug?: StringFilter<"recentupdates"> | string
+    updatedAt?: DateTimeFilter<"recentupdates"> | Date | string
   }
 
   export type recentupdatesOrderByWithRelationInput = {
@@ -14326,8 +14326,8 @@ export namespace Prisma {
     photo?: SortOrderInput | SortOrder
     date?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
     slug?: SortOrder
+    updatedAt?: SortOrder
     _relevance?: recentupdatesOrderByRelevanceInput
   }
 
@@ -14352,8 +14352,8 @@ export namespace Prisma {
     photo?: SortOrderInput | SortOrder
     date?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
     slug?: SortOrder
+    updatedAt?: SortOrder
     _count?: recentupdatesCountOrderByAggregateInput
     _avg?: recentupdatesAvgOrderByAggregateInput
     _max?: recentupdatesMaxOrderByAggregateInput
@@ -14371,8 +14371,8 @@ export namespace Prisma {
     photo?: StringNullableWithAggregatesFilter<"recentupdates"> | string | null
     date?: DateTimeWithAggregatesFilter<"recentupdates"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"recentupdates"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"recentupdates"> | Date | string
     slug?: StringWithAggregatesFilter<"recentupdates"> | string
+    updatedAt?: DateTimeWithAggregatesFilter<"recentupdates"> | Date | string
   }
 
   export type usersWhereInput = {
@@ -14505,8 +14505,8 @@ export namespace Prisma {
     purpose?: StringNullableFilter<"payments"> | string | null
     createdAt?: DateTimeFilter<"payments"> | Date | string
     updatedAt?: DateTimeFilter<"payments"> | Date | string
-    mobilePayment?: XOR<MobilePaymentsNullableScalarRelationFilter, mobilePaymentsWhereInput> | null
-    bankPayment?: XOR<BankPaymentsNullableScalarRelationFilter, bankPaymentsWhereInput> | null
+    bankpayments?: XOR<BankpaymentsNullableScalarRelationFilter, bankpaymentsWhereInput> | null
+    mobilepayments?: XOR<MobilepaymentsNullableScalarRelationFilter, mobilepaymentsWhereInput> | null
   }
 
   export type paymentsOrderByWithRelationInput = {
@@ -14516,8 +14516,8 @@ export namespace Prisma {
     purpose?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    mobilePayment?: mobilePaymentsOrderByWithRelationInput
-    bankPayment?: bankPaymentsOrderByWithRelationInput
+    bankpayments?: bankpaymentsOrderByWithRelationInput
+    mobilepayments?: mobilepaymentsOrderByWithRelationInput
     _relevance?: paymentsOrderByRelevanceInput
   }
 
@@ -14531,8 +14531,8 @@ export namespace Prisma {
     purpose?: StringNullableFilter<"payments"> | string | null
     createdAt?: DateTimeFilter<"payments"> | Date | string
     updatedAt?: DateTimeFilter<"payments"> | Date | string
-    mobilePayment?: XOR<MobilePaymentsNullableScalarRelationFilter, mobilePaymentsWhereInput> | null
-    bankPayment?: XOR<BankPaymentsNullableScalarRelationFilter, bankPaymentsWhereInput> | null
+    bankpayments?: XOR<BankpaymentsNullableScalarRelationFilter, bankpaymentsWhereInput> | null
+    mobilepayments?: XOR<MobilepaymentsNullableScalarRelationFilter, mobilepaymentsWhereInput> | null
   }, "id">
 
   export type paymentsOrderByWithAggregationInput = {
@@ -14561,101 +14561,23 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"payments"> | Date | string
   }
 
-  export type mobilePaymentsWhereInput = {
-    AND?: mobilePaymentsWhereInput | mobilePaymentsWhereInput[]
-    OR?: mobilePaymentsWhereInput[]
-    NOT?: mobilePaymentsWhereInput | mobilePaymentsWhereInput[]
-    id?: IntFilter<"mobilePayments"> | number
-    provider?: StringFilter<"mobilePayments"> | string
-    phone?: StringFilter<"mobilePayments"> | string
-    localTxnId?: StringFilter<"mobilePayments"> | string
-    airtelTxnId?: StringNullableFilter<"mobilePayments"> | string | null
-    status?: StringFilter<"mobilePayments"> | string
-    createdAt?: DateTimeFilter<"mobilePayments"> | Date | string
-    updatedAt?: DateTimeFilter<"mobilePayments"> | Date | string
-    paymentId?: IntFilter<"mobilePayments"> | number
-    payment?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
+  export type bankpaymentsWhereInput = {
+    AND?: bankpaymentsWhereInput | bankpaymentsWhereInput[]
+    OR?: bankpaymentsWhereInput[]
+    NOT?: bankpaymentsWhereInput | bankpaymentsWhereInput[]
+    id?: IntFilter<"bankpayments"> | number
+    bankName?: StringFilter<"bankpayments"> | string
+    accountName?: StringFilter<"bankpayments"> | string
+    accountNo?: StringFilter<"bankpayments"> | string
+    reference?: StringNullableFilter<"bankpayments"> | string | null
+    status?: StringFilter<"bankpayments"> | string
+    createdAt?: DateTimeFilter<"bankpayments"> | Date | string
+    updatedAt?: DateTimeFilter<"bankpayments"> | Date | string
+    paymentId?: IntFilter<"bankpayments"> | number
+    payments?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
   }
 
-  export type mobilePaymentsOrderByWithRelationInput = {
-    id?: SortOrder
-    provider?: SortOrder
-    phone?: SortOrder
-    localTxnId?: SortOrder
-    airtelTxnId?: SortOrderInput | SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    paymentId?: SortOrder
-    payment?: paymentsOrderByWithRelationInput
-    _relevance?: mobilePaymentsOrderByRelevanceInput
-  }
-
-  export type mobilePaymentsWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    paymentId?: number
-    AND?: mobilePaymentsWhereInput | mobilePaymentsWhereInput[]
-    OR?: mobilePaymentsWhereInput[]
-    NOT?: mobilePaymentsWhereInput | mobilePaymentsWhereInput[]
-    provider?: StringFilter<"mobilePayments"> | string
-    phone?: StringFilter<"mobilePayments"> | string
-    localTxnId?: StringFilter<"mobilePayments"> | string
-    airtelTxnId?: StringNullableFilter<"mobilePayments"> | string | null
-    status?: StringFilter<"mobilePayments"> | string
-    createdAt?: DateTimeFilter<"mobilePayments"> | Date | string
-    updatedAt?: DateTimeFilter<"mobilePayments"> | Date | string
-    payment?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
-  }, "id" | "paymentId">
-
-  export type mobilePaymentsOrderByWithAggregationInput = {
-    id?: SortOrder
-    provider?: SortOrder
-    phone?: SortOrder
-    localTxnId?: SortOrder
-    airtelTxnId?: SortOrderInput | SortOrder
-    status?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    paymentId?: SortOrder
-    _count?: mobilePaymentsCountOrderByAggregateInput
-    _avg?: mobilePaymentsAvgOrderByAggregateInput
-    _max?: mobilePaymentsMaxOrderByAggregateInput
-    _min?: mobilePaymentsMinOrderByAggregateInput
-    _sum?: mobilePaymentsSumOrderByAggregateInput
-  }
-
-  export type mobilePaymentsScalarWhereWithAggregatesInput = {
-    AND?: mobilePaymentsScalarWhereWithAggregatesInput | mobilePaymentsScalarWhereWithAggregatesInput[]
-    OR?: mobilePaymentsScalarWhereWithAggregatesInput[]
-    NOT?: mobilePaymentsScalarWhereWithAggregatesInput | mobilePaymentsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"mobilePayments"> | number
-    provider?: StringWithAggregatesFilter<"mobilePayments"> | string
-    phone?: StringWithAggregatesFilter<"mobilePayments"> | string
-    localTxnId?: StringWithAggregatesFilter<"mobilePayments"> | string
-    airtelTxnId?: StringNullableWithAggregatesFilter<"mobilePayments"> | string | null
-    status?: StringWithAggregatesFilter<"mobilePayments"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"mobilePayments"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"mobilePayments"> | Date | string
-    paymentId?: IntWithAggregatesFilter<"mobilePayments"> | number
-  }
-
-  export type bankPaymentsWhereInput = {
-    AND?: bankPaymentsWhereInput | bankPaymentsWhereInput[]
-    OR?: bankPaymentsWhereInput[]
-    NOT?: bankPaymentsWhereInput | bankPaymentsWhereInput[]
-    id?: IntFilter<"bankPayments"> | number
-    bankName?: StringFilter<"bankPayments"> | string
-    accountName?: StringFilter<"bankPayments"> | string
-    accountNo?: StringFilter<"bankPayments"> | string
-    reference?: StringNullableFilter<"bankPayments"> | string | null
-    status?: StringFilter<"bankPayments"> | string
-    createdAt?: DateTimeFilter<"bankPayments"> | Date | string
-    updatedAt?: DateTimeFilter<"bankPayments"> | Date | string
-    paymentId?: IntFilter<"bankPayments"> | number
-    payment?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
-  }
-
-  export type bankPaymentsOrderByWithRelationInput = {
+  export type bankpaymentsOrderByWithRelationInput = {
     id?: SortOrder
     bankName?: SortOrder
     accountName?: SortOrder
@@ -14665,27 +14587,27 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
-    payment?: paymentsOrderByWithRelationInput
-    _relevance?: bankPaymentsOrderByRelevanceInput
+    payments?: paymentsOrderByWithRelationInput
+    _relevance?: bankpaymentsOrderByRelevanceInput
   }
 
-  export type bankPaymentsWhereUniqueInput = Prisma.AtLeast<{
+  export type bankpaymentsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     paymentId?: number
-    AND?: bankPaymentsWhereInput | bankPaymentsWhereInput[]
-    OR?: bankPaymentsWhereInput[]
-    NOT?: bankPaymentsWhereInput | bankPaymentsWhereInput[]
-    bankName?: StringFilter<"bankPayments"> | string
-    accountName?: StringFilter<"bankPayments"> | string
-    accountNo?: StringFilter<"bankPayments"> | string
-    reference?: StringNullableFilter<"bankPayments"> | string | null
-    status?: StringFilter<"bankPayments"> | string
-    createdAt?: DateTimeFilter<"bankPayments"> | Date | string
-    updatedAt?: DateTimeFilter<"bankPayments"> | Date | string
-    payment?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
+    AND?: bankpaymentsWhereInput | bankpaymentsWhereInput[]
+    OR?: bankpaymentsWhereInput[]
+    NOT?: bankpaymentsWhereInput | bankpaymentsWhereInput[]
+    bankName?: StringFilter<"bankpayments"> | string
+    accountName?: StringFilter<"bankpayments"> | string
+    accountNo?: StringFilter<"bankpayments"> | string
+    reference?: StringNullableFilter<"bankpayments"> | string | null
+    status?: StringFilter<"bankpayments"> | string
+    createdAt?: DateTimeFilter<"bankpayments"> | Date | string
+    updatedAt?: DateTimeFilter<"bankpayments"> | Date | string
+    payments?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
   }, "id" | "paymentId">
 
-  export type bankPaymentsOrderByWithAggregationInput = {
+  export type bankpaymentsOrderByWithAggregationInput = {
     id?: SortOrder
     bankName?: SortOrder
     accountName?: SortOrder
@@ -14695,26 +14617,104 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
-    _count?: bankPaymentsCountOrderByAggregateInput
-    _avg?: bankPaymentsAvgOrderByAggregateInput
-    _max?: bankPaymentsMaxOrderByAggregateInput
-    _min?: bankPaymentsMinOrderByAggregateInput
-    _sum?: bankPaymentsSumOrderByAggregateInput
+    _count?: bankpaymentsCountOrderByAggregateInput
+    _avg?: bankpaymentsAvgOrderByAggregateInput
+    _max?: bankpaymentsMaxOrderByAggregateInput
+    _min?: bankpaymentsMinOrderByAggregateInput
+    _sum?: bankpaymentsSumOrderByAggregateInput
   }
 
-  export type bankPaymentsScalarWhereWithAggregatesInput = {
-    AND?: bankPaymentsScalarWhereWithAggregatesInput | bankPaymentsScalarWhereWithAggregatesInput[]
-    OR?: bankPaymentsScalarWhereWithAggregatesInput[]
-    NOT?: bankPaymentsScalarWhereWithAggregatesInput | bankPaymentsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"bankPayments"> | number
-    bankName?: StringWithAggregatesFilter<"bankPayments"> | string
-    accountName?: StringWithAggregatesFilter<"bankPayments"> | string
-    accountNo?: StringWithAggregatesFilter<"bankPayments"> | string
-    reference?: StringNullableWithAggregatesFilter<"bankPayments"> | string | null
-    status?: StringWithAggregatesFilter<"bankPayments"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"bankPayments"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"bankPayments"> | Date | string
-    paymentId?: IntWithAggregatesFilter<"bankPayments"> | number
+  export type bankpaymentsScalarWhereWithAggregatesInput = {
+    AND?: bankpaymentsScalarWhereWithAggregatesInput | bankpaymentsScalarWhereWithAggregatesInput[]
+    OR?: bankpaymentsScalarWhereWithAggregatesInput[]
+    NOT?: bankpaymentsScalarWhereWithAggregatesInput | bankpaymentsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"bankpayments"> | number
+    bankName?: StringWithAggregatesFilter<"bankpayments"> | string
+    accountName?: StringWithAggregatesFilter<"bankpayments"> | string
+    accountNo?: StringWithAggregatesFilter<"bankpayments"> | string
+    reference?: StringNullableWithAggregatesFilter<"bankpayments"> | string | null
+    status?: StringWithAggregatesFilter<"bankpayments"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"bankpayments"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"bankpayments"> | Date | string
+    paymentId?: IntWithAggregatesFilter<"bankpayments"> | number
+  }
+
+  export type mobilepaymentsWhereInput = {
+    AND?: mobilepaymentsWhereInput | mobilepaymentsWhereInput[]
+    OR?: mobilepaymentsWhereInput[]
+    NOT?: mobilepaymentsWhereInput | mobilepaymentsWhereInput[]
+    id?: IntFilter<"mobilepayments"> | number
+    provider?: StringFilter<"mobilepayments"> | string
+    phone?: StringFilter<"mobilepayments"> | string
+    localTxnId?: StringFilter<"mobilepayments"> | string
+    airtelTxnId?: StringNullableFilter<"mobilepayments"> | string | null
+    status?: StringFilter<"mobilepayments"> | string
+    createdAt?: DateTimeFilter<"mobilepayments"> | Date | string
+    updatedAt?: DateTimeFilter<"mobilepayments"> | Date | string
+    paymentId?: IntFilter<"mobilepayments"> | number
+    payments?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
+  }
+
+  export type mobilepaymentsOrderByWithRelationInput = {
+    id?: SortOrder
+    provider?: SortOrder
+    phone?: SortOrder
+    localTxnId?: SortOrder
+    airtelTxnId?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    paymentId?: SortOrder
+    payments?: paymentsOrderByWithRelationInput
+    _relevance?: mobilepaymentsOrderByRelevanceInput
+  }
+
+  export type mobilepaymentsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    paymentId?: number
+    AND?: mobilepaymentsWhereInput | mobilepaymentsWhereInput[]
+    OR?: mobilepaymentsWhereInput[]
+    NOT?: mobilepaymentsWhereInput | mobilepaymentsWhereInput[]
+    provider?: StringFilter<"mobilepayments"> | string
+    phone?: StringFilter<"mobilepayments"> | string
+    localTxnId?: StringFilter<"mobilepayments"> | string
+    airtelTxnId?: StringNullableFilter<"mobilepayments"> | string | null
+    status?: StringFilter<"mobilepayments"> | string
+    createdAt?: DateTimeFilter<"mobilepayments"> | Date | string
+    updatedAt?: DateTimeFilter<"mobilepayments"> | Date | string
+    payments?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
+  }, "id" | "paymentId">
+
+  export type mobilepaymentsOrderByWithAggregationInput = {
+    id?: SortOrder
+    provider?: SortOrder
+    phone?: SortOrder
+    localTxnId?: SortOrder
+    airtelTxnId?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    paymentId?: SortOrder
+    _count?: mobilepaymentsCountOrderByAggregateInput
+    _avg?: mobilepaymentsAvgOrderByAggregateInput
+    _max?: mobilepaymentsMaxOrderByAggregateInput
+    _min?: mobilepaymentsMinOrderByAggregateInput
+    _sum?: mobilepaymentsSumOrderByAggregateInput
+  }
+
+  export type mobilepaymentsScalarWhereWithAggregatesInput = {
+    AND?: mobilepaymentsScalarWhereWithAggregatesInput | mobilepaymentsScalarWhereWithAggregatesInput[]
+    OR?: mobilepaymentsScalarWhereWithAggregatesInput[]
+    NOT?: mobilepaymentsScalarWhereWithAggregatesInput | mobilepaymentsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"mobilepayments"> | number
+    provider?: StringWithAggregatesFilter<"mobilepayments"> | string
+    phone?: StringWithAggregatesFilter<"mobilepayments"> | string
+    localTxnId?: StringWithAggregatesFilter<"mobilepayments"> | string
+    airtelTxnId?: StringNullableWithAggregatesFilter<"mobilepayments"> | string | null
+    status?: StringWithAggregatesFilter<"mobilepayments"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"mobilepayments"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"mobilepayments"> | Date | string
+    paymentId?: IntWithAggregatesFilter<"mobilepayments"> | number
   }
 
   export type announcementsCreateInput = {
@@ -15150,8 +15150,8 @@ export namespace Prisma {
     photo?: string | null
     date?: Date | string
     createdAt?: Date | string
-    updatedAt?: Date | string
     slug: string
+    updatedAt?: Date | string
   }
 
   export type recentupdatesUncheckedCreateInput = {
@@ -15161,8 +15161,8 @@ export namespace Prisma {
     photo?: string | null
     date?: Date | string
     createdAt?: Date | string
-    updatedAt?: Date | string
     slug: string
+    updatedAt?: Date | string
   }
 
   export type recentupdatesUpdateInput = {
@@ -15171,8 +15171,8 @@ export namespace Prisma {
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type recentupdatesUncheckedUpdateInput = {
@@ -15182,8 +15182,8 @@ export namespace Prisma {
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type recentupdatesCreateManyInput = {
@@ -15193,8 +15193,8 @@ export namespace Prisma {
     photo?: string | null
     date?: Date | string
     createdAt?: Date | string
-    updatedAt?: Date | string
     slug: string
+    updatedAt?: Date | string
   }
 
   export type recentupdatesUpdateManyMutationInput = {
@@ -15203,8 +15203,8 @@ export namespace Prisma {
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type recentupdatesUncheckedUpdateManyInput = {
@@ -15214,8 +15214,8 @@ export namespace Prisma {
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     slug?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type usersCreateInput = {
@@ -15344,8 +15344,8 @@ export namespace Prisma {
     purpose?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    mobilePayment?: mobilePaymentsCreateNestedOneWithoutPaymentInput
-    bankPayment?: bankPaymentsCreateNestedOneWithoutPaymentInput
+    bankpayments?: bankpaymentsCreateNestedOneWithoutPaymentsInput
+    mobilepayments?: mobilepaymentsCreateNestedOneWithoutPaymentsInput
   }
 
   export type paymentsUncheckedCreateInput = {
@@ -15355,8 +15355,8 @@ export namespace Prisma {
     purpose?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    mobilePayment?: mobilePaymentsUncheckedCreateNestedOneWithoutPaymentInput
-    bankPayment?: bankPaymentsUncheckedCreateNestedOneWithoutPaymentInput
+    bankpayments?: bankpaymentsUncheckedCreateNestedOneWithoutPaymentsInput
+    mobilepayments?: mobilepaymentsUncheckedCreateNestedOneWithoutPaymentsInput
   }
 
   export type paymentsUpdateInput = {
@@ -15365,8 +15365,8 @@ export namespace Prisma {
     purpose?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mobilePayment?: mobilePaymentsUpdateOneWithoutPaymentNestedInput
-    bankPayment?: bankPaymentsUpdateOneWithoutPaymentNestedInput
+    bankpayments?: bankpaymentsUpdateOneWithoutPaymentsNestedInput
+    mobilepayments?: mobilepaymentsUpdateOneWithoutPaymentsNestedInput
   }
 
   export type paymentsUncheckedUpdateInput = {
@@ -15376,8 +15376,8 @@ export namespace Prisma {
     purpose?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mobilePayment?: mobilePaymentsUncheckedUpdateOneWithoutPaymentNestedInput
-    bankPayment?: bankPaymentsUncheckedUpdateOneWithoutPaymentNestedInput
+    bankpayments?: bankpaymentsUncheckedUpdateOneWithoutPaymentsNestedInput
+    mobilepayments?: mobilepaymentsUncheckedUpdateOneWithoutPaymentsNestedInput
   }
 
   export type paymentsCreateManyInput = {
@@ -15406,98 +15406,18 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type mobilePaymentsCreateInput = {
-    provider: string
-    phone: string
-    localTxnId: string
-    airtelTxnId?: string | null
-    status?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    payment: paymentsCreateNestedOneWithoutMobilePaymentInput
-  }
-
-  export type mobilePaymentsUncheckedCreateInput = {
-    id?: number
-    provider: string
-    phone: string
-    localTxnId: string
-    airtelTxnId?: string | null
-    status?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentId: number
-  }
-
-  export type mobilePaymentsUpdateInput = {
-    provider?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    localTxnId?: StringFieldUpdateOperationsInput | string
-    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    payment?: paymentsUpdateOneRequiredWithoutMobilePaymentNestedInput
-  }
-
-  export type mobilePaymentsUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    provider?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    localTxnId?: StringFieldUpdateOperationsInput | string
-    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type mobilePaymentsCreateManyInput = {
-    id?: number
-    provider: string
-    phone: string
-    localTxnId: string
-    airtelTxnId?: string | null
-    status?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentId: number
-  }
-
-  export type mobilePaymentsUpdateManyMutationInput = {
-    provider?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    localTxnId?: StringFieldUpdateOperationsInput | string
-    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type mobilePaymentsUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    provider?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    localTxnId?: StringFieldUpdateOperationsInput | string
-    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type bankPaymentsCreateInput = {
+  export type bankpaymentsCreateInput = {
     bankName: string
     accountName: string
     accountNo: string
     reference?: string | null
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
-    payment: paymentsCreateNestedOneWithoutBankPaymentInput
+    updatedAt: Date | string
+    payments: paymentsCreateNestedOneWithoutBankpaymentsInput
   }
 
-  export type bankPaymentsUncheckedCreateInput = {
+  export type bankpaymentsUncheckedCreateInput = {
     id?: number
     bankName: string
     accountName: string
@@ -15505,11 +15425,11 @@ export namespace Prisma {
     reference?: string | null
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt: Date | string
     paymentId: number
   }
 
-  export type bankPaymentsUpdateInput = {
+  export type bankpaymentsUpdateInput = {
     bankName?: StringFieldUpdateOperationsInput | string
     accountName?: StringFieldUpdateOperationsInput | string
     accountNo?: StringFieldUpdateOperationsInput | string
@@ -15517,10 +15437,10 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    payment?: paymentsUpdateOneRequiredWithoutBankPaymentNestedInput
+    payments?: paymentsUpdateOneRequiredWithoutBankpaymentsNestedInput
   }
 
-  export type bankPaymentsUncheckedUpdateInput = {
+  export type bankpaymentsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     bankName?: StringFieldUpdateOperationsInput | string
     accountName?: StringFieldUpdateOperationsInput | string
@@ -15532,7 +15452,7 @@ export namespace Prisma {
     paymentId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type bankPaymentsCreateManyInput = {
+  export type bankpaymentsCreateManyInput = {
     id?: number
     bankName: string
     accountName: string
@@ -15540,11 +15460,11 @@ export namespace Prisma {
     reference?: string | null
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt: Date | string
     paymentId: number
   }
 
-  export type bankPaymentsUpdateManyMutationInput = {
+  export type bankpaymentsUpdateManyMutationInput = {
     bankName?: StringFieldUpdateOperationsInput | string
     accountName?: StringFieldUpdateOperationsInput | string
     accountNo?: StringFieldUpdateOperationsInput | string
@@ -15554,12 +15474,92 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type bankPaymentsUncheckedUpdateManyInput = {
+  export type bankpaymentsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     bankName?: StringFieldUpdateOperationsInput | string
     accountName?: StringFieldUpdateOperationsInput | string
     accountNo?: StringFieldUpdateOperationsInput | string
     reference?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type mobilepaymentsCreateInput = {
+    provider: string
+    phone: string
+    localTxnId: string
+    airtelTxnId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    payments: paymentsCreateNestedOneWithoutMobilepaymentsInput
+  }
+
+  export type mobilepaymentsUncheckedCreateInput = {
+    id?: number
+    provider: string
+    phone: string
+    localTxnId: string
+    airtelTxnId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    paymentId: number
+  }
+
+  export type mobilepaymentsUpdateInput = {
+    provider?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    localTxnId?: StringFieldUpdateOperationsInput | string
+    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: paymentsUpdateOneRequiredWithoutMobilepaymentsNestedInput
+  }
+
+  export type mobilepaymentsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    provider?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    localTxnId?: StringFieldUpdateOperationsInput | string
+    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type mobilepaymentsCreateManyInput = {
+    id?: number
+    provider: string
+    phone: string
+    localTxnId: string
+    airtelTxnId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    paymentId: number
+  }
+
+  export type mobilepaymentsUpdateManyMutationInput = {
+    provider?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    localTxnId?: StringFieldUpdateOperationsInput | string
+    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type mobilepaymentsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    provider?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    localTxnId?: StringFieldUpdateOperationsInput | string
+    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15996,8 +15996,8 @@ export namespace Prisma {
     photo?: SortOrder
     date?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
     slug?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type recentupdatesAvgOrderByAggregateInput = {
@@ -16011,8 +16011,8 @@ export namespace Prisma {
     photo?: SortOrder
     date?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
     slug?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type recentupdatesMinOrderByAggregateInput = {
@@ -16022,8 +16022,8 @@ export namespace Prisma {
     photo?: SortOrder
     date?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
     slug?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type recentupdatesSumOrderByAggregateInput = {
@@ -16125,14 +16125,14 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type MobilePaymentsNullableScalarRelationFilter = {
-    is?: mobilePaymentsWhereInput | null
-    isNot?: mobilePaymentsWhereInput | null
+  export type BankpaymentsNullableScalarRelationFilter = {
+    is?: bankpaymentsWhereInput | null
+    isNot?: bankpaymentsWhereInput | null
   }
 
-  export type BankPaymentsNullableScalarRelationFilter = {
-    is?: bankPaymentsWhereInput | null
-    isNot?: bankPaymentsWhereInput | null
+  export type MobilepaymentsNullableScalarRelationFilter = {
+    is?: mobilepaymentsWhereInput | null
+    isNot?: mobilepaymentsWhereInput | null
   }
 
   export type paymentsOrderByRelevanceInput = {
@@ -16199,106 +16199,106 @@ export namespace Prisma {
     isNot?: paymentsWhereInput
   }
 
-  export type mobilePaymentsOrderByRelevanceInput = {
-    fields: mobilePaymentsOrderByRelevanceFieldEnum | mobilePaymentsOrderByRelevanceFieldEnum[]
+  export type bankpaymentsOrderByRelevanceInput = {
+    fields: bankpaymentsOrderByRelevanceFieldEnum | bankpaymentsOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type mobilePaymentsCountOrderByAggregateInput = {
+  export type bankpaymentsCountOrderByAggregateInput = {
     id?: SortOrder
-    provider?: SortOrder
-    phone?: SortOrder
-    localTxnId?: SortOrder
-    airtelTxnId?: SortOrder
+    bankName?: SortOrder
+    accountName?: SortOrder
+    accountNo?: SortOrder
+    reference?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type mobilePaymentsAvgOrderByAggregateInput = {
+  export type bankpaymentsAvgOrderByAggregateInput = {
     id?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type mobilePaymentsMaxOrderByAggregateInput = {
+  export type bankpaymentsMaxOrderByAggregateInput = {
     id?: SortOrder
-    provider?: SortOrder
-    phone?: SortOrder
-    localTxnId?: SortOrder
-    airtelTxnId?: SortOrder
+    bankName?: SortOrder
+    accountName?: SortOrder
+    accountNo?: SortOrder
+    reference?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type mobilePaymentsMinOrderByAggregateInput = {
+  export type bankpaymentsMinOrderByAggregateInput = {
     id?: SortOrder
-    provider?: SortOrder
-    phone?: SortOrder
-    localTxnId?: SortOrder
-    airtelTxnId?: SortOrder
+    bankName?: SortOrder
+    accountName?: SortOrder
+    accountNo?: SortOrder
+    reference?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type mobilePaymentsSumOrderByAggregateInput = {
+  export type bankpaymentsSumOrderByAggregateInput = {
     id?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type bankPaymentsOrderByRelevanceInput = {
-    fields: bankPaymentsOrderByRelevanceFieldEnum | bankPaymentsOrderByRelevanceFieldEnum[]
+  export type mobilepaymentsOrderByRelevanceInput = {
+    fields: mobilepaymentsOrderByRelevanceFieldEnum | mobilepaymentsOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type bankPaymentsCountOrderByAggregateInput = {
+  export type mobilepaymentsCountOrderByAggregateInput = {
     id?: SortOrder
-    bankName?: SortOrder
-    accountName?: SortOrder
-    accountNo?: SortOrder
-    reference?: SortOrder
+    provider?: SortOrder
+    phone?: SortOrder
+    localTxnId?: SortOrder
+    airtelTxnId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type bankPaymentsAvgOrderByAggregateInput = {
+  export type mobilepaymentsAvgOrderByAggregateInput = {
     id?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type bankPaymentsMaxOrderByAggregateInput = {
+  export type mobilepaymentsMaxOrderByAggregateInput = {
     id?: SortOrder
-    bankName?: SortOrder
-    accountName?: SortOrder
-    accountNo?: SortOrder
-    reference?: SortOrder
+    provider?: SortOrder
+    phone?: SortOrder
+    localTxnId?: SortOrder
+    airtelTxnId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type bankPaymentsMinOrderByAggregateInput = {
+  export type mobilepaymentsMinOrderByAggregateInput = {
     id?: SortOrder
-    bankName?: SortOrder
-    accountName?: SortOrder
-    accountNo?: SortOrder
-    reference?: SortOrder
+    provider?: SortOrder
+    phone?: SortOrder
+    localTxnId?: SortOrder
+    airtelTxnId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
   }
 
-  export type bankPaymentsSumOrderByAggregateInput = {
+  export type mobilepaymentsSumOrderByAggregateInput = {
     id?: SortOrder
     paymentId?: SortOrder
   }
@@ -16323,28 +16323,28 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type mobilePaymentsCreateNestedOneWithoutPaymentInput = {
-    create?: XOR<mobilePaymentsCreateWithoutPaymentInput, mobilePaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: mobilePaymentsCreateOrConnectWithoutPaymentInput
-    connect?: mobilePaymentsWhereUniqueInput
+  export type bankpaymentsCreateNestedOneWithoutPaymentsInput = {
+    create?: XOR<bankpaymentsCreateWithoutPaymentsInput, bankpaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: bankpaymentsCreateOrConnectWithoutPaymentsInput
+    connect?: bankpaymentsWhereUniqueInput
   }
 
-  export type bankPaymentsCreateNestedOneWithoutPaymentInput = {
-    create?: XOR<bankPaymentsCreateWithoutPaymentInput, bankPaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: bankPaymentsCreateOrConnectWithoutPaymentInput
-    connect?: bankPaymentsWhereUniqueInput
+  export type mobilepaymentsCreateNestedOneWithoutPaymentsInput = {
+    create?: XOR<mobilepaymentsCreateWithoutPaymentsInput, mobilepaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: mobilepaymentsCreateOrConnectWithoutPaymentsInput
+    connect?: mobilepaymentsWhereUniqueInput
   }
 
-  export type mobilePaymentsUncheckedCreateNestedOneWithoutPaymentInput = {
-    create?: XOR<mobilePaymentsCreateWithoutPaymentInput, mobilePaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: mobilePaymentsCreateOrConnectWithoutPaymentInput
-    connect?: mobilePaymentsWhereUniqueInput
+  export type bankpaymentsUncheckedCreateNestedOneWithoutPaymentsInput = {
+    create?: XOR<bankpaymentsCreateWithoutPaymentsInput, bankpaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: bankpaymentsCreateOrConnectWithoutPaymentsInput
+    connect?: bankpaymentsWhereUniqueInput
   }
 
-  export type bankPaymentsUncheckedCreateNestedOneWithoutPaymentInput = {
-    create?: XOR<bankPaymentsCreateWithoutPaymentInput, bankPaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: bankPaymentsCreateOrConnectWithoutPaymentInput
-    connect?: bankPaymentsWhereUniqueInput
+  export type mobilepaymentsUncheckedCreateNestedOneWithoutPaymentsInput = {
+    create?: XOR<mobilepaymentsCreateWithoutPaymentsInput, mobilepaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: mobilepaymentsCreateOrConnectWithoutPaymentsInput
+    connect?: mobilepaymentsWhereUniqueInput
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -16355,72 +16355,72 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type mobilePaymentsUpdateOneWithoutPaymentNestedInput = {
-    create?: XOR<mobilePaymentsCreateWithoutPaymentInput, mobilePaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: mobilePaymentsCreateOrConnectWithoutPaymentInput
-    upsert?: mobilePaymentsUpsertWithoutPaymentInput
-    disconnect?: mobilePaymentsWhereInput | boolean
-    delete?: mobilePaymentsWhereInput | boolean
-    connect?: mobilePaymentsWhereUniqueInput
-    update?: XOR<XOR<mobilePaymentsUpdateToOneWithWhereWithoutPaymentInput, mobilePaymentsUpdateWithoutPaymentInput>, mobilePaymentsUncheckedUpdateWithoutPaymentInput>
+  export type bankpaymentsUpdateOneWithoutPaymentsNestedInput = {
+    create?: XOR<bankpaymentsCreateWithoutPaymentsInput, bankpaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: bankpaymentsCreateOrConnectWithoutPaymentsInput
+    upsert?: bankpaymentsUpsertWithoutPaymentsInput
+    disconnect?: bankpaymentsWhereInput | boolean
+    delete?: bankpaymentsWhereInput | boolean
+    connect?: bankpaymentsWhereUniqueInput
+    update?: XOR<XOR<bankpaymentsUpdateToOneWithWhereWithoutPaymentsInput, bankpaymentsUpdateWithoutPaymentsInput>, bankpaymentsUncheckedUpdateWithoutPaymentsInput>
   }
 
-  export type bankPaymentsUpdateOneWithoutPaymentNestedInput = {
-    create?: XOR<bankPaymentsCreateWithoutPaymentInput, bankPaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: bankPaymentsCreateOrConnectWithoutPaymentInput
-    upsert?: bankPaymentsUpsertWithoutPaymentInput
-    disconnect?: bankPaymentsWhereInput | boolean
-    delete?: bankPaymentsWhereInput | boolean
-    connect?: bankPaymentsWhereUniqueInput
-    update?: XOR<XOR<bankPaymentsUpdateToOneWithWhereWithoutPaymentInput, bankPaymentsUpdateWithoutPaymentInput>, bankPaymentsUncheckedUpdateWithoutPaymentInput>
+  export type mobilepaymentsUpdateOneWithoutPaymentsNestedInput = {
+    create?: XOR<mobilepaymentsCreateWithoutPaymentsInput, mobilepaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: mobilepaymentsCreateOrConnectWithoutPaymentsInput
+    upsert?: mobilepaymentsUpsertWithoutPaymentsInput
+    disconnect?: mobilepaymentsWhereInput | boolean
+    delete?: mobilepaymentsWhereInput | boolean
+    connect?: mobilepaymentsWhereUniqueInput
+    update?: XOR<XOR<mobilepaymentsUpdateToOneWithWhereWithoutPaymentsInput, mobilepaymentsUpdateWithoutPaymentsInput>, mobilepaymentsUncheckedUpdateWithoutPaymentsInput>
   }
 
-  export type mobilePaymentsUncheckedUpdateOneWithoutPaymentNestedInput = {
-    create?: XOR<mobilePaymentsCreateWithoutPaymentInput, mobilePaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: mobilePaymentsCreateOrConnectWithoutPaymentInput
-    upsert?: mobilePaymentsUpsertWithoutPaymentInput
-    disconnect?: mobilePaymentsWhereInput | boolean
-    delete?: mobilePaymentsWhereInput | boolean
-    connect?: mobilePaymentsWhereUniqueInput
-    update?: XOR<XOR<mobilePaymentsUpdateToOneWithWhereWithoutPaymentInput, mobilePaymentsUpdateWithoutPaymentInput>, mobilePaymentsUncheckedUpdateWithoutPaymentInput>
+  export type bankpaymentsUncheckedUpdateOneWithoutPaymentsNestedInput = {
+    create?: XOR<bankpaymentsCreateWithoutPaymentsInput, bankpaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: bankpaymentsCreateOrConnectWithoutPaymentsInput
+    upsert?: bankpaymentsUpsertWithoutPaymentsInput
+    disconnect?: bankpaymentsWhereInput | boolean
+    delete?: bankpaymentsWhereInput | boolean
+    connect?: bankpaymentsWhereUniqueInput
+    update?: XOR<XOR<bankpaymentsUpdateToOneWithWhereWithoutPaymentsInput, bankpaymentsUpdateWithoutPaymentsInput>, bankpaymentsUncheckedUpdateWithoutPaymentsInput>
   }
 
-  export type bankPaymentsUncheckedUpdateOneWithoutPaymentNestedInput = {
-    create?: XOR<bankPaymentsCreateWithoutPaymentInput, bankPaymentsUncheckedCreateWithoutPaymentInput>
-    connectOrCreate?: bankPaymentsCreateOrConnectWithoutPaymentInput
-    upsert?: bankPaymentsUpsertWithoutPaymentInput
-    disconnect?: bankPaymentsWhereInput | boolean
-    delete?: bankPaymentsWhereInput | boolean
-    connect?: bankPaymentsWhereUniqueInput
-    update?: XOR<XOR<bankPaymentsUpdateToOneWithWhereWithoutPaymentInput, bankPaymentsUpdateWithoutPaymentInput>, bankPaymentsUncheckedUpdateWithoutPaymentInput>
+  export type mobilepaymentsUncheckedUpdateOneWithoutPaymentsNestedInput = {
+    create?: XOR<mobilepaymentsCreateWithoutPaymentsInput, mobilepaymentsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: mobilepaymentsCreateOrConnectWithoutPaymentsInput
+    upsert?: mobilepaymentsUpsertWithoutPaymentsInput
+    disconnect?: mobilepaymentsWhereInput | boolean
+    delete?: mobilepaymentsWhereInput | boolean
+    connect?: mobilepaymentsWhereUniqueInput
+    update?: XOR<XOR<mobilepaymentsUpdateToOneWithWhereWithoutPaymentsInput, mobilepaymentsUpdateWithoutPaymentsInput>, mobilepaymentsUncheckedUpdateWithoutPaymentsInput>
   }
 
-  export type paymentsCreateNestedOneWithoutMobilePaymentInput = {
-    create?: XOR<paymentsCreateWithoutMobilePaymentInput, paymentsUncheckedCreateWithoutMobilePaymentInput>
-    connectOrCreate?: paymentsCreateOrConnectWithoutMobilePaymentInput
+  export type paymentsCreateNestedOneWithoutBankpaymentsInput = {
+    create?: XOR<paymentsCreateWithoutBankpaymentsInput, paymentsUncheckedCreateWithoutBankpaymentsInput>
+    connectOrCreate?: paymentsCreateOrConnectWithoutBankpaymentsInput
     connect?: paymentsWhereUniqueInput
   }
 
-  export type paymentsUpdateOneRequiredWithoutMobilePaymentNestedInput = {
-    create?: XOR<paymentsCreateWithoutMobilePaymentInput, paymentsUncheckedCreateWithoutMobilePaymentInput>
-    connectOrCreate?: paymentsCreateOrConnectWithoutMobilePaymentInput
-    upsert?: paymentsUpsertWithoutMobilePaymentInput
+  export type paymentsUpdateOneRequiredWithoutBankpaymentsNestedInput = {
+    create?: XOR<paymentsCreateWithoutBankpaymentsInput, paymentsUncheckedCreateWithoutBankpaymentsInput>
+    connectOrCreate?: paymentsCreateOrConnectWithoutBankpaymentsInput
+    upsert?: paymentsUpsertWithoutBankpaymentsInput
     connect?: paymentsWhereUniqueInput
-    update?: XOR<XOR<paymentsUpdateToOneWithWhereWithoutMobilePaymentInput, paymentsUpdateWithoutMobilePaymentInput>, paymentsUncheckedUpdateWithoutMobilePaymentInput>
+    update?: XOR<XOR<paymentsUpdateToOneWithWhereWithoutBankpaymentsInput, paymentsUpdateWithoutBankpaymentsInput>, paymentsUncheckedUpdateWithoutBankpaymentsInput>
   }
 
-  export type paymentsCreateNestedOneWithoutBankPaymentInput = {
-    create?: XOR<paymentsCreateWithoutBankPaymentInput, paymentsUncheckedCreateWithoutBankPaymentInput>
-    connectOrCreate?: paymentsCreateOrConnectWithoutBankPaymentInput
+  export type paymentsCreateNestedOneWithoutMobilepaymentsInput = {
+    create?: XOR<paymentsCreateWithoutMobilepaymentsInput, paymentsUncheckedCreateWithoutMobilepaymentsInput>
+    connectOrCreate?: paymentsCreateOrConnectWithoutMobilepaymentsInput
     connect?: paymentsWhereUniqueInput
   }
 
-  export type paymentsUpdateOneRequiredWithoutBankPaymentNestedInput = {
-    create?: XOR<paymentsCreateWithoutBankPaymentInput, paymentsUncheckedCreateWithoutBankPaymentInput>
-    connectOrCreate?: paymentsCreateOrConnectWithoutBankPaymentInput
-    upsert?: paymentsUpsertWithoutBankPaymentInput
+  export type paymentsUpdateOneRequiredWithoutMobilepaymentsNestedInput = {
+    create?: XOR<paymentsCreateWithoutMobilepaymentsInput, paymentsUncheckedCreateWithoutMobilepaymentsInput>
+    connectOrCreate?: paymentsCreateOrConnectWithoutMobilepaymentsInput
+    upsert?: paymentsUpsertWithoutMobilepaymentsInput
     connect?: paymentsWhereUniqueInput
-    update?: XOR<XOR<paymentsUpdateToOneWithWhereWithoutBankPaymentInput, paymentsUpdateWithoutBankPaymentInput>, paymentsUncheckedUpdateWithoutBankPaymentInput>
+    update?: XOR<XOR<paymentsUpdateToOneWithWhereWithoutMobilepaymentsInput, paymentsUpdateWithoutMobilepaymentsInput>, paymentsUncheckedUpdateWithoutMobilepaymentsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -16579,43 +16579,17 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type mobilePaymentsCreateWithoutPaymentInput = {
-    provider: string
-    phone: string
-    localTxnId: string
-    airtelTxnId?: string | null
-    status?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type mobilePaymentsUncheckedCreateWithoutPaymentInput = {
-    id?: number
-    provider: string
-    phone: string
-    localTxnId: string
-    airtelTxnId?: string | null
-    status?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type mobilePaymentsCreateOrConnectWithoutPaymentInput = {
-    where: mobilePaymentsWhereUniqueInput
-    create: XOR<mobilePaymentsCreateWithoutPaymentInput, mobilePaymentsUncheckedCreateWithoutPaymentInput>
-  }
-
-  export type bankPaymentsCreateWithoutPaymentInput = {
+  export type bankpaymentsCreateWithoutPaymentsInput = {
     bankName: string
     accountName: string
     accountNo: string
     reference?: string | null
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type bankPaymentsUncheckedCreateWithoutPaymentInput = {
+  export type bankpaymentsUncheckedCreateWithoutPaymentsInput = {
     id?: number
     bankName: string
     accountName: string
@@ -16623,58 +16597,52 @@ export namespace Prisma {
     reference?: string | null
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type bankPaymentsCreateOrConnectWithoutPaymentInput = {
-    where: bankPaymentsWhereUniqueInput
-    create: XOR<bankPaymentsCreateWithoutPaymentInput, bankPaymentsUncheckedCreateWithoutPaymentInput>
+  export type bankpaymentsCreateOrConnectWithoutPaymentsInput = {
+    where: bankpaymentsWhereUniqueInput
+    create: XOR<bankpaymentsCreateWithoutPaymentsInput, bankpaymentsUncheckedCreateWithoutPaymentsInput>
   }
 
-  export type mobilePaymentsUpsertWithoutPaymentInput = {
-    update: XOR<mobilePaymentsUpdateWithoutPaymentInput, mobilePaymentsUncheckedUpdateWithoutPaymentInput>
-    create: XOR<mobilePaymentsCreateWithoutPaymentInput, mobilePaymentsUncheckedCreateWithoutPaymentInput>
-    where?: mobilePaymentsWhereInput
+  export type mobilepaymentsCreateWithoutPaymentsInput = {
+    provider: string
+    phone: string
+    localTxnId: string
+    airtelTxnId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type mobilePaymentsUpdateToOneWithWhereWithoutPaymentInput = {
-    where?: mobilePaymentsWhereInput
-    data: XOR<mobilePaymentsUpdateWithoutPaymentInput, mobilePaymentsUncheckedUpdateWithoutPaymentInput>
+  export type mobilepaymentsUncheckedCreateWithoutPaymentsInput = {
+    id?: number
+    provider: string
+    phone: string
+    localTxnId: string
+    airtelTxnId?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type mobilePaymentsUpdateWithoutPaymentInput = {
-    provider?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    localTxnId?: StringFieldUpdateOperationsInput | string
-    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type mobilepaymentsCreateOrConnectWithoutPaymentsInput = {
+    where: mobilepaymentsWhereUniqueInput
+    create: XOR<mobilepaymentsCreateWithoutPaymentsInput, mobilepaymentsUncheckedCreateWithoutPaymentsInput>
   }
 
-  export type mobilePaymentsUncheckedUpdateWithoutPaymentInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    provider?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    localTxnId?: StringFieldUpdateOperationsInput | string
-    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type bankpaymentsUpsertWithoutPaymentsInput = {
+    update: XOR<bankpaymentsUpdateWithoutPaymentsInput, bankpaymentsUncheckedUpdateWithoutPaymentsInput>
+    create: XOR<bankpaymentsCreateWithoutPaymentsInput, bankpaymentsUncheckedCreateWithoutPaymentsInput>
+    where?: bankpaymentsWhereInput
   }
 
-  export type bankPaymentsUpsertWithoutPaymentInput = {
-    update: XOR<bankPaymentsUpdateWithoutPaymentInput, bankPaymentsUncheckedUpdateWithoutPaymentInput>
-    create: XOR<bankPaymentsCreateWithoutPaymentInput, bankPaymentsUncheckedCreateWithoutPaymentInput>
-    where?: bankPaymentsWhereInput
+  export type bankpaymentsUpdateToOneWithWhereWithoutPaymentsInput = {
+    where?: bankpaymentsWhereInput
+    data: XOR<bankpaymentsUpdateWithoutPaymentsInput, bankpaymentsUncheckedUpdateWithoutPaymentsInput>
   }
 
-  export type bankPaymentsUpdateToOneWithWhereWithoutPaymentInput = {
-    where?: bankPaymentsWhereInput
-    data: XOR<bankPaymentsUpdateWithoutPaymentInput, bankPaymentsUncheckedUpdateWithoutPaymentInput>
-  }
-
-  export type bankPaymentsUpdateWithoutPaymentInput = {
+  export type bankpaymentsUpdateWithoutPaymentsInput = {
     bankName?: StringFieldUpdateOperationsInput | string
     accountName?: StringFieldUpdateOperationsInput | string
     accountNo?: StringFieldUpdateOperationsInput | string
@@ -16684,7 +16652,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type bankPaymentsUncheckedUpdateWithoutPaymentInput = {
+  export type bankpaymentsUncheckedUpdateWithoutPaymentsInput = {
     id?: IntFieldUpdateOperationsInput | number
     bankName?: StringFieldUpdateOperationsInput | string
     accountName?: StringFieldUpdateOperationsInput | string
@@ -16695,112 +16663,144 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type paymentsCreateWithoutMobilePaymentInput = {
+  export type mobilepaymentsUpsertWithoutPaymentsInput = {
+    update: XOR<mobilepaymentsUpdateWithoutPaymentsInput, mobilepaymentsUncheckedUpdateWithoutPaymentsInput>
+    create: XOR<mobilepaymentsCreateWithoutPaymentsInput, mobilepaymentsUncheckedCreateWithoutPaymentsInput>
+    where?: mobilepaymentsWhereInput
+  }
+
+  export type mobilepaymentsUpdateToOneWithWhereWithoutPaymentsInput = {
+    where?: mobilepaymentsWhereInput
+    data: XOR<mobilepaymentsUpdateWithoutPaymentsInput, mobilepaymentsUncheckedUpdateWithoutPaymentsInput>
+  }
+
+  export type mobilepaymentsUpdateWithoutPaymentsInput = {
+    provider?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    localTxnId?: StringFieldUpdateOperationsInput | string
+    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type mobilepaymentsUncheckedUpdateWithoutPaymentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    provider?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    localTxnId?: StringFieldUpdateOperationsInput | string
+    airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type paymentsCreateWithoutBankpaymentsInput = {
     method: string
     amount: number
     purpose?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bankPayment?: bankPaymentsCreateNestedOneWithoutPaymentInput
+    mobilepayments?: mobilepaymentsCreateNestedOneWithoutPaymentsInput
   }
 
-  export type paymentsUncheckedCreateWithoutMobilePaymentInput = {
+  export type paymentsUncheckedCreateWithoutBankpaymentsInput = {
     id?: number
     method: string
     amount: number
     purpose?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bankPayment?: bankPaymentsUncheckedCreateNestedOneWithoutPaymentInput
+    mobilepayments?: mobilepaymentsUncheckedCreateNestedOneWithoutPaymentsInput
   }
 
-  export type paymentsCreateOrConnectWithoutMobilePaymentInput = {
+  export type paymentsCreateOrConnectWithoutBankpaymentsInput = {
     where: paymentsWhereUniqueInput
-    create: XOR<paymentsCreateWithoutMobilePaymentInput, paymentsUncheckedCreateWithoutMobilePaymentInput>
+    create: XOR<paymentsCreateWithoutBankpaymentsInput, paymentsUncheckedCreateWithoutBankpaymentsInput>
   }
 
-  export type paymentsUpsertWithoutMobilePaymentInput = {
-    update: XOR<paymentsUpdateWithoutMobilePaymentInput, paymentsUncheckedUpdateWithoutMobilePaymentInput>
-    create: XOR<paymentsCreateWithoutMobilePaymentInput, paymentsUncheckedCreateWithoutMobilePaymentInput>
+  export type paymentsUpsertWithoutBankpaymentsInput = {
+    update: XOR<paymentsUpdateWithoutBankpaymentsInput, paymentsUncheckedUpdateWithoutBankpaymentsInput>
+    create: XOR<paymentsCreateWithoutBankpaymentsInput, paymentsUncheckedCreateWithoutBankpaymentsInput>
     where?: paymentsWhereInput
   }
 
-  export type paymentsUpdateToOneWithWhereWithoutMobilePaymentInput = {
+  export type paymentsUpdateToOneWithWhereWithoutBankpaymentsInput = {
     where?: paymentsWhereInput
-    data: XOR<paymentsUpdateWithoutMobilePaymentInput, paymentsUncheckedUpdateWithoutMobilePaymentInput>
+    data: XOR<paymentsUpdateWithoutBankpaymentsInput, paymentsUncheckedUpdateWithoutBankpaymentsInput>
   }
 
-  export type paymentsUpdateWithoutMobilePaymentInput = {
+  export type paymentsUpdateWithoutBankpaymentsInput = {
     method?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     purpose?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bankPayment?: bankPaymentsUpdateOneWithoutPaymentNestedInput
+    mobilepayments?: mobilepaymentsUpdateOneWithoutPaymentsNestedInput
   }
 
-  export type paymentsUncheckedUpdateWithoutMobilePaymentInput = {
+  export type paymentsUncheckedUpdateWithoutBankpaymentsInput = {
     id?: IntFieldUpdateOperationsInput | number
     method?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     purpose?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bankPayment?: bankPaymentsUncheckedUpdateOneWithoutPaymentNestedInput
+    mobilepayments?: mobilepaymentsUncheckedUpdateOneWithoutPaymentsNestedInput
   }
 
-  export type paymentsCreateWithoutBankPaymentInput = {
+  export type paymentsCreateWithoutMobilepaymentsInput = {
     method: string
     amount: number
     purpose?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    mobilePayment?: mobilePaymentsCreateNestedOneWithoutPaymentInput
+    bankpayments?: bankpaymentsCreateNestedOneWithoutPaymentsInput
   }
 
-  export type paymentsUncheckedCreateWithoutBankPaymentInput = {
+  export type paymentsUncheckedCreateWithoutMobilepaymentsInput = {
     id?: number
     method: string
     amount: number
     purpose?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    mobilePayment?: mobilePaymentsUncheckedCreateNestedOneWithoutPaymentInput
+    bankpayments?: bankpaymentsUncheckedCreateNestedOneWithoutPaymentsInput
   }
 
-  export type paymentsCreateOrConnectWithoutBankPaymentInput = {
+  export type paymentsCreateOrConnectWithoutMobilepaymentsInput = {
     where: paymentsWhereUniqueInput
-    create: XOR<paymentsCreateWithoutBankPaymentInput, paymentsUncheckedCreateWithoutBankPaymentInput>
+    create: XOR<paymentsCreateWithoutMobilepaymentsInput, paymentsUncheckedCreateWithoutMobilepaymentsInput>
   }
 
-  export type paymentsUpsertWithoutBankPaymentInput = {
-    update: XOR<paymentsUpdateWithoutBankPaymentInput, paymentsUncheckedUpdateWithoutBankPaymentInput>
-    create: XOR<paymentsCreateWithoutBankPaymentInput, paymentsUncheckedCreateWithoutBankPaymentInput>
+  export type paymentsUpsertWithoutMobilepaymentsInput = {
+    update: XOR<paymentsUpdateWithoutMobilepaymentsInput, paymentsUncheckedUpdateWithoutMobilepaymentsInput>
+    create: XOR<paymentsCreateWithoutMobilepaymentsInput, paymentsUncheckedCreateWithoutMobilepaymentsInput>
     where?: paymentsWhereInput
   }
 
-  export type paymentsUpdateToOneWithWhereWithoutBankPaymentInput = {
+  export type paymentsUpdateToOneWithWhereWithoutMobilepaymentsInput = {
     where?: paymentsWhereInput
-    data: XOR<paymentsUpdateWithoutBankPaymentInput, paymentsUncheckedUpdateWithoutBankPaymentInput>
+    data: XOR<paymentsUpdateWithoutMobilepaymentsInput, paymentsUncheckedUpdateWithoutMobilepaymentsInput>
   }
 
-  export type paymentsUpdateWithoutBankPaymentInput = {
+  export type paymentsUpdateWithoutMobilepaymentsInput = {
     method?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     purpose?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mobilePayment?: mobilePaymentsUpdateOneWithoutPaymentNestedInput
+    bankpayments?: bankpaymentsUpdateOneWithoutPaymentsNestedInput
   }
 
-  export type paymentsUncheckedUpdateWithoutBankPaymentInput = {
+  export type paymentsUncheckedUpdateWithoutMobilepaymentsInput = {
     id?: IntFieldUpdateOperationsInput | number
     method?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
     purpose?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mobilePayment?: mobilePaymentsUncheckedUpdateOneWithoutPaymentNestedInput
+    bankpayments?: bankpaymentsUncheckedUpdateOneWithoutPaymentsNestedInput
   }
 
 

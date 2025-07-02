@@ -9,11 +9,14 @@ export async function POST(req: Request) {
 
     console.log("📥 Incoming request body:", body);
 
+    if (isNaN(Number(amount))) {
+      throw new Error("Invalid amount");
+    }
+
     const localTxnId = uuidv4();
     console.log("🆕 Generated localTxnId:", localTxnId);
 
     // Step 1: Get Airtel token
-    console.log("🔐 Requesting Airtel access token...");
     const tokenRes = await fetch(
       "https://openapiuat.airtel.africa/auth/oauth2/token",
       {
@@ -83,10 +86,7 @@ export async function POST(req: Request) {
     const airtelTxnId = payData?.data?.transaction?.id ?? null;
     const status = payData?.data?.transaction?.status ?? "PENDING";
 
-    console.log("✅ Airtel payment response:", {
-      airtelTxnId,
-      status,
-    });
+    console.log("✅ Airtel payment response:", { airtelTxnId, status });
 
     // Step 3: Save payment record
     const payment = await prisma.payments.create({
@@ -94,18 +94,19 @@ export async function POST(req: Request) {
         method: "mobile",
         amount: Number(amount),
         purpose,
-        mobilePayment: {
+        mobilepayments: {
           create: {
             provider,
             phone,
             localTxnId,
             airtelTxnId,
             status,
+            updatedAt: new Date(),
           },
         },
       },
       include: {
-        mobilePayment: true,
+        mobilepayments: true,
       },
     });
 
@@ -113,12 +114,18 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       message: "Payment initiated successfully",
+      airtelTxnId, // ✅ critical fix for polling
       payment,
     });
   } catch (error) {
     console.error("💥 Payment processing error:", error);
     return NextResponse.json(
-      { error: (error as Error).message || "Something went wrong" },
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong during payment processing",
+      },
       { status: 500 }
     );
   }

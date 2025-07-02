@@ -16,9 +16,16 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Spinner from "../ui/spinner";
 
-// Schemas (same as before)
+// Schemas
 const cardSchema = z.object({
   name: z.string().min(2, "Name is required"),
   number: z.string().length(16, "Card number must be 16 digits"),
@@ -47,8 +54,13 @@ const Donate = () => {
   const [selectedMethod, setSelectedMethod] = useState<"card" | "mobile">(
     "card"
   );
-  const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [transactionId, setTransactionId] = useState<string | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState<string>("Processing...");
+  const [dialogStatus, setDialogStatus] = useState<
+    "processing" | "pin" | "done"
+  >("processing");
 
   const {
     register,
@@ -62,32 +74,64 @@ const Donate = () => {
     ),
   });
 
+  const pollPaymentStatus = async (txnId: string) => {
+    let attempts = 0;
+    const maxAttempts = 15;
+
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(
+          `/api/mobile-payments/status?transactionId=${txnId}`
+        );
+        const data = await res.json();
+
+        if (data.status === "SUCCESSFUL") {
+          clearInterval(interval);
+          setDialogMessage("✅ Payment successful! Thank you.");
+          setDialogStatus("done");
+          setTimeout(() => setDialogOpen(false), 3000);
+        } else if (data.status === "FAILED") {
+          clearInterval(interval);
+          setDialogMessage("❌ Payment failed. Please try again.");
+          setDialogStatus("done");
+          setTimeout(() => setDialogOpen(false), 3000);
+        } else if (++attempts >= maxAttempts) {
+          clearInterval(interval);
+          setDialogMessage("⏳ Timeout. Please check your phone.");
+          setDialogStatus("done");
+          setTimeout(() => setDialogOpen(false), 3000);
+        }
+      } catch (err) {
+        console.error("Polling error:", err);
+      }
+    }, 3000);
+  };
+
   const onSubmit = async (data: any) => {
     setServerError(null);
-    console.log("📤 Submitting donation form:", data);
+    setDialogOpen(true);
+    setDialogStatus("processing");
+    setDialogMessage("⏳ Processing your payment...");
 
     if (selectedMethod === "card") {
       alert("Card payments coming soon. Thank you!");
       reset();
+      setDialogOpen(false);
       return;
     }
 
-    // Normalize phone to last 9 digits
     let rawPhone = data.phone.trim();
     if (rawPhone.startsWith("255")) rawPhone = rawPhone.slice(3);
     else if (rawPhone.startsWith("0")) rawPhone = rawPhone.slice(1);
 
     if (!/^\d{9}$/.test(rawPhone)) {
       setServerError("Phone number must have 9 digits after trimming prefix.");
+      setDialogOpen(false);
       return;
     }
 
-    const formattedData = {
-      ...data,
-      phone: rawPhone,
-    };
+    const formattedData = { ...data, phone: rawPhone };
 
-    setLoading(true);
     try {
       const res = await fetch("/api/mobile-payments/airtel", {
         method: "POST",
@@ -99,22 +143,39 @@ const Donate = () => {
 
       if (!res.ok) {
         setServerError(result.error || "Payment failed");
+        setDialogMessage("❌ Error: " + (result.error || "Payment failed"));
+        setDialogStatus("done");
+        setTimeout(() => setDialogOpen(false), 3000);
         return;
       }
 
-      alert("Payment initiated successfully! Thank you for your donation.");
+      const txnId = result.payment.mobilepayments.airtelTxnId;
+      setTransactionId(txnId);
+      setDialogMessage("📲 Enter your Airtel PIN to complete payment...");
+      setDialogStatus("pin");
+      pollPaymentStatus(txnId);
       reset();
     } catch (error) {
-      console.error("⚠️ Network or unexpected error:", error);
+      console.error("Network error:", error);
       setServerError("Network error. Please try again.");
-    } finally {
-      setLoading(false);
+      setDialogMessage("❌ Network error.");
+      setDialogStatus("done");
+      setTimeout(() => setDialogOpen(false), 3000);
     }
   };
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
-      {/* Banner Section */}
+      <Dialog open={dialogOpen}>
+        <DialogContent className="text-center space-y-4">
+          <DialogHeader>
+            <DialogTitle>Processing Payment</DialogTitle>
+          </DialogHeader>
+          <Spinner />
+          <p className="text-sm text-gray-600">{dialogMessage}</p>
+        </DialogContent>
+      </Dialog>
+
       <section className="relative">
         <div className="relative w-full h-80 md:h-[300px]">
           <Image
@@ -137,7 +198,6 @@ const Donate = () => {
 
       <div className="container mx-auto px-6 py-10 lg:px-20">
         <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-10">
-          {/* Left Panel */}
           <Card className="lg:w-1/2 bg-purple-100">
             <CardHeader>
               <CardTitle className="text-3xl text-purple-900">
@@ -147,7 +207,7 @@ const Donate = () => {
             <CardContent className="space-y-4 text-gray-700">
               <p>
                 Your generous donation helps us continue our mission to serve
-                those in need and spread hope and love. As the Bible says:
+                those in need.
               </p>
               <blockquote className="italic text-purple-700 border-l-4 border-purple-900 pl-4">
                 &quot;Each of you should give what you have decided in your
@@ -161,20 +221,17 @@ const Donate = () => {
             </CardContent>
           </Card>
 
-          {/* Right Panel */}
           <div className="lg:w-1/2 mt-10 lg:mt-0">
             <div className="flex justify-center space-x-4 mb-6">
               <Button
                 variant={selectedMethod === "card" ? "default" : "outline"}
                 onClick={() => setSelectedMethod("card")}
-                disabled={loading}
               >
                 Pay with Card
               </Button>
               <Button
                 variant={selectedMethod === "mobile" ? "default" : "outline"}
                 onClick={() => setSelectedMethod("mobile")}
-                disabled={loading}
               >
                 Pay with Mobile Money
               </Button>
@@ -272,9 +329,8 @@ const Donate = () => {
                   {serverError && (
                     <p className="text-sm text-red-600">{serverError}</p>
                   )}
-
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Processing..." : "Pay Now"}
+                  <Button type="submit" className="w-full">
+                    Pay Now
                   </Button>
                 </form>
               </CardContent>
