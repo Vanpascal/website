@@ -12589,6 +12589,7 @@ export namespace Prisma {
     localTxnId: string | null
     airtelTxnId: string | null
     status: string | null
+    message: string | null
     createdAt: Date | null
     updatedAt: Date | null
     paymentId: number | null
@@ -12601,6 +12602,7 @@ export namespace Prisma {
     localTxnId: string | null
     airtelTxnId: string | null
     status: string | null
+    message: string | null
     createdAt: Date | null
     updatedAt: Date | null
     paymentId: number | null
@@ -12613,6 +12615,7 @@ export namespace Prisma {
     localTxnId: number
     airtelTxnId: number
     status: number
+    message: number
     createdAt: number
     updatedAt: number
     paymentId: number
@@ -12637,6 +12640,7 @@ export namespace Prisma {
     localTxnId?: true
     airtelTxnId?: true
     status?: true
+    message?: true
     createdAt?: true
     updatedAt?: true
     paymentId?: true
@@ -12649,6 +12653,7 @@ export namespace Prisma {
     localTxnId?: true
     airtelTxnId?: true
     status?: true
+    message?: true
     createdAt?: true
     updatedAt?: true
     paymentId?: true
@@ -12661,6 +12666,7 @@ export namespace Prisma {
     localTxnId?: true
     airtelTxnId?: true
     status?: true
+    message?: true
     createdAt?: true
     updatedAt?: true
     paymentId?: true
@@ -12760,6 +12766,7 @@ export namespace Prisma {
     localTxnId: string
     airtelTxnId: string | null
     status: string
+    message: string | null
     createdAt: Date
     updatedAt: Date
     paymentId: number
@@ -12791,6 +12798,7 @@ export namespace Prisma {
     localTxnId?: boolean
     airtelTxnId?: boolean
     status?: boolean
+    message?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     paymentId?: boolean
@@ -12805,6 +12813,7 @@ export namespace Prisma {
     localTxnId?: boolean
     airtelTxnId?: boolean
     status?: boolean
+    message?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     paymentId?: boolean
@@ -12826,6 +12835,7 @@ export namespace Prisma {
       localTxnId: string
       airtelTxnId: string | null
       status: string
+      message: string | null
       createdAt: Date
       updatedAt: Date
       paymentId: number
@@ -13205,6 +13215,7 @@ export namespace Prisma {
     readonly localTxnId: FieldRef<"mobilepayments", 'String'>
     readonly airtelTxnId: FieldRef<"mobilepayments", 'String'>
     readonly status: FieldRef<"mobilepayments", 'String'>
+    readonly message: FieldRef<"mobilepayments", 'String'>
     readonly createdAt: FieldRef<"mobilepayments", 'DateTime'>
     readonly updatedAt: FieldRef<"mobilepayments", 'DateTime'>
     readonly paymentId: FieldRef<"mobilepayments", 'Int'>
@@ -13692,6 +13703,7 @@ export namespace Prisma {
     localTxnId: 'localTxnId',
     airtelTxnId: 'airtelTxnId',
     status: 'status',
+    message: 'message',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     paymentId: 'paymentId'
@@ -13838,7 +13850,8 @@ export namespace Prisma {
     phone: 'phone',
     localTxnId: 'localTxnId',
     airtelTxnId: 'airtelTxnId',
-    status: 'status'
+    status: 'status',
+    message: 'message'
   };
 
   export type mobilepaymentsOrderByRelevanceFieldEnum = (typeof mobilepaymentsOrderByRelevanceFieldEnum)[keyof typeof mobilepaymentsOrderByRelevanceFieldEnum]
@@ -14649,6 +14662,7 @@ export namespace Prisma {
     localTxnId?: StringFilter<"mobilepayments"> | string
     airtelTxnId?: StringNullableFilter<"mobilepayments"> | string | null
     status?: StringFilter<"mobilepayments"> | string
+    message?: StringNullableFilter<"mobilepayments"> | string | null
     createdAt?: DateTimeFilter<"mobilepayments"> | Date | string
     updatedAt?: DateTimeFilter<"mobilepayments"> | Date | string
     paymentId?: IntFilter<"mobilepayments"> | number
@@ -14662,6 +14676,7 @@ export namespace Prisma {
     localTxnId?: SortOrder
     airtelTxnId?: SortOrderInput | SortOrder
     status?: SortOrder
+    message?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
@@ -14680,6 +14695,7 @@ export namespace Prisma {
     localTxnId?: StringFilter<"mobilepayments"> | string
     airtelTxnId?: StringNullableFilter<"mobilepayments"> | string | null
     status?: StringFilter<"mobilepayments"> | string
+    message?: StringNullableFilter<"mobilepayments"> | string | null
     createdAt?: DateTimeFilter<"mobilepayments"> | Date | string
     updatedAt?: DateTimeFilter<"mobilepayments"> | Date | string
     payments?: XOR<PaymentsScalarRelationFilter, paymentsWhereInput>
@@ -14692,6 +14708,7 @@ export namespace Prisma {
     localTxnId?: SortOrder
     airtelTxnId?: SortOrderInput | SortOrder
     status?: SortOrder
+    message?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
@@ -14712,6 +14729,7 @@ export namespace Prisma {
     localTxnId?: StringWithAggregatesFilter<"mobilepayments"> | string
     airtelTxnId?: StringNullableWithAggregatesFilter<"mobilepayments"> | string | null
     status?: StringWithAggregatesFilter<"mobilepayments"> | string
+    message?: StringNullableWithAggregatesFilter<"mobilepayments"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"mobilepayments"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"mobilepayments"> | Date | string
     paymentId?: IntWithAggregatesFilter<"mobilepayments"> | number
@@ -15492,6 +15510,7 @@ export namespace Prisma {
     localTxnId: string
     airtelTxnId?: string | null
     status?: string
+    message?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
     payments: paymentsCreateNestedOneWithoutMobilepaymentsInput
@@ -15504,6 +15523,7 @@ export namespace Prisma {
     localTxnId: string
     airtelTxnId?: string | null
     status?: string
+    message?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
     paymentId: number
@@ -15515,6 +15535,7 @@ export namespace Prisma {
     localTxnId?: StringFieldUpdateOperationsInput | string
     airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     payments?: paymentsUpdateOneRequiredWithoutMobilepaymentsNestedInput
@@ -15527,6 +15548,7 @@ export namespace Prisma {
     localTxnId?: StringFieldUpdateOperationsInput | string
     airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentId?: IntFieldUpdateOperationsInput | number
@@ -15539,6 +15561,7 @@ export namespace Prisma {
     localTxnId: string
     airtelTxnId?: string | null
     status?: string
+    message?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
     paymentId: number
@@ -15550,6 +15573,7 @@ export namespace Prisma {
     localTxnId?: StringFieldUpdateOperationsInput | string
     airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15561,6 +15585,7 @@ export namespace Prisma {
     localTxnId?: StringFieldUpdateOperationsInput | string
     airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentId?: IntFieldUpdateOperationsInput | number
@@ -16264,6 +16289,7 @@ export namespace Prisma {
     localTxnId?: SortOrder
     airtelTxnId?: SortOrder
     status?: SortOrder
+    message?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
@@ -16281,6 +16307,7 @@ export namespace Prisma {
     localTxnId?: SortOrder
     airtelTxnId?: SortOrder
     status?: SortOrder
+    message?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
@@ -16293,6 +16320,7 @@ export namespace Prisma {
     localTxnId?: SortOrder
     airtelTxnId?: SortOrder
     status?: SortOrder
+    message?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     paymentId?: SortOrder
@@ -16611,6 +16639,7 @@ export namespace Prisma {
     localTxnId: string
     airtelTxnId?: string | null
     status?: string
+    message?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
   }
@@ -16622,6 +16651,7 @@ export namespace Prisma {
     localTxnId: string
     airtelTxnId?: string | null
     status?: string
+    message?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
   }
@@ -16680,6 +16710,7 @@ export namespace Prisma {
     localTxnId?: StringFieldUpdateOperationsInput | string
     airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16691,6 +16722,7 @@ export namespace Prisma {
     localTxnId?: StringFieldUpdateOperationsInput | string
     airtelTxnId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    message?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

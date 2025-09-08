@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.metadata = void 0;
+const Carpentry_1 = __importDefault(require("@/components/production-units/Carpentry"));
+const Footer_1 = __importDefault(require("@/components/Footer"));
+const Header_1 = __importDefault(require("@/components/Header"));
+exports.metadata = {
+    title: "Carpentry",
+};
+function Cj() {
+    return (<div>
+      <Header_1.default />
+      <Carpentry_1.default />
+      <Footer_1.default />
+    </div>);
+}
+exports.default = Cj;

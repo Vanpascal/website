@@ -108,7 +108,7 @@ function AboutUs() {
                 future through education and training.
               </p>
               <button
-                onClick={() => (window.location.href = "/donate")} 
+                onClick={() => (window.location.href = "/donate")}
                 className="mt-6 bg-purple-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-800"
               >
                 Donate Now

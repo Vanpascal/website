@@ -1,34 +1,47 @@
-// /api/mobile-payments/airtel/webhook/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { broadcastPaymentStatus } from "@/lib/server";
 
 export async function POST(req: Request) {
   try {
     const payload = await req.json();
-    console.log("📥 Incoming Airtel webhook payload:", payload);
-    const airtelTxnId = payload?.data?.transaction?.id;
-    const newStatus = payload?.data?.transaction?.status?.toUpperCase();
 
-    if (!airtelTxnId || !newStatus) {
+    // Log the incoming webhook payload from Airtel
+    console.log(
+      "📥 Incoming Airtel webhook payload:",
+      JSON.stringify(payload, null, 2)
+    );
+
+    const txnId = payload.transaction?.id;
+    const code = payload.transaction?.status_code;
+
+    if (!txnId || !code) {
       return NextResponse.json(
-        { error: "Missing transaction ID or status" },
+        { error: "Missing transaction id or status code" },
         { status: 400 }
       );
     }
 
-    const updated = await prisma.mobilepayments.updateMany({
-      where: { airtelTxnId },
-      data: { status: newStatus },
+    const statusMap: Record<string, string> = {
+      TS: "SUCCESSFUL",
+      TF: "FAILED",
+    };
+    const status = statusMap[code] || "PENDING";
+
+    // Update payment in DB
+    const updatedPayment = await prisma.mobilepayments.updateMany({
+      where: { localTxnId: txnId },
+      data: { status, updatedAt: new Date() },
     });
 
-    if (updated.count === 0) {
-      return NextResponse.json(
-        { warning: "No matching payment found" },
-        { status: 202 }
-      );
-    }
+    // Broadcast to WS clients
+    broadcastPaymentStatus(txnId, status);
 
-    return NextResponse.json({ message: "Status updated", newStatus });
+    return NextResponse.json({
+      message: "Status updated",
+      status,
+      updatedCount: updatedPayment.count,
+    });
   } catch (error) {
     console.error("Webhook error:", error);
     return NextResponse.json(

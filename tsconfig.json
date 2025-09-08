@@ -5,10 +5,11 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": true,
+    "noEmit": false,
+    "outDir": "dist",
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -24,11 +25,13 @@
   },
   "include": [
     "next-env.d.ts",
+    "server.ts",
     "**/*.ts",
+    "lib/**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/api/users/route.js",
     ".next/types/app/(dashboard)/login/page.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

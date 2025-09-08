@@ -13,7 +13,7 @@ function AboutDb() {
               <h2 className="text-xl font-semibold text-purple-900">
                 About Don Bosco Iringa
               </h2>
-              <p className="text-gray-700  text-justify">
+              <p className="text-gray-700 text-justify">
                 Don Bosco Youth Training Center, Iringa Community, runs the
                 Technical College and daily Youth Center. VTC Iringa is located
                 in the city’s deprived suburbs. The center, which opened in
@@ -28,9 +28,9 @@ function AboutDb() {
                 Printing, Masonry, Carpentry, Computer, Solar Energy, Tailoring,
                 Electrical, Motor Vehicle Mechanics, Welding, and Fabrication.
                 Courses range from 6 months to 2-3 years and lead to a
-                recognized VETA Level III certification. The community strives
-                to provide all students access to excellence and opportunities
-                for better livelihoods.
+                recognized NACTVET Level III certification. The community
+                strives to provide all students access to excellence and
+                opportunities for better livelihoods.
               </p>
             </div>
 
@@ -39,15 +39,23 @@ function AboutDb() {
               <h2 className="text-xl font-semibold text-purple-900">
                 Our Vision
               </h2>
-              <p className="text-gray-700  text-justify">
-              To equip the poor and marginalized boys and girls with marketable skills and empower them with Habit, Values and Character which will make them successful men and women of the Nation.
+              <p className="text-gray-700 text-justify">
+                To equip the poor and marginalized boys and girls with
+                marketable skills and empower them with Habit, Values and
+                Character which will make them successful men and women of the
+                Nation.
               </p>
 
               <h2 className="text-xl font-semibold text-purple-900">
                 Our Mission
               </h2>
-              <p className="text-gray-700  text-justify">
-              We at Don Bosco Youth Training Centre believe that we are called to share our lives, to empower young people through offering a family atmosphere which fosters mutual understanding and growth depending on their faith and offering opportunities for wholesome recreation and talent-building, inculcating life skills thus enriching their lives and the lives of others.
+              <p className="text-gray-700 text-justify">
+                We at Don Bosco Youth Training Centre believe that we are called
+                to share our lives, to empower young people through offering a
+                family atmosphere which fosters mutual understanding and growth
+                depending on their faith and offering opportunities for
+                wholesome recreation and talent-building, inculcating life
+                skills thus enriching their lives and the lives of others.
               </p>
             </div>
           </div>
@@ -68,7 +76,7 @@ function AboutDb() {
                 Support Our Vision
               </h2>
 
-              <p className="mt-6 text-center  text-gray-700">
+              <p className="mt-6 text-center text-gray-700">
                 Your support will help us extend our reach and offer more
                 opportunities to marginalized youth, giving them a brighter
                 future through education and training.

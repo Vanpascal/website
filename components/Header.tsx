@@ -4,7 +4,17 @@ import Image from "next/image";
 import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
-// Define types for dropdown items
+// CSS for blinking animation
+const blinkStyle = `
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+.blink {
+  animation: blink 1.5s infinite;
+}
+`;
+
 type DropdownItem = {
   href: string;
   label: string;
@@ -17,7 +27,6 @@ type DropdownProps = {
   setIsOpen: (isOpen: boolean) => void;
 };
 
-// Dropdown component
 const Dropdown: React.FC<DropdownProps> = ({
   label,
   items,
@@ -52,6 +61,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const [dropdownState, setDropdownState] = useState<Record<string, boolean>>({
     about: false,
     admission: false,
@@ -66,6 +76,14 @@ function Header() {
       ...prev,
       [key]: !prev[key],
     }));
+  };
+
+  // scroll to events section on page
+  const scrollToEvents = () => {
+    const section = document.getElementById("events-and-news");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const dropdowns: {
@@ -87,7 +105,7 @@ function Header() {
       key: "admission",
       items: [
         { href: "/admission", label: "Admission Information" },
-        { href: "/online-admission", label: "Online Admission System" },
+        { href: "/oas.donboscoiringa.org", label: "Online Admission System" },
       ],
     },
     {
@@ -115,10 +133,7 @@ function Header() {
           href: "/production-units/welding",
           label: "Welding & Metal Fabrication",
         },
-        {
-          href: "/production-units/masonry",
-          label: "Masonry & Bricklaying",
-        },
+        { href: "/production-units/masonry", label: "Masonry & Bricklaying" },
         { href: "/production-units/tailoring", label: "DSCT (Tailoring)" },
       ],
     },
@@ -126,130 +141,148 @@ function Header() {
       label: "ICT Services",
       key: "ict",
       items: [
-        { href: "/oas", label: "Online Application System (OAS)" },
-        { href: "/sims", label: "Student Information System (SIMS)" },
+        { href: "oas.donboscoiringa.org", label: "Online Admission System" },
+        {
+          href: "domis.donboscoiringa.org",
+          label: "Don Bosco Iringa Management Information System (DOMIS)",
+        },
         { href: "/admin", label: "Contents Management" },
       ],
     },
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-purple-900 text-white py-2 z-50 shadow-lg">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <Image
-              src="/images/logo.png"
-              width={48}
-              height={48}
-              alt="DB Logo"
-              className="w-12 h-12 rounded-full"
-            />
-            <span className="font-bold text-lg md:text-xl">DBYTC - Iringa</span>
-          </Link>
+    <>
+      <style>{blinkStyle}</style>
+      <header className="fixed top-0 w-full bg-purple-900 text-white py-2 z-50 shadow-lg">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
+            <Link href="/" className="flex items-center space-x-3">
+              <Image
+                src="/images/logo.png"
+                width={48}
+                height={48}
+                alt="DB Logo"
+                className="w-12 h-12 rounded-full"
+              />
+              <span className="font-bold text-lg md:text-xl">
+                DBYTC - Iringa
+              </span>
+            </Link>
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center space-x-6">
+            {/* Desktop Menu */}
+            <ul className="hidden md:flex items-center space-x-6">
+              <li>
+                <Link href="/" className="hover:text-blue-400">
+                  Home
+                </Link>
+              </li>
+              {dropdowns.map(({ label, key, items }) => (
+                <Dropdown
+                  key={key}
+                  label={label}
+                  items={items}
+                  isOpen={dropdownState[key]}
+                  setIsOpen={() => toggleDropdown(key)}
+                />
+              ))}
+              {/* Blinking Button */}
+              <li>
+                <button
+                  onClick={scrollToEvents}
+                  className="blink px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition"
+                >
+                  Events & News
+                </button>
+              </li>
+              <li>
+                <Link
+                  href="/donate"
+                  className="px-6 py-2 bg-amber-500 text-purple-900 font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition"
+                >
+                  Donate
+                </Link>
+              </li>
+            </ul>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <ul className="absolute top-full left-0 w-full bg-purple-800 text-white flex flex-col shadow-lg md:hidden">
             <li>
-              <Link href="/" className="hover:text-blue-400">
+              <Link href="/" className="block px-4 py-2 hover:bg-purple-700">
                 Home
               </Link>
             </li>
             {dropdowns.map(({ label, key, items }) => (
-              <Dropdown
-                key={key}
-                label={label}
-                items={items}
-                isOpen={dropdownState[key]}
-                setIsOpen={() => toggleDropdown(key)}
-              />
+              <li key={key}>
+                <button
+                  onClick={() => toggleDropdown(key)}
+                  className="w-full text-left px-4 py-2 hover:bg-purple-700 flex justify-between"
+                >
+                  <span>{label}</span>
+                  <ChevronDownIcon className="w-5 h-5" />
+                </button>
+                {dropdownState[key] && (
+                  <ul className="bg-purple-700">
+                    {items.map(({ href, label }) => (
+                      <li key={label}>
+                        <Link
+                          href={href}
+                          className="px-4 py-2 block hover:bg-purple-600"
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
             ))}
+            {/* Mobile Blinking Button */}
+            <li>
+              <button
+                onClick={scrollToEvents}
+                className="blink block w-full px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition"
+              >
+                APPLICATION FORM FOR 2026
+              </button>
+            </li>
             <li>
               <Link
                 href="/donate"
-                className="px-6 py-2 bg-amber-500 text-purple-900 font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition"
+                className="block px-4 py-2 bg-yellow-600 text-purple-900 font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition mx-4 my-2"
               >
                 Donate
               </Link>
             </li>
           </ul>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden focus:outline-none"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <ul className="absolute top-full left-0 w-full bg-purple-800 text-white flex flex-col shadow-lg md:hidden">
-          <li>
-            <Link href="/" className="block px-4 py-2 hover:bg-purple-700">
-              Home
-            </Link>
-          </li>
-          {dropdowns.map(({ label, key, items }) => (
-            <li key={key}>
-              <button
-                onClick={() => toggleDropdown(key)}
-                className="w-full text-left px-4 py-2 hover:bg-purple-700 flex justify-between"
-              >
-                <span>{label}</span>
-                <ChevronDownIcon className="w-5 h-5" />
-              </button>
-              {dropdownState[key] && (
-                <ul className="bg-purple-700">
-                  {items.map(({ href, label }) => (
-                    <li key={label}>
-                      <Link
-                        href={href}
-                        className="px-4 py-2 block hover:bg-purple-600"
-                      >
-                        {label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-          <li>
-            <Link
-              href="/contacts"
-              className="block px-4 py-2 hover:bg-purple-700"
-            >
-              Contacts
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/donate"
-              className="block px-4 py-2 bg-yellow-600 text-purple-900 font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition mx-4 my-2"
-            >
-              Donate
-            </Link>
-          </li>
-        </ul>
-      )}
-    </header>
+        )}
+      </header>
+    </>
   );
 }
 

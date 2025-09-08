@@ -18,7 +18,7 @@ function MessageFromRector() {
             <div className="flex items-center space-x-4">
               <div className="relative w-32 h-32">
                 <Image
-                  src="/images/rector.jpg"
+                  src="/images/Principal.jpg"
                   alt="Rector"
                   fill
                   style={{ objectFit: "cover" }}
@@ -70,12 +70,12 @@ function MessageFromRector() {
             {showFullMessage && (
               <p className="text-gray-700 text-justify">
                 <br />
-                The center is registered by the Vocational Education and
-                Training Authority (VETA) and provides training that leads to
-                VETA Level III certification. These programs are designed to
-                ensure that our graduates are ready to enter the workforce,
-                whether as skilled employees, self-employed individuals, or
-                future employers.
+                The center is registered by the National Council for Technical
+                Education and Vocational Training (NACTVET) and provides
+                training that leads to NACTVET Level III certification. These
+                programs are designed to ensure that our graduates are ready to
+                enter the workforce, whether as skilled employees, self-employed
+                individuals, or future employers.
                 <br />
                 DBYTC Iringa has a long-standing tradition of fostering youth
                 development, not only through technical education but also by
@@ -96,6 +96,7 @@ function MessageFromRector() {
                 come together to create a brighter future.
               </p>
             )}
+
             {!showFullMessage && (
               <button
                 className="mt-4 text-purple-900 font-semibold hover:text-purple-700"

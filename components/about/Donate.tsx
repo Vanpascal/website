@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -56,6 +56,7 @@ const Donate = () => {
   );
   const [serverError, setServerError] = useState<string | null>(null);
   const [transactionId, setTransactionId] = useState<string | null>(null);
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMessage, setDialogMessage] = useState<string>("Processing...");
   const [dialogStatus, setDialogStatus] = useState<
@@ -74,38 +75,61 @@ const Donate = () => {
     ),
   });
 
-  const pollPaymentStatus = async (txnId: string) => {
-    let attempts = 0;
-    const maxAttempts = 15;
+  // Real-time WebSocket effect
+  useEffect(() => {
+    if (!transactionId) return;
 
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(
-          `/api/mobile-payments/status?transactionId=${txnId}`
+    let ws: WebSocket;
+    let reconnectTimeout: NodeJS.Timeout;
+
+    const connect = () => {
+      ws = new WebSocket(
+        `wss://${window.location.host}/api/ws?txnId=${transactionId}`
+      );
+
+      ws.onopen = () => {
+        console.log("WebSocket connected:", transactionId);
+      };
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        setDialogMessage(
+          data.status === "SUCCESSFUL"
+            ? "✅ Payment successful!"
+            : data.status === "FAILED"
+            ? "❌ Payment failed."
+            : "⏳ Payment pending..."
         );
-        const data = await res.json();
 
-        if (data.status === "SUCCESSFUL") {
-          clearInterval(interval);
-          setDialogMessage("✅ Payment successful! Thank you.");
-          setDialogStatus("done");
-          setTimeout(() => setDialogOpen(false), 3000);
-        } else if (data.status === "FAILED") {
-          clearInterval(interval);
-          setDialogMessage("❌ Payment failed. Please try again.");
-          setDialogStatus("done");
-          setTimeout(() => setDialogOpen(false), 3000);
-        } else if (++attempts >= maxAttempts) {
-          clearInterval(interval);
-          setDialogMessage("⏳ Timeout. Please check your phone.");
+        if (data.status === "SUCCESSFUL" || data.status === "FAILED") {
           setDialogStatus("done");
           setTimeout(() => setDialogOpen(false), 3000);
         }
-      } catch (err) {
-        console.error("Polling error:", err);
-      }
-    }, 3000);
-  };
+      };
+
+      ws.onerror = (err) => {
+        console.error("WebSocket error:", err);
+      };
+
+      ws.onclose = (event) => {
+        console.log("WebSocket closed:", event.reason);
+        // Attempt reconnect only if payment is still processing
+        if (dialogStatus !== "done") {
+          reconnectTimeout = setTimeout(() => {
+            console.log("Reconnecting WebSocket...");
+            connect();
+          }, 3000); // retry every 3 seconds
+        }
+      };
+    };
+
+    connect();
+
+    return () => {
+      if (ws.readyState === WebSocket.OPEN) ws.close();
+      clearTimeout(reconnectTimeout);
+    };
+  }, [transactionId, dialogStatus]);
 
   const onSubmit = async (data: any) => {
     setServerError(null);
@@ -150,10 +174,9 @@ const Donate = () => {
       }
 
       const txnId = result.payment.mobilepayments.airtelTxnId;
-      setTransactionId(txnId);
+      setTransactionId(txnId); // triggers WebSocket connection
       setDialogMessage("📲 Enter your Airtel PIN to complete payment...");
       setDialogStatus("pin");
-      pollPaymentStatus(txnId);
       reset();
     } catch (error) {
       console.error("Network error:", error);
@@ -176,6 +199,7 @@ const Donate = () => {
         </DialogContent>
       </Dialog>
 
+      {/* Banner Section */}
       <section className="relative">
         <div className="relative w-full h-80 md:h-[300px]">
           <Image
@@ -196,6 +220,7 @@ const Donate = () => {
         </div>
       </section>
 
+      {/* Donation Form */}
       <div className="container mx-auto px-6 py-10 lg:px-20">
         <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-10">
           <Card className="lg:w-1/2 bg-purple-100">
@@ -221,6 +246,7 @@ const Donate = () => {
             </CardContent>
           </Card>
 
+          {/* Form Card */}
           <div className="lg:w-1/2 mt-10 lg:mt-0">
             <div className="flex justify-center space-x-4 mb-6">
               <Button
@@ -299,11 +325,16 @@ const Donate = () => {
                             </SelectItem>
                           </SelectContent>
                         </Select>
-                        {errors.provider && (
-                          <p className="text-sm text-red-600">
-                            {errors.provider.message as string}
-                          </p>
-                        )}
+                        {errors.provider &&
+                          typeof errors.provider === "object" &&
+                          "message" in errors.provider && (
+                            <p className="text-red-600 text-sm">
+                              {
+                                (errors.provider as { message?: string })
+                                  .message
+                              }
+                            </p>
+                          )}
                       </div>
                       <InputField
                         label="Phone Number"
@@ -312,7 +343,7 @@ const Donate = () => {
                         error={errors.phone}
                       />
                       <InputField
-                        label="Amount"
+                        label="Amount (TZS)"
                         name="amount"
                         register={register}
                         error={errors.amount}
@@ -326,11 +357,8 @@ const Donate = () => {
                     </>
                   )}
 
-                  {serverError && (
-                    <p className="text-sm text-red-600">{serverError}</p>
-                  )}
                   <Button type="submit" className="w-full">
-                    Pay Now
+                    Donate Now
                   </Button>
                 </form>
               </CardContent>
@@ -342,11 +370,12 @@ const Donate = () => {
   );
 };
 
+// Input Field Helper Component
 const InputField = ({ label, name, register, error }: any) => (
-  <div className="space-y-2">
-    <Label htmlFor={name}>{label}</Label>
-    <Input id={name} {...register(name)} placeholder={label} />
-    {error && <p className="text-sm text-red-600">{error.message}</p>}
+  <div className="space-y-1">
+    <Label>{label}</Label>
+    <Input {...register(name)} />
+    {error && <p className="text-red-600 text-sm">{error.message}</p>}
   </div>
 );
 

@@ -20,7 +20,7 @@ function Footer() {
             <ul className="flex space-x-4">
               {[
                 {
-                  href: "https://www.instagram.com",
+                  href: "https://www.instagram.com/dbytc_iringa",
                   Icon: FaInstagram,
                   label: "Instagram",
                 },

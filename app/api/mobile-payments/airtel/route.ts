@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     // Step 1: Get Airtel token
     const tokenRes = await fetch(
-      "https://openapiuat.airtel.africa/auth/oauth2/token",
+      "https://openapi.airtel.africa/auth/oauth2/token",
       {
         method: "POST",
         headers: {
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     console.log("📤 Sending payment request to Airtel:", airtelPayload);
 
     const payRes = await fetch(
-      "https://openapiuat.airtel.africa/merchant/v1/payments/",
+      "https://openapi.airtel.africa/merchant/v1/payments/",
       {
         method: "POST",
         headers: {
