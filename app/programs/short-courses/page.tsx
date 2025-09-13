@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import ShortCourses from "@/components/academics/ShortCourses";
 import { Metadata } from "next";
 import React from "react";

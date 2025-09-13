@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaCalendarAlt } from "react-icons/fa";
 import { fetchRecentUpdate } from "@/app/actions/recentUpdatesActions";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Image from "next/legacy/image";
 import Head from "next/head";
