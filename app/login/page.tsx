@@ -13,8 +13,8 @@ const Login: React.FC = () => {
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setError(null); // Clear previous errors
-    setLoading(true); // Set loading state
+    setError(null);
+    setLoading(true);
 
     try {
       const formData = new FormData();

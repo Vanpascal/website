@@ -51,10 +51,8 @@ function Testimonials() {
     <section className="py-10 bg-gray-50" aria-label="Testimonials Section">
       <div className="container mx-auto px-4 text-start">
         <h2 className="text-2xl font-bold text-purple-900 mb-10">
-          What people say about us
+          Want to share your experience?
         </h2>
-
-        <AddComment onCommentAdded={getTestimonials} />
 
         {testimonials.length === 0 ? (
           <p className="text-gray-500 mt-6 text-center">
@@ -83,7 +81,6 @@ function Testimonials() {
                         fill
                         style={{ objectFit: "cover" }}
                         className="rounded-full"
-                        unoptimized // Important for external URLs
                       />
                     </div>
 
@@ -102,6 +99,7 @@ function Testimonials() {
                 </SwiperSlide>
               );
             })}
+            <AddComment onCommentAdded={getTestimonials} />
           </Swiper>
         )}
       </div>

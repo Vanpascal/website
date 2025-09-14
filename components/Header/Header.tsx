@@ -89,7 +89,7 @@ function Header() {
                 onClick={scrollToEvents}
                 className="blink px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition"
               >
-                APPLICATION FORM FOR 2026
+                FORM 2026
               </button>
             </li>
             <li>

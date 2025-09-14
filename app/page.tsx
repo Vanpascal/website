@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import VisitorLogger from "@/components/VisitorLogger";
 import OurSponsors from "@/components/about/OurSponsers";
 import { motion } from "framer-motion";
+import PublicationsSection from "@/components/about/Publications";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 80 },
@@ -49,6 +50,7 @@ export default function LandingPage() {
               <MessageFromRector />
             </div>
           </motion.section>
+          <PublicationsSection />
 
           {/* About Don Bosco */}
           <motion.section
@@ -71,9 +73,7 @@ export default function LandingPage() {
               <h2
                 id="courses-heading"
                 className="text-2xl font-bold text-center mb-6"
-              >
-                Our Courses
-              </h2>
+              ></h2>
               <Courses />
             </div>
             <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-50 to-transparent" />

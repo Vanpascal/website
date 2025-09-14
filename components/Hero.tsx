@@ -125,8 +125,8 @@ export default function HeroCarousel() {
       <div className="relative mt-8">
         <div className="container mx-auto bg-purple-900/90 rounded-xl shadow-lg p-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           <div>
-            <AnimatedNumber value={500} />
-            <p className="text-gray-200 mt-2">Students Trained</p>
+            <AnimatedNumber value={450} />
+            <p className="text-gray-200 mt-2">Youth Under Training</p>
           </div>
           <div>
             <AnimatedNumber value={20} />
@@ -137,8 +137,8 @@ export default function HeroCarousel() {
             <p className="text-gray-200 mt-2">Expert Instructors</p>
           </div>
           <div>
-            <AnimatedNumber value={10} />
-            <p className="text-gray-200 mt-2">Years of Service</p>
+            <AnimatedNumber value={40} />
+            <p className="text-gray-200 mt-2">Years of Service Since 1981</p>
           </div>
         </div>
       </div>

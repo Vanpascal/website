@@ -1,69 +1,93 @@
+"use client";
+
 import React from "react";
-import Image from "next/image";
+import { Player } from "@lottiefiles/react-lottie-player";
+import { motion } from "framer-motion";
 
-function Courses() {
+// Courses Data
+const courses = [
+  {
+    title: "Long Courses",
+    description:
+      "Our long courses provide in-depth training designed to equip students with the skills needed for professional excellence.",
+    animation: "/animations/reading-boy.json",
+    link: "/programs/long-courses",
+    buttonText: "Read More",
+  },
+  {
+    title: "Short Courses",
+    description:
+      "Our short courses are tailored to meet the demands of modern professionals, offering concise and impactful learning.",
+    animation: "/animations/plumbers.json",
+    link: "/programs/short-courses",
+    buttonText: "Learn More",
+  },
+];
+
+// Scroll animation variants
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.25, type: "spring", stiffness: 100 },
+  }),
+};
+
+export default function Courses() {
   return (
-    <div className="container mx-auto py-10 px-4">
-      <h2 className="text-2xl font-bold text-start mb-8 text-purple-900">
-        Courses We Offer
-      </h2>
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Long Courses Card */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="relative w-full h-48">
-            <Image
-              src="/images/long.jpg" // Replace with the actual image path
-              alt="Long Courses"
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-semibold text-purple-800 mb-4">
-              Long Courses
-            </h3>
-            <p className="text-gray-700 text-lg mb-6">
-              Our long courses provide in-depth training designed to equip
-              students with the skills needed for professional excellence.
-            </p>
-            <button
-              onClick={() => (window.location.href = "/programs/long-courses")}
-              className="mt-6 bg-purple-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-800"
-            >
-              Read More
-            </button>
-          </div>
-        </div>
+    <section className="relative overflow-hidden py-20 bg-gradient-to-b from-purple-50 to-white">
+      {/* Animated Background Shapes */}
+      <motion.div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-200 rounded-full opacity-30 -z-10 animate-spin-slow" />
+      <motion.div className="absolute bottom-10 right-1/3 w-56 h-56 bg-purple-300 rounded-full opacity-20 -z-10 animate-pulse-slow" />
+      <motion.div className="absolute top-1/3 right-1/4 w-40 h-40 bg-purple-100 rounded-full opacity-25 -z-10 animate-bounce-slow" />
 
-        {/* Short Courses Card */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="relative w-full h-48">
-            <Image
-              src="/images/long.jpg" // Replace with the actual image path
-              alt="Short Courses"
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-semibold text-purple-800 mb-4">
-              Short Courses
-            </h3>
-            <p className="text-gray-700 text-lg mb-6">
-              Our short courses are tailored to meet the demands of modern
-              professionals, offering concise and impactful learning.
-            </p>
-            <button
-              onClick={() => (window.location.href = "/programs/short-courses")}
-              className="mt-6 bg-purple-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-800"
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl md:text-5xl font-extrabold text-purple-900 mb-16 text-center md:text-left">
+          Courses We Offer
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          {courses.map((course, index) => (
+            <motion.div
+              key={course.title}
+              className="bg-white rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center gap-6 hover:shadow-3xl hover:-translate-y-1 transition-all duration-500"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={index}
             >
-              Learn More
-            </button>
-          </div>
+              {/* Animated Illustration */}
+              <div className="w-full md:w-52 flex-shrink-0">
+                <Player
+                  autoplay
+                  loop
+                  keepLastFrame
+                  src={course.animation}
+                  className="w-full h-52"
+                />
+              </div>
+
+              {/* Text Content */}
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-3xl font-bold text-purple-800 mb-4">
+                  {course.title}
+                </h3>
+                <p className="text-gray-700 text-lg mb-6">
+                  {course.description}
+                </p>
+                <a
+                  href={course.link}
+                  className="inline-block bg-gradient-to-r from-purple-700 to-purple-900 text-white font-semibold px-6 py-3 rounded-xl hover:from-purple-800 hover:to-purple-950 transition-all shadow-lg"
+                >
+                  {course.buttonText}
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Courses;

@@ -1,11 +1,9 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
 import argon2 from "argon2";
 import { revalidatePath } from "next/cache";
 import { getErrorMessages } from "@/lib/errorUtils";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
 export const createUser = async (formData: FormData) => {
   try {
