@@ -4,13 +4,13 @@ import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero";
 import MessageFromRector from "@/components/about/MessageFromRector";
 import AboutDb from "@/components/about/AboutDb";
-import Courses from "@/components/academics/Courses";
 import EventsAndNews from "@/components/EventsAndNews";
 import Footer from "@/components/Footer";
 import VisitorLogger from "@/components/VisitorLogger";
 import OurSponsors from "@/components/about/OurSponsers";
 import { motion } from "framer-motion";
 import PublicationsSection from "@/components/about/Publications";
+import CoursesPreview from "@/components/academics/CoursePreview";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 80 },
@@ -50,6 +50,25 @@ export default function LandingPage() {
               <MessageFromRector />
             </div>
           </motion.section>
+
+          {/* Courses */}
+          <motion.section
+            aria-labelledby="courses-heading"
+            {...sectionProps}
+            className="py-12 px-6 relative"
+          >
+            <div className="container mx-auto">
+              <h2
+                id="events-heading"
+                className="text-2xl font-bold text-end text-purple-800 mb-6"
+              >
+                Courses We Offer
+              </h2>
+              <CoursesPreview />
+            </div>
+            <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-50 to-transparent" />
+          </motion.section>
+
           <PublicationsSection />
 
           {/* About Don Bosco */}
@@ -61,22 +80,6 @@ export default function LandingPage() {
             <div className="container mx-auto">
               <AboutDb />
             </div>
-          </motion.section>
-
-          {/* Courses */}
-          <motion.section
-            aria-labelledby="courses-heading"
-            {...sectionProps}
-            className="py-12 px-6 relative"
-          >
-            <div className="container mx-auto">
-              <h2
-                id="courses-heading"
-                className="text-2xl font-bold text-center mb-6"
-              ></h2>
-              <Courses />
-            </div>
-            <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-50 to-transparent" />
           </motion.section>
 
           {/* Events and News */}
