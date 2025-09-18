@@ -146,15 +146,15 @@ export default function CoursesPreview() {
         <div className="grid md:grid-cols-3 gap-6 mt-6">
           {[
             {
-              name: "ATC Program",
+              name: "Apprenticeship Skills - ATC Program ",
               description:
                 "Free training sessions focusing on technical and vocational skills.",
-              animation: "/animations/skills.json",
+              animation: "/animations/sparkle.json",
               link: "/courses?filter=atc",
               color: "from-yellow-100 to-yellow-50",
             },
             {
-              name: "SET Program",
+              name: "Skills For Employment Tanzania - SET Program",
               description:
                 "Special sessions to empower learners with essential tech skills.",
               animation: "/animations/sewing.json",

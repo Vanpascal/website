@@ -7,11 +7,17 @@ import { FaYoutube } from "react-icons/fa";
 export default function MessageFromRector() {
   return (
     <section className="relative py-16 bg-gradient-to-b from-gray-100 to-white overflow-hidden">
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-10 bg-[url('/patterns/geometry.svg')] bg-repeat"
+      {/* Background Pattern with animation */}
+      <motion.div
+        initial={{ backgroundPosition: "0px 0px" }}
+        animate={{ backgroundPosition: "200px 200px" }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 opacity-10 bg-[url('/patterns/geometry.svg')] bg-repeat bg-[length:220px_220px] mix-blend-multiply"
         aria-hidden="true"
-      ></div>
+      />
+
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-transparent pointer-events-none" />
 
       <div className="relative container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-12 items-start md:items-stretch">
@@ -40,25 +46,46 @@ export default function MessageFromRector() {
                 <p className="uppercase tracking-wide text-orange-500 font-bold">
                   Fr. Rector & The Principal
                 </p>
+                {/* Motto */}
+                <p className="italic text-purple-700 font-semibold mt-1">
+                  “Tulenge Juu Daima”
+                </p>
               </div>
             </div>
 
             <p className="text-gray-700 leading-relaxed text-justify flex-1">
-              I’m pleased to introduce you to the Don Bosco Youth Training
-              Center (DBYTC) Iringa. Choosing the right training center is a
-              major decision, and it’s important to choose one that aligns with
-              your aspirations. Our website provides a glimpse of what it is
-              like to be a student at DBYTC Iringa through the perspectives of
-              our past and present students and staff. However, a website can
-              only convey so much, and the best way to truly experience the
-              spirit of DBYTC is to visit us and see for yourself.
+              I’m pleased to welcome you to the Don Bosco Youth Training Center
+              (DBYTC) Iringa. Choosing the right training center is an important
+              step toward shaping your future, and at DBYTC we are committed to
+              helping young people discover their potential and grow into
+              responsible, skilled, and value-driven members of society.
               <br />
-              The center is registered by NACTVET, providing Level III
-              certification. We focus on youth development through technical
-              skills, life skills, and community engagement. Our graduates are
-              ready to excel in their careers or start their own businesses.
-              Welcome to DBYTC Iringa!
+              <br />
+              Our center is officially registered by NACTVET and provides Level
+              III certification that meets national standards. But beyond
+              technical skills, we place strong emphasis on life skills,
+              discipline, creativity, and community spirit. Here, you will not
+              only learn a trade but also grow in confidence, character, and
+              leadership. Many of our graduates have successfully advanced into
+              further studies, secured meaningful employment, or even started
+              their own businesses.
+              <br />
+              <br />
+              Welcome to DBYTC Iringa, a place where young people are empowered
+              to dream, to achieve, and to serve. Together, let us build a
+              brighter future filled with hope, skills, and opportunities for
+              every young person who walks through our doors.
             </p>
+
+            {/* Call to Action Button */}
+            <motion.a
+              href="/admissions"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="self-start inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-purple-700 text-white font-bold shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              Visit Us & Learn More →
+            </motion.a>
           </motion.div>
 
           {/* Right Column - Rector's Welcome Video */}
@@ -77,7 +104,7 @@ export default function MessageFromRector() {
               className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full mb-2 gap-3"
             >
               <h3 className="text-xl text-center sm:text-left md:text-2xl font-bold text-purple-900">
-                Welcoming Message from Rector
+                Karibu Don Bosco Iringa!
               </h3>
 
               {/* Responsive Subscribe Button */}
@@ -112,8 +139,8 @@ export default function MessageFromRector() {
             <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-xl shadow-2xl border-4 border-[#FFD700]"
-                src="https://www.youtube.com/embed/PR8WqifFiZY"
-                title="Welcome from Rector"
+                src="https://www.youtube.com/embed/YwXBjKqBrxQ?list=RDYwXBjKqBrxQ"
+                title="TULENGE JUU DAIMA | KARIBU DON BOSCO IRINGA"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
