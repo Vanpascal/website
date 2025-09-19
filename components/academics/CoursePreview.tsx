@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Player } from "@lottiefiles/react-lottie-player";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -11,6 +11,12 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+
+// Import Player dynamically (disable SSR)
+const Player = dynamic(
+  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
+  { ssr: false }
+);
 
 // Premium preview courses data
 const previewCourses = [

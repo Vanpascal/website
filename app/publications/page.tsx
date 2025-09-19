@@ -1,12 +1,10 @@
-import PublicationsSection from "@/components/about/Publications";
-import React from "react";
+import PublicationsSectionWrapper from "@/components/about/PublicationsSectionWrapper";
 
-function Publications() {
+export default function PublicationsPage() {
+  console.log("📄 Rendering PublicationsPage");
   return (
     <div>
-      <PublicationsSection />
+      <PublicationsSectionWrapper />
     </div>
   );
 }
-
-export default Publications;
