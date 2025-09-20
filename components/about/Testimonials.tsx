@@ -86,7 +86,6 @@ export default function Testimonials() {
         name: comment.author,
         whoComment: comment.whoComment,
         photo: comment.photo ?? "",
-        rating: comment.rating ?? undefined,
       }));
       setTestimonials(formattedData);
     } catch (error) {
@@ -103,8 +102,8 @@ export default function Testimonials() {
   return (
     <section className="py-16 bg-gradient-to-r from-purple-50 to-purple-100">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-purple-900 mb-12">
-          Hear from our amazing students
+        <h2 className="text-xl md:text-2xl font-bold text-purple-900 mb-12">
+          What People Are Saying!
         </h2>
 
         {loading ? (

@@ -163,7 +163,7 @@ export default function HeroCarousel() {
           </div>
           <div className="hover:scale-105 transition-transform duration-300">
             <AnimatedNumber value={15} />
-            <p className="text-gray-200 mt-2">Expert Instructors</p>
+            <p className="text-gray-200 mt-2">Qualified Instructors</p>
           </div>
           <div className="hover:scale-105 transition-transform duration-300">
             <AnimatedNumber value={40} />

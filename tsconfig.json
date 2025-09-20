@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -21,18 +25,26 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
+    "lib/**/*.{ts,tsx}",
     "next-env.d.ts",
-    "server.ts",
-    "**/*.ts",
-    "lib/**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/api/users/route.js",
-    ".next/types/app/(dashboard)/login/page.tsx"
+    "pages/**/*.{ts,tsx}",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "dist"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "lib/prisma/runtime/**",
+    "lib/generated/prisma/**",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }
