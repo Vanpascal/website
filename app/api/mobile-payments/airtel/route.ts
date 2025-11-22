@@ -1,0 +1,132 @@
+import { NextResponse } from "next/server";
+import { v4 as uuidv4 } from "uuid";
+import { prisma } from "@/lib/prisma";
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { provider, phone, amount, purpose } = body;
+
+    console.log("📥 Incoming request body:", body);
+
+    if (isNaN(Number(amount))) {
+      throw new Error("Invalid amount");
+    }
+
+    const localTxnId = uuidv4();
+    console.log("🆕 Generated localTxnId:", localTxnId);
+
+    // Step 1: Get Airtel token
+    const tokenRes = await fetch(
+      "https://openapi.airtel.africa/auth/oauth2/token",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        body: JSON.stringify({
+          client_id: process.env.AIRTEL_CLIENT_ID!,
+          client_secret: process.env.AIRTEL_CLIENT_SECRET!,
+          grant_type: "client_credentials",
+        }),
+      }
+    );
+
+    if (!tokenRes.ok) {
+      const errorText = await tokenRes.text();
+      console.error("❌ Failed to fetch token:", errorText);
+      throw new Error("Failed to get Airtel token");
+    }
+
+    const tokenData = await tokenRes.json();
+    const access_token = tokenData.access_token;
+    console.log("✅ Received Airtel token.");
+
+    // Step 2: Initiate payment
+    const airtelPayload = {
+      reference: purpose ?? "Donation",
+      subscriber: {
+        country: "TZ",
+        currency: "TZS",
+        msisdn: phone,
+      },
+      transaction: {
+        id: localTxnId,
+        amount: Number(amount),
+        country: "TZ",
+        currency: "TZS",
+      },
+    };
+
+    console.log("📤 Sending payment request to Airtel:", airtelPayload);
+
+    const payRes = await fetch(
+      "https://openapi.airtel.africa/merchant/v1/payments/",
+      {
+        method: "POST",
+        headers: {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+          "X-Country": "TZ",
+          "X-Currency": "TZS",
+          Authorization: `Bearer ${access_token}`,
+        },
+        body: JSON.stringify(airtelPayload),
+      }
+    );
+
+    if (!payRes.ok) {
+      const payError = await payRes.text();
+      console.error("❌ Payment initiation failed:", payError);
+      throw new Error("Payment initiation failed");
+    }
+
+    const payData = await payRes.json();
+    const airtelTxnId = payData?.data?.transaction?.id ?? null;
+    const status = payData?.data?.transaction?.status ?? "PENDING";
+
+    console.log("✅ Airtel payment response:", { airtelTxnId, status });
+
+    // Step 3: Save payment record
+    const payment = await prisma.payments.create({
+      data: {
+        method: "mobile",
+        amount: Number(amount),
+        purpose,
+        mobilepayments: {
+          create: {
+            provider,
+            phone,
+            localTxnId,
+            airtelTxnId,
+            status,
+            updatedAt: new Date(),
+          },
+        },
+      },
+      include: {
+        mobilepayments: true,
+      },
+    });
+
+    console.log("💾 Saved payment to DB:", payment);
+
+    return NextResponse.json({
+      message: "Payment initiated successfully",
+      airtelTxnId, // ✅ critical fix for polling
+      payment,
+    });
+  } catch (error) {
+    console.error("💥 Payment processing error:", error);
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong during payment processing",
+      },
+      { status: 500 }
+    );
+  }
+}
