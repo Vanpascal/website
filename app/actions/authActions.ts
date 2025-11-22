@@ -1,14 +1,13 @@
 "use server";
 
 import { z } from "zod";
-import { PrismaClient } from "@prisma/client";
 import argon2 from "argon2";
 import { createSession } from "@/lib/session";
 import { cookies } from "next/headers";
 import { deleteSession } from "@/lib/session";
 import { decrypt } from "@/lib/session";
 
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
 // Define the login schema using Zod
 const loginSchema = z.object({

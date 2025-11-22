@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.metadata = void 0;
 const Footer_1 = __importDefault(require("@/components/Footer"));
-const Header_1 = __importDefault(require("@/components/Header"));
+const Header_1 = __importDefault(require("@/components/Header/Header"));
 const Tailoring_1 = __importDefault(require("@/components/production-units/Tailoring"));
 exports.metadata = {
     title: "DSCT Tailoring",

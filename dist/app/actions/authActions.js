@@ -8,13 +8,12 @@ exports.loginUser = void 0;
 exports.getLoggedUser = getLoggedUser;
 exports.logoutUser = logoutUser;
 const zod_1 = require("zod");
-const client_1 = require("@prisma/client");
 const argon2_1 = __importDefault(require("argon2"));
 const session_1 = require("@/lib/session");
 const headers_1 = require("next/headers");
 const session_2 = require("@/lib/session");
 const session_3 = require("@/lib/session");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 // Define the login schema using Zod
 const loginSchema = zod_1.z.object({
     email: zod_1.z.string().email({ message: "Invalid email address" }).trim(),
@@ -40,7 +39,7 @@ const loginUser = async (formData) => {
             };
         }
         // Find the user by email
-        const user = await prisma.users.findUnique({
+        const user = await prisma_1.prisma.users.findUnique({
             where: { email },
         });
         if (!user) {
@@ -90,7 +89,7 @@ async function getLoggedUser() {
             return { success: false, error: "Invalid session" };
         }
         const userId = session.userId;
-        const user = await prisma.users.findUnique({
+        const user = await prisma_1.prisma.users.findUnique({
             where: { id: Number(userId) },
         });
         if (!user) {

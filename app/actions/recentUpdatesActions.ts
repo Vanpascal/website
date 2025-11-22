@@ -1,14 +1,12 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { getErrorMessages } from "@/lib/errorUtils";
 import { promises as fs } from "fs";
 import path from "path";
 import { randomUUID } from "crypto";
 import slugify from "slugify";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
 export const createRecentUpdate = async (formData: FormData) => {
   try {

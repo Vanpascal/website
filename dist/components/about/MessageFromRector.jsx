@@ -4,109 +4,101 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = require("react");
+exports.default = MessageFromRector;
 const image_1 = __importDefault(require("next/image"));
+const framer_motion_1 = require("framer-motion");
+const fa_1 = require("react-icons/fa");
 function MessageFromRector() {
-    const [showFullMessage, setShowFullMessage] = (0, react_1.useState)(false);
-    const toggleMessage = () => {
-        setShowFullMessage(!showFullMessage);
-    };
-    return (<section className="py-10 bg-gray-100">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-10">
-          {/* Left Column - Rector's Image, Name, and Message */}
-          <div className="flex-1 space-y-5">
-            <div className="flex items-center space-x-4">
+    return (<section className="relative py-16 bg-gradient-to-b from-gray-100 to-white overflow-hidden">
+      {/* Background Pattern with animation */}
+      <framer_motion_1.motion.div initial={{ backgroundPosition: "0px 0px" }} animate={{ backgroundPosition: "200px 200px" }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute inset-0 opacity-10 bg-[url('/patterns/geometry.svg')] bg-repeat bg-[length:220px_220px] mix-blend-multiply" aria-hidden="true"/>
+
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-transparent pointer-events-none"/>
+
+      <div className="relative container mx-auto px-4">
+        <div className="flex flex-col md:flex-row gap-12 items-start md:items-stretch">
+          {/* Left Column - Rector's Message */}
+          <framer_motion_1.motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="flex-1 flex flex-col space-y-6">
+            <div className="flex items-center space-x-6">
               <div className="relative w-32 h-32">
-                <image_1.default src="/images/Principal.jpg" alt="Rector" fill style={{ objectFit: "cover" }} className="rounded-full shadow-lg"/>
+                <image_1.default src="/images/Principal.jpg" alt="Rector" fill style={{ objectFit: "cover" }} className="rounded-full shadow-xl ring-4 ring-orange-400"/>
               </div>
               <div>
-                <p className="font-semibold text-purple-900">
-                  Message From Rector
-                </p>
-                <h2 className="text-xl font-semibold text-purple-900 mt-2">
+                <h2 className="text-2xl md:text-3xl font-bold text-purple-900 mt-2">
                   Fr. Josephat Utouh SDB
                 </h2>
+                <p className="uppercase tracking-wide text-orange-600 font-bold">
+                  The Director & Principal
+                </p>
+                {/* Motto */}
+                <p className="italic text-purple-700 font-semibold mt-1">
+                  “Tulenge Juu Daima”
+                </p>
               </div>
             </div>
 
-            {/* Justified Paragraph */}
-            <p className="text-gray-700 text-justify">
-              I’m pleased to introduce you to the Don Bosco Youth Training
-              Center (DBYTC) Iringa. Choosing the right training center is a
-              major decision, and it’s important to choose one that aligns with
-              your aspirations. Our website provides a glimpse of what it is
-              like to be a student at DBYTC Iringa through the perspectives of
-              our past and present students and staff. However, a website can
-              only convey so much, and the best way to truly experience the
-              spirit of DBYTC is to visit us and see for yourself.
-              <br />
-              Our center is located in the heart of Iringa City, a vibrant
-              community with a population of over 150,000 residents. Iringa is
-              known for its beautiful landscapes, including the Ruaha National
-              Park, the Udzungwa Mountains, and the Kalenga Historical Site. The
-              city thrives on agriculture, tourism, and small-scale industries,
-              and its friendly people are known for their hospitality and
-              community values. This makes Iringa an ideal place for education,
-              training, and personal development.
+            <p className="text-gray-700 leading-relaxed text-justify flex-1">
+              I’m pleased to welcome you to the Don Bosco Youth Training Center
+              (DBYTC) Iringa. Choosing the right training center is an important
+              step toward shaping your future, and at DBYTC we are committed to
+              helping young people discover their potential and grow into
+              responsible, skilled, and value-driven members of society.
               <br />
               <br />
-              At DBYTC Iringa, we are committed to providing a hands-on,
-              competence-based learning approach that equips our students with
-              the skills and knowledge they need to succeed. Our staff is
-              student-centered, career-focused, and dedicated to your success.
-              As you explore our website, you will find comprehensive
-              information about the professional courses we offer, including
-              Printing, Masonry, Carpentry, Computer Studies, Solar Energy,
-              Tailoring, Electrical Installation, Motor Vehicle Mechanics, and
-              Welding and Fabrication.
+              Our center is officially registered by NACTVET and provides Level
+              III certification that meets national standards. But beyond
+              technical skills, we place strong emphasis on life skills,
+              discipline, creativity, and community spirit. Here, you will not
+              only learn a trade but also grow in confidence, character, and
+              leadership. Many of our graduates have successfully advanced into
+              further studies, secured meaningful employment, or even started
+              their own businesses.
+              <br />
+              <br />
+              Welcome to DBYTC Iringa, a place where young people are empowered
+              to dream, to achieve, and to serve. Together, let us build a
+              brighter future filled with hope, skills, and opportunities for
+              every young person who walks through our doors.
             </p>
 
-            {showFullMessage && (<p className="text-gray-700 text-justify">
-                <br />
-                The center is registered by the National Council for Technical
-                Education and Vocational Training (NACTVET) and provides
-                training that leads to NACTVET Level III certification. These
-                programs are designed to ensure that our graduates are ready to
-                enter the workforce, whether as skilled employees, self-employed
-                individuals, or future employers.
-                <br />
-                DBYTC Iringa has a long-standing tradition of fostering youth
-                development, not only through technical education but also by
-                instilling life skills and values that support holistic growth.
-                Over the years, we have expanded our programs to meet the needs
-                of the community and to support the socio-economic development
-                of the region and beyond.
-                <br />
-                Our Student Services team is here to support you throughout your
-                journey with us. We aim to ensure that you not only gain the
-                technical knowledge and skills required for your career but also
-                enjoy the vibrant community life at DBYTC Iringa. Our graduates
-                are known for making meaningful contributions in their
-                communities, and we look forward to helping you achieve the same
-                as you pursue your goals with us.
-                <br />
-                Welcome to DBYTC Iringa, where education, values, and community
-                come together to create a brighter future.
-              </p>)}
+            {/* Call to Action Button */}
+            <framer_motion_1.motion.a href="/admissions" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="self-start inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-purple-700 text-white font-bold shadow-lg hover:shadow-2xl transition-all duration-300">
+              Visit Us & Learn More →
+            </framer_motion_1.motion.a>
+          </framer_motion_1.motion.div>
 
-            {!showFullMessage && (<button className="mt-4 text-purple-900 font-semibold hover:text-purple-700" onClick={toggleMessage}>
-                Read More
-              </button>)}
-            {showFullMessage && (<button className="mt-4 text-purple-900 font-semibold hover:text-purple-700" onClick={toggleMessage}>
-                Read Less
-              </button>)}
-          </div>
+          {/* Right Column - Rector's Welcome Video */}
+          <framer_motion_1.motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="flex-1 flex flex-col justify-center items-center md:items-start space-y-4 w-full">
+            {/* Header Row with Subscribe Button */}
+            <framer_motion_1.motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full mb-2 gap-3">
+              <h3 className="text-xl text-center sm:text-left md:text-2xl font-bold text-purple-900">
+                Karibu Don Bosco Iringa!
+              </h3>
 
-          {/* Right Column - Video */}
-          <div className="flex-1 flex flex-col items-stretch lg:pt-20 space-y-4">
-            {/* Video Container */}
-            <div className="relative overflow-hidden rounded-lg shadow-lg border-2 border-gray-300 w-full h-[32rem]">
-              <iframe className="w-full h-full object-cover" src="https://www.youtube.com/embed/PR8WqifFiZY" title="FOMU ZA KUJIUNGA NA CHUO CHA UFUNDI DON BOSCO IRINGA|ADMISSION FORM FOR 2025|KUJIUNGA NA CHUO" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              {/* Responsive Subscribe Button */}
+              <framer_motion_1.motion.button whileHover={{ scale: 1.05, boxShadow: "0 0 20px #FF0000" }} animate={{
+            boxShadow: [
+                "0 0 10px #FF0000",
+                "0 0 20px #FF4500",
+                "0 0 10px #FF0000",
+            ],
+        }} transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "loop",
+        }} onClick={() => window.open("https://www.youtube.com/channel/UCFHzBoChAeE2VsKTw4apqXg?sub_confirmation=1", "_blank")} className="flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-[#FF0000] to-[#CC0000] text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base w-full sm:w-auto">
+                <fa_1.FaYoutube className="text-lg sm:text-xl"/>
+                <span>Subscribe</span>
+              </framer_motion_1.motion.button>
+            </framer_motion_1.motion.div>
+
+            {/* Responsive Video Container */}
+            <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+              <iframe className="absolute top-0 left-0 w-full h-full rounded-xl shadow-2xl border-4 border-[#FFD700]" src="https://www.youtube.com/embed/YwXBjKqBrxQ?list=RDYwXBjKqBrxQ" title="TULENGE JUU DAIMA | KARIBU DON BOSCO IRINGA" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
             </div>
-          </div>
+          </framer_motion_1.motion.div>
         </div>
       </div>
     </section>);
 }
-exports.default = MessageFromRector;

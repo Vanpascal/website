@@ -5,13 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchComments = exports.deleteComment = exports.updateComment = exports.createComment = void 0;
-const client_1 = require("@prisma/client");
 const cache_1 = require("next/cache");
 const errorUtils_1 = require("@/lib/errorUtils");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const crypto_1 = require("crypto");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 const DEFAULT_PHOTO_PATH = "/images/default-avatar.png";
 const createComment = async (formData) => {
     try {
@@ -39,7 +38,7 @@ const createComment = async (formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(photoBuffer));
             photoFilePath = `/images/comments/${uniqueFilename}`;
         }
-        await prisma.comments.create({
+        await prisma_1.prisma.comments.create({
             data: {
                 author,
                 content,
@@ -74,7 +73,7 @@ const updateComment = async (id, formData) => {
             if (photo.size > MAX_FILE_SIZE) {
                 throw new Error("Photo size should not exceed 1MB");
             }
-            const existingComment = await prisma.comments.findUnique({
+            const existingComment = await prisma_1.prisma.comments.findUnique({
                 where: { id },
             });
             if ((existingComment === null || existingComment === void 0 ? void 0 : existingComment.photo) &&
@@ -95,7 +94,7 @@ const updateComment = async (id, formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(photoBuffer));
             updateData.photo = `/images/comments/${uniqueFilename}`;
         }
-        await prisma.comments.update({
+        await prisma_1.prisma.comments.update({
             where: { id },
             data: updateData,
         });
@@ -109,7 +108,7 @@ const updateComment = async (id, formData) => {
 exports.updateComment = updateComment;
 const deleteComment = async (id) => {
     try {
-        const comment = await prisma.comments.findUnique({
+        const comment = await prisma_1.prisma.comments.findUnique({
             where: { id },
         });
         if (!comment) {
@@ -124,7 +123,7 @@ const deleteComment = async (id) => {
                 console.error(`Error deleting photo file: ${photoPath}`, err);
             }
         }
-        await prisma.comments.delete({
+        await prisma_1.prisma.comments.delete({
             where: { id },
         });
         (0, cache_1.revalidatePath)("/admin/settings/comments");
@@ -137,7 +136,7 @@ const deleteComment = async (id) => {
 exports.deleteComment = deleteComment;
 const fetchComments = async () => {
     try {
-        const comments = await prisma.comments.findMany();
+        const comments = await prisma_1.prisma.comments.findMany();
         return comments;
     }
     catch (error) {

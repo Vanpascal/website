@@ -1,8 +1,6 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
 export async function logVisitor(ip: string, userAgent?: string) {
   const existingVisitor = await prisma.visitor.findUnique({
@@ -14,7 +12,7 @@ export async function logVisitor(ip: string, userAgent?: string) {
       where: { ipAddress: ip },
       data: {
         visitCount: { increment: 1 },
-        updatedAt: new Date(), 
+        updatedAt: new Date(),
       },
     });
   } else {
@@ -23,8 +21,8 @@ export async function logVisitor(ip: string, userAgent?: string) {
         ipAddress: ip,
         userAgent: userAgent || "Unknown",
         visitCount: 1,
-        createdAt: new Date(),  
-        updatedAt: new Date(), 
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     });
   }

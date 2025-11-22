@@ -4,14 +4,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.logVisitor = logVisitor;
 exports.getYearlyVisitors = getYearlyVisitors;
 exports.getMonthlyVisitors = getMonthlyVisitors;
-const client_1 = require("@prisma/client");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 async function logVisitor(ip, userAgent) {
-    const existingVisitor = await prisma.visitor.findUnique({
+    const existingVisitor = await prisma_1.prisma.visitor.findUnique({
         where: { ipAddress: ip },
     });
     if (existingVisitor) {
-        await prisma.visitor.update({
+        await prisma_1.prisma.visitor.update({
             where: { ipAddress: ip },
             data: {
                 visitCount: { increment: 1 },
@@ -20,7 +19,7 @@ async function logVisitor(ip, userAgent) {
         });
     }
     else {
-        await prisma.visitor.create({
+        await prisma_1.prisma.visitor.create({
             data: {
                 ipAddress: ip,
                 userAgent: userAgent || "Unknown",
@@ -32,12 +31,12 @@ async function logVisitor(ip, userAgent) {
     }
 }
 async function getYearlyVisitors() {
-    const visitors = await prisma.visitor.findMany();
+    const visitors = await prisma_1.prisma.visitor.findMany();
     const yearlyVisitors = visitors.reduce((acc, visitor) => acc + visitor.visitCount, 0);
     return yearlyVisitors;
 }
 async function getMonthlyVisitors() {
-    const visitors = await prisma.visitor.findMany();
+    const visitors = await prisma_1.prisma.visitor.findMany();
     const now = new Date();
     const monthlyVisitors = visitors.reduce((acc, visitor) => {
         const visitDate = new Date(visitor.createdAt);

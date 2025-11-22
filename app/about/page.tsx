@@ -1,7 +1,7 @@
 "use client";
 
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import Map from "@/components/about/Map";
 import Testimonials from "@/components/about/Testimonials";
 import Image from "next/image";

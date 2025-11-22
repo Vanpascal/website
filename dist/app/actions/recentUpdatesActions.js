@@ -5,14 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchRecentUpdate = exports.deleteRecentUpdate = exports.updaterecentUpdate = exports.createRecentUpdate = void 0;
-const client_1 = require("@prisma/client");
 const cache_1 = require("next/cache");
 const errorUtils_1 = require("@/lib/errorUtils");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const crypto_1 = require("crypto");
 const slugify_1 = __importDefault(require("slugify"));
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 const createRecentUpdate = async (formData) => {
     try {
         const title = formData.get("title");
@@ -32,7 +31,7 @@ const createRecentUpdate = async (formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(photoBuffer));
             photoFilePath = `/images/recentUpdates/${uniqueFilename}`;
         }
-        await prisma.recentupdates.create({
+        await prisma_1.prisma.recentupdates.create({
             data: {
                 title,
                 content,
@@ -65,7 +64,7 @@ const updaterecentUpdate = async (id, formData) => {
         };
         // If a new photo is provided, handle the photo
         if (photo && photo.size > 0) {
-            const existingUpdate = await prisma.recentupdates.findUnique({
+            const existingUpdate = await prisma_1.prisma.recentupdates.findUnique({
                 where: { id },
             });
             if (existingUpdate && existingUpdate.photo) {
@@ -86,7 +85,7 @@ const updaterecentUpdate = async (id, formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(photoBuffer));
             updateData.photo = `/images/recentUpdates/${uniqueFilename}`;
         }
-        await prisma.recentupdates.update({
+        await prisma_1.prisma.recentupdates.update({
             where: { id },
             data: updateData,
         });
@@ -100,7 +99,7 @@ const updaterecentUpdate = async (id, formData) => {
 exports.updaterecentUpdate = updaterecentUpdate;
 const deleteRecentUpdate = async (id) => {
     try {
-        const update = await prisma.recentupdates.findUnique({
+        const update = await prisma_1.prisma.recentupdates.findUnique({
             where: { id },
         });
         if (!update) {
@@ -115,7 +114,7 @@ const deleteRecentUpdate = async (id) => {
                 console.error(`Error deleting photo file: ${photoPath}`, err);
             }
         }
-        await prisma.recentupdates.delete({
+        await prisma_1.prisma.recentupdates.delete({
             where: { id },
         });
         (0, cache_1.revalidatePath)("/admin/settings/recent-updates");
@@ -128,7 +127,7 @@ const deleteRecentUpdate = async (id) => {
 exports.deleteRecentUpdate = deleteRecentUpdate;
 const fetchRecentUpdate = async () => {
     try {
-        const update = await prisma.recentupdates.findMany();
+        const update = await prisma_1.prisma.recentupdates.findMany();
         return update;
     }
     catch (error) {

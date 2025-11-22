@@ -5,13 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recordView = exports.fetchAnnouncements = exports.deleteAnnouncement = exports.updateAnnouncement = exports.createAnnouncement = void 0;
-const client_1 = require("@prisma/client");
 const cache_1 = require("next/cache");
 const errorUtils_1 = require("@/lib/errorUtils");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const crypto_1 = require("crypto");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 // Create a new announcement with a document
 const createAnnouncement = async (formData) => {
     try {
@@ -30,7 +29,7 @@ const createAnnouncement = async (formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(documentBuffer));
             announcementLink = `/documents/announcements/${uniqueFilename}`;
         }
-        await prisma.announcements.create({
+        await prisma_1.prisma.announcements.create({
             data: {
                 title,
                 link: announcementLink,
@@ -54,7 +53,7 @@ const updateAnnouncement = async (id, formData) => {
         }
         const updateData = { title };
         if (document && document.size > 0) {
-            const existingAnnouncement = await prisma.announcements.findUnique({
+            const existingAnnouncement = await prisma_1.prisma.announcements.findUnique({
                 where: { id },
             });
             // Delete old document if it exists
@@ -76,7 +75,7 @@ const updateAnnouncement = async (id, formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(documentBuffer));
             updateData.link = `/documents/announcements/${uniqueFilename}`;
         }
-        await prisma.announcements.update({
+        await prisma_1.prisma.announcements.update({
             where: { id },
             data: updateData,
         });
@@ -91,7 +90,7 @@ exports.updateAnnouncement = updateAnnouncement;
 // Delete an announcement along with its document
 const deleteAnnouncement = async (id) => {
     try {
-        const announcement = await prisma.announcements.findUnique({
+        const announcement = await prisma_1.prisma.announcements.findUnique({
             where: { id },
         });
         if (!announcement) {
@@ -107,7 +106,7 @@ const deleteAnnouncement = async (id) => {
                 console.error(`Error deleting document file: ${documentPath}`, err);
             }
         }
-        await prisma.announcements.delete({
+        await prisma_1.prisma.announcements.delete({
             where: { id },
         });
         (0, cache_1.revalidatePath)("/admin/settings/announcements");
@@ -121,7 +120,7 @@ exports.deleteAnnouncement = deleteAnnouncement;
 // Fetch all announcements
 const fetchAnnouncements = async () => {
     try {
-        const announcements = await prisma.announcements.findMany({
+        const announcements = await prisma_1.prisma.announcements.findMany({
             orderBy: { createdAt: "desc" }, // Order by newest first
         });
         return announcements;
@@ -134,7 +133,7 @@ const fetchAnnouncements = async () => {
 exports.fetchAnnouncements = fetchAnnouncements;
 const recordView = async (id) => {
     try {
-        await prisma.announcements.update({
+        await prisma_1.prisma.announcements.update({
             where: { id },
             data: {
                 views: {

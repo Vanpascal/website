@@ -10,21 +10,22 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  {
-    // 👇 Ignore Prisma generated files
-    ignores: ["lib/generated/prisma/**"],
-  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
   {
+    // 👇 Ignore Prisma generated files
+    ignores: ["lib/prisma/generated/**/*.ts", "lib/prisma/generated/**/*.d.ts"],
+  },
+
+  {
     rules: {
-      // 🔧 Disable unused variable rules
+      // 🔧 Disable common rules that affect generated files
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",
-
-      "@typescript-eslint/no-unused-expressions": "off",
-      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/no-unnecessary-type-constraint": "off",
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-function": "off",
     },
   },
 ];

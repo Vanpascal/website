@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model announcements {
+  id        Int      @id @default(autoincrement())
+  title     String
+  link      String?
+  createdAt DateTime @default(now())
+  views     Int      @default(0)
+}
+
+model banners {
+  id        Int      @id @default(autoincrement())
+  title     String
+  link      String?
+  createdAt DateTime @default(now())
+}
+
+model comments {
+  id         Int      @id @default(autoincrement())
+  content    String   @db.Text
+  author     String
+  photo      String?
+  createdAt  DateTime @default(now())
+  whoComment String
+}
+
+model courses {
+  id          Int      @id @default(autoincrement())
+  coursename  String
+  duration    String   @db.VarChar(11)
+  courseType  String
+  description String   @db.Text
+  photo       String?  @db.VarChar(255)
+  createdAt   DateTime @default(now())
+}
+
+model documents {
+  id        Int      @id @default(autoincrement())
+  title     String
+  link      String
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model employees {
+  id         Int      @id @default(autoincrement())
+  firstname  String
+  lastname   String
+  email      String   @unique(map: "Staff_email_key")
+  phone      String
+  category   String
+  position   String?  @default("staff")
+  photo      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime
+  department String?
+}
+
+model products {
+  id           Int    @id @default(autoincrement())
+  product_name String @db.VarChar(50)
+  department   String @db.VarChar(50)
+  price        String @db.VarChar(20)
+  photo        String
+}
+
+model recentupdates {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String?  @db.Text
+  photo     String?
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  slug      String   @unique
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model users {
+  id        Int    @id @default(autoincrement())
+  firstname String
+  lastname  String
+  email     String @unique(map: "Users_email_key")
+  phone     String @db.VarChar(15)
+  password  String
+}
+
+model visitor {
+  id         Int      @id @default(autoincrement())
+  ipAddress  String   @unique
+  userAgent  String?
+  visitCount Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model payments {
+  id             Int             @id @default(autoincrement())
+  method         String
+  amount         Float
+  purpose        String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  bankpayments   bankpayments?
+  mobilepayments mobilepayments?
+}
+
+model bankpayments {
+  id          Int      @id @default(autoincrement())
+  bankName    String
+  accountName String
+  accountNo   String
+  reference   String?
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  paymentId   Int      @unique(map: "bankPayments_paymentId_key")
+  payments    payments @relation(fields: [paymentId], references: [id], onDelete: Cascade, map: "bankPayments_paymentId_fkey")
+}
+
+model mobilepayments {
+  id          Int      @id @default(autoincrement())
+  provider    String
+  phone       String
+  localTxnId  String
+  airtelTxnId String?
+  status      String   @default("PENDING")
+  message     String?  @db.VarChar(200)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  paymentId   Int      @unique(map: "mobilePayments_paymentId_key")
+  payments    payments @relation(fields: [paymentId], references: [id], onDelete: Cascade, map: "mobilePayments_paymentId_fkey")
+}
+
+model Publication {
+  id        Int      @id @default(autoincrement())
+  title     String
+  youtubeId String // e.g. "PR8WqifFiZY"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

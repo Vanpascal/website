@@ -5,13 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recordView = exports.fetchDocuments = exports.deleteDocument = exports.updateDocument = exports.createDocument = void 0;
-const client_1 = require("@prisma/client");
 const cache_1 = require("next/cache");
 const errorUtils_1 = require("@/lib/errorUtils");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const crypto_1 = require("crypto");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 // Create a new document
 const createDocument = async (formData) => {
     try {
@@ -30,7 +29,7 @@ const createDocument = async (formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(documentBuffer));
             documentLink = `/documents/${uniqueFilename}`;
         }
-        await prisma.documents.create({
+        await prisma_1.prisma.documents.create({
             data: {
                 title,
                 link: documentLink,
@@ -54,7 +53,7 @@ const updateDocument = async (id, formData) => {
         }
         const updateData = { title };
         if (document && document.size > 0) {
-            const existingDocument = await prisma.documents.findUnique({
+            const existingDocument = await prisma_1.prisma.documents.findUnique({
                 where: { id },
             });
             // Delete old document if it exists
@@ -76,7 +75,7 @@ const updateDocument = async (id, formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(documentBuffer));
             updateData.link = `/documents/${uniqueFilename}`;
         }
-        await prisma.documents.update({
+        await prisma_1.prisma.documents.update({
             where: { id },
             data: updateData,
         });
@@ -91,7 +90,7 @@ exports.updateDocument = updateDocument;
 // Delete a document along with its file
 const deleteDocument = async (id) => {
     try {
-        const document = await prisma.documents.findUnique({
+        const document = await prisma_1.prisma.documents.findUnique({
             where: { id },
         });
         if (!document) {
@@ -107,7 +106,7 @@ const deleteDocument = async (id) => {
                 console.error(`Error deleting document file: ${documentPath}`, err);
             }
         }
-        await prisma.documents.delete({
+        await prisma_1.prisma.documents.delete({
             where: { id },
         });
         (0, cache_1.revalidatePath)("/admin/settings/documents");
@@ -121,7 +120,7 @@ exports.deleteDocument = deleteDocument;
 // Fetch all documents
 const fetchDocuments = async () => {
     try {
-        const documents = await prisma.documents.findMany({
+        const documents = await prisma_1.prisma.documents.findMany({
             orderBy: { createdAt: "desc" }, // Order by newest first
         });
         return documents;
@@ -134,7 +133,7 @@ const fetchDocuments = async () => {
 exports.fetchDocuments = fetchDocuments;
 const recordView = async (id) => {
     try {
-        await prisma.documents.update({
+        await prisma_1.prisma.documents.update({
             where: { id },
             data: {
                 views: {

@@ -5,17 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProduct = exports.updateProduct = exports.createProduct = exports.fetchWeldingProducts = exports.fetchPrintingProducts = exports.fetchTailoringProducts = exports.fetchMasonryProducts = exports.fetchCarpentryProducts = exports.fetchProducts = void 0;
-const client_1 = require("@prisma/client");
 const cache_1 = require("next/cache");
 const errorUtils_1 = require("@/lib/errorUtils");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const crypto_1 = require("crypto");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 // Fetch all products
 const fetchProducts = async () => {
     try {
-        const products = await prisma.products.findMany();
+        const products = await prisma_1.prisma.products.findMany();
         return products;
     }
     catch (error) {
@@ -27,7 +26,7 @@ exports.fetchProducts = fetchProducts;
 // Fetch all carpentry products
 const fetchCarpentryProducts = async () => {
     try {
-        const product = await prisma.products.findMany({
+        const product = await prisma_1.prisma.products.findMany({
             where: {
                 department: "Carpentry",
             },
@@ -43,7 +42,7 @@ exports.fetchCarpentryProducts = fetchCarpentryProducts;
 // Fetch all Masonry products
 const fetchMasonryProducts = async () => {
     try {
-        const product = await prisma.products.findMany({
+        const product = await prisma_1.prisma.products.findMany({
             where: {
                 department: "Masonry",
             },
@@ -59,7 +58,7 @@ exports.fetchMasonryProducts = fetchMasonryProducts;
 // Fetch all Tailoring products
 const fetchTailoringProducts = async () => {
     try {
-        const product = await prisma.products.findMany({
+        const product = await prisma_1.prisma.products.findMany({
             where: {
                 department: "Tailoring",
             },
@@ -75,7 +74,7 @@ exports.fetchTailoringProducts = fetchTailoringProducts;
 // Fetch all Printing products
 const fetchPrintingProducts = async () => {
     try {
-        const product = await prisma.products.findMany({
+        const product = await prisma_1.prisma.products.findMany({
             where: {
                 department: "Printing",
             },
@@ -91,7 +90,7 @@ exports.fetchPrintingProducts = fetchPrintingProducts;
 // Fetch all Welding products
 const fetchWeldingProducts = async () => {
     try {
-        const product = await prisma.products.findMany({
+        const product = await prisma_1.prisma.products.findMany({
             where: {
                 department: "Welding",
             },
@@ -125,7 +124,7 @@ const createProduct = async (formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(photoBuffer));
             photoFilePath = `/images/products/${uniqueFilename}`;
         }
-        await prisma.products.create({
+        await prisma_1.prisma.products.create({
             data: {
                 product_name: productName,
                 department,
@@ -158,7 +157,7 @@ const updateProduct = async (id, formData) => {
         };
         // If a new photo is provided, handle the photo
         if (photo && photo.size > 0) {
-            const existingProduct = await prisma.products.findUnique({
+            const existingProduct = await prisma_1.prisma.products.findUnique({
                 where: { id },
             });
             if (existingProduct && existingProduct.photo) {
@@ -180,7 +179,7 @@ const updateProduct = async (id, formData) => {
             updateData.photo = `/images/products/${uniqueFilename}`;
         }
         // Update the product in the database
-        await prisma.products.update({
+        await prisma_1.prisma.products.update({
             where: { id },
             data: updateData,
         });
@@ -195,7 +194,7 @@ exports.updateProduct = updateProduct;
 // Delete a product
 const deleteProduct = async (id) => {
     try {
-        const product = await prisma.products.findUnique({
+        const product = await prisma_1.prisma.products.findUnique({
             where: { id },
         });
         if (!product) {
@@ -210,7 +209,7 @@ const deleteProduct = async (id) => {
                 console.error(`Error deleting photo file: ${photoPath}`, err);
             }
         }
-        await prisma.products.delete({
+        await prisma_1.prisma.products.delete({
             where: { id },
         });
         (0, cache_1.revalidatePath)("/admin/products");

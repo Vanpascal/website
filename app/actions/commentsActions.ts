@@ -1,13 +1,12 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { getErrorMessages } from "@/lib/errorUtils";
 import { promises as fs } from "fs";
 import path from "path";
 import { randomUUID } from "crypto";
 
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
 const DEFAULT_PHOTO_PATH = "/images/default-avatar.png";
 

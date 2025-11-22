@@ -10,16 +10,17 @@ exports.default = {
     theme: {
         extend: {
             animation: {
-                bounceFast: "bounceFast 1s infinite", // Define the bouncing animation
+                bounceFast: "bounceFast 1s infinite",
+                blinkBright: "blinkBright 1.5s ease-in-out infinite",
             },
             keyframes: {
                 bounceFast: {
-                    "0%, 100%": {
-                        transform: "translateY(-5px)",
-                    },
-                    "50%": {
-                        transform: "translateY(0)",
-                    },
+                    "0%, 100%": { transform: "translateY(-5px)" },
+                    "50%": { transform: "translateY(0)" },
+                },
+                blinkBright: {
+                    "0%, 50%, 100%": { opacity: "1", color: "#FFD700" }, // bright yellow
+                    "25%, 75%": { opacity: "0.2", color: "#FFA500" }, // dimmer orange
                 },
             },
             colors: {

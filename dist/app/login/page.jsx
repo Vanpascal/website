@@ -46,8 +46,8 @@ const Login = () => {
     const handleLogin = async (event) => {
         var _a, _b;
         event.preventDefault();
-        setError(null); // Clear previous errors
-        setLoading(true); // Set loading state
+        setError(null);
+        setLoading(true);
         try {
             const formData = new FormData();
             formData.append("email", email);

@@ -5,13 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchBanners = exports.deleteBanner = exports.updateBanner = exports.createBanner = void 0;
-const client_1 = require("@prisma/client");
 const cache_1 = require("next/cache");
 const errorUtils_1 = require("@/lib/errorUtils");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const crypto_1 = require("crypto");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 // Create a new banner with a single photo
 const createBanner = async (formData) => {
     try {
@@ -30,7 +29,7 @@ const createBanner = async (formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(photoBuffer));
             photoLink = `/images/banners/${uniqueFilename}`;
         }
-        await prisma.banners.create({
+        await prisma_1.prisma.banners.create({
             data: {
                 title,
                 link: photoLink,
@@ -54,7 +53,7 @@ const updateBanner = async (id, formData) => {
         }
         const updateData = { title };
         if (photo && photo.size > 0) {
-            const existingBanner = await prisma.banners.findUnique({
+            const existingBanner = await prisma_1.prisma.banners.findUnique({
                 where: { id },
             });
             // Delete old photo if it exists
@@ -76,7 +75,7 @@ const updateBanner = async (id, formData) => {
             await fs_1.promises.writeFile(filePath, Buffer.from(photoBuffer));
             updateData.link = `/images/banners/${uniqueFilename}`;
         }
-        await prisma.banners.update({
+        await prisma_1.prisma.banners.update({
             where: { id },
             data: updateData,
         });
@@ -91,7 +90,7 @@ exports.updateBanner = updateBanner;
 // Delete a banner along with its photo
 const deleteBanner = async (id) => {
     try {
-        const banner = await prisma.banners.findUnique({
+        const banner = await prisma_1.prisma.banners.findUnique({
             where: { id },
         });
         if (!banner) {
@@ -107,7 +106,7 @@ const deleteBanner = async (id) => {
                 console.error(`Error deleting photo file: ${photoPath}`, err);
             }
         }
-        await prisma.banners.delete({
+        await prisma_1.prisma.banners.delete({
             where: { id },
         });
         (0, cache_1.revalidatePath)("/admin/settings/banners");
@@ -121,7 +120,7 @@ exports.deleteBanner = deleteBanner;
 // Fetch all banners
 const fetchBanners = async () => {
     try {
-        const banners = await prisma.banners.findMany({
+        const banners = await prisma_1.prisma.banners.findMany({
             orderBy: { createdAt: "desc" }, // Order by newest first
         });
         return banners;

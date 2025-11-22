@@ -5,13 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchMasonryHOD = exports.fetchMotorVehicleHOD = exports.fetchTailoringHOD = exports.fetchWeldingHOD = exports.fetchPrintingHOD = exports.fetchCarpentryHOD = exports.fetchEmployees = exports.deleteEmployee = exports.updateEmployee = exports.createEmployee = void 0;
-const client_1 = require("@prisma/client");
 const cache_1 = require("next/cache");
 const errorUtils_1 = require("@/lib/errorUtils");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const crypto_1 = require("crypto");
-const prisma = new client_1.PrismaClient();
+const prisma_1 = require("@/lib/prisma");
 const createEmployee = async (formData) => {
     try {
         const firstname = formData.get("firstname");
@@ -29,14 +28,14 @@ const createEmployee = async (formData) => {
             !category) {
             throw new Error("Invalid form data");
         }
-        const existingEmployee = await prisma.employees.findUnique({
+        const existingEmployee = await prisma_1.prisma.employees.findUnique({
             where: { email },
         });
         if (existingEmployee) {
             throw new Error("Employee with this email already exists");
         }
         const photoFilePath = await handlePhotoUpload(photo);
-        await prisma.employees.create({
+        await prisma_1.prisma.employees.create({
             data: {
                 firstname,
                 lastname,
@@ -75,7 +74,7 @@ const updateEmployee = async (id, formData) => {
             !department) {
             throw new Error("Invalid form data");
         }
-        const existingEmployeeWithEmail = await prisma.employees.findUnique({
+        const existingEmployeeWithEmail = await prisma_1.prisma.employees.findUnique({
             where: { email },
         });
         if (existingEmployeeWithEmail && existingEmployeeWithEmail.id !== id) {
@@ -94,7 +93,7 @@ const updateEmployee = async (id, formData) => {
         if (photo && photo.size > 0) {
             updateData.photo = await handlePhotoUpload(photo, id);
         }
-        await prisma.employees.update({ where: { id }, data: updateData });
+        await prisma_1.prisma.employees.update({ where: { id }, data: updateData });
         (0, cache_1.revalidatePath)("/admin/settings/employees");
     }
     catch (error) {
@@ -105,12 +104,12 @@ const updateEmployee = async (id, formData) => {
 exports.updateEmployee = updateEmployee;
 const deleteEmployee = async (id) => {
     try {
-        const employee = await prisma.employees.findUnique({ where: { id } });
+        const employee = await prisma_1.prisma.employees.findUnique({ where: { id } });
         if (!employee)
             throw new Error("Employee not found");
         if (employee.photo)
             await deleteFile(employee.photo);
-        await prisma.employees.delete({ where: { id } });
+        await prisma_1.prisma.employees.delete({ where: { id } });
         (0, cache_1.revalidatePath)("/admin/settings/employees");
     }
     catch (error) {
@@ -121,7 +120,7 @@ const deleteEmployee = async (id) => {
 exports.deleteEmployee = deleteEmployee;
 const fetchEmployees = async () => {
     try {
-        const employees = await prisma.employees.findMany({
+        const employees = await prisma_1.prisma.employees.findMany({
             where: {
                 NOT: {
                     position: "Head of Production",
@@ -164,7 +163,7 @@ const fetchEmployees = async () => {
 exports.fetchEmployees = fetchEmployees;
 const fetchCarpentryHOD = async () => {
     try {
-        const employee = await prisma.employees.findMany({
+        const employee = await prisma_1.prisma.employees.findMany({
             where: {
                 department: "Carpentry",
                 category: "Production",
@@ -181,7 +180,7 @@ const fetchCarpentryHOD = async () => {
 exports.fetchCarpentryHOD = fetchCarpentryHOD;
 const fetchPrintingHOD = async () => {
     try {
-        const employee = await prisma.employees.findMany({
+        const employee = await prisma_1.prisma.employees.findMany({
             where: {
                 department: "Printing",
                 category: "Production",
@@ -198,7 +197,7 @@ const fetchPrintingHOD = async () => {
 exports.fetchPrintingHOD = fetchPrintingHOD;
 const fetchWeldingHOD = async () => {
     try {
-        const employee = await prisma.employees.findMany({
+        const employee = await prisma_1.prisma.employees.findMany({
             where: {
                 department: "Welding",
                 category: "Production",
@@ -215,7 +214,7 @@ const fetchWeldingHOD = async () => {
 exports.fetchWeldingHOD = fetchWeldingHOD;
 const fetchTailoringHOD = async () => {
     try {
-        const employee = await prisma.employees.findMany({
+        const employee = await prisma_1.prisma.employees.findMany({
             where: {
                 department: "Tailoring",
                 category: "Production",
@@ -232,7 +231,7 @@ const fetchTailoringHOD = async () => {
 exports.fetchTailoringHOD = fetchTailoringHOD;
 const fetchMotorVehicleHOD = async () => {
     try {
-        const employee = await prisma.employees.findMany({
+        const employee = await prisma_1.prisma.employees.findMany({
             where: {
                 department: "MVM",
                 category: "Production",
@@ -249,7 +248,7 @@ const fetchMotorVehicleHOD = async () => {
 exports.fetchMotorVehicleHOD = fetchMotorVehicleHOD;
 const fetchMasonryHOD = async () => {
     try {
-        const employee = await prisma.employees.findMany({
+        const employee = await prisma_1.prisma.employees.findMany({
             where: {
                 department: "Masonry",
                 category: "Production",
@@ -268,7 +267,7 @@ const handlePhotoUpload = async (photo, id) => {
     if (!photo)
         return "";
     if (id) {
-        const existingEmployee = await prisma.employees.findUnique({
+        const existingEmployee = await prisma_1.prisma.employees.findUnique({
             where: { id },
         });
         if (existingEmployee && existingEmployee.photo)

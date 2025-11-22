@@ -8,7 +8,7 @@ exports.default = AdmissionInf;
 const react_1 = __importDefault(require("react"));
 const AdmissionInfo_1 = __importDefault(require("@/components/academics/AdmissionInfo"));
 const Footer_1 = __importDefault(require("@/components/Footer"));
-const Header_1 = __importDefault(require("@/components/Header"));
+const Header_1 = __importDefault(require("@/components/Header/Header"));
 exports.metadata = {
     title: "Admission Info",
 };
