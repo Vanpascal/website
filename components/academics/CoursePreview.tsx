@@ -102,19 +102,24 @@ export default function CoursesPreview() {
               </Link>
             </div>
 
-            {/* Image */}
-            <div className="flex-1 flex justify-center">
-              <div className="w-72 h-72 md:w-96 md:h-96 overflow-hidden rounded-2xl shadow-xl relative">
-                <motion.img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.07 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl pointer-events-none" />
-              </div>
-            </div>
+         {/* Full-side Image */}
+<div className="flex-1 w-full h-full">
+  <motion.div
+    className="relative w-full h-80 md:h-full rounded-3xl overflow-hidden shadow-xl"
+    whileHover={{ scale: 1.01 }}
+    transition={{ duration: 0.5 }}
+  >
+    <motion.img
+      src={course.image}
+      alt={course.title}
+      className="w-full h-full object-cover"
+      whileHover={{ scale: 1.06 }}
+      transition={{ duration: 0.6 }}
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+  </motion.div>
+</div>
+
           </motion.div>
         );
       })}
