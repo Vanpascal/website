@@ -13,20 +13,6 @@ import {
 
 const previewCourses = [
   {
-    title: "Long Courses",
-    description:
-      "Our long courses are comprehensive training programs designed to equip students with both theoretical knowledge and hands-on practical experience. These programs run over an extended period, allowing learners to master their craft and develop professional competencies that employers demand. They are ideal for those seeking nationally recognized qualifications, career stability, and opportunities for advancement in technical and vocational fields.",
-    highlights: [
-      "Nationally recognized certifications upon completion",
-      "Extensive hands-on workshops and practical sessions",
-      "Mentorship from experienced industry professionals",
-      "Strong foundation for long-term career growth or further studies",
-    ],
-    image: "/images/long-course.jpg",
-    link: "/courses",
-    bg: "from-purple-50 to-white",
-  },
-  {
     title: "Short Courses",
     description:
       "Our short courses are intensive, skills-focused training sessions tailored to meet the demands of today’s fast-paced job market. They are designed for individuals who want to quickly acquire new skills, sharpen existing abilities, or explore specific areas of interest without committing to a full program. With a strong emphasis on practical application, learners can immediately put their knowledge to use in real-world scenarios.",
@@ -39,6 +25,20 @@ const previewCourses = [
     image: "/images/short-course.jpg",
     link: "/courses",
     bg: "from-orange-50 to-white",
+  },
+  {
+    title: "Long Courses",
+    description:
+      "Our long courses are comprehensive training programs designed to equip students with both theoretical knowledge and hands-on practical experience. These programs run over an extended period, allowing learners to master their craft and develop professional competencies that employers demand. They are ideal for those seeking nationally recognized qualifications, career stability, and opportunities for advancement in technical and vocational fields.",
+    highlights: [
+      "Nationally recognized certifications upon completion",
+      "Extensive hands-on workshops and practical sessions",
+      "Mentorship from experienced industry professionals",
+      "Strong foundation for long-term career growth or further studies",
+    ],
+    image: "/images/long-course.jpg",
+    link: "/courses",
+    bg: "from-purple-50 to-white",
   },
 ];
 
@@ -62,7 +62,9 @@ export default function CoursesPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className={`bg-gradient-to-r ${course.bg} rounded-3xl shadow-lg p-8 md:p-16 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-20 ${
+            className={`bg-gradient-to-r ${
+              course.bg
+            } rounded-3xl shadow-lg p-8 md:p-16 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-20 ${
               index % 2 !== 0 ? "md:flex-row-reverse" : ""
             }`}
           >
@@ -102,24 +104,23 @@ export default function CoursesPreview() {
               </Link>
             </div>
 
-         {/* Full-side Image */}
-<div className="flex-1 w-full h-full">
-  <motion.div
-    className="relative w-full h-80 md:h-full rounded-3xl overflow-hidden shadow-xl"
-    whileHover={{ scale: 1.01 }}
-    transition={{ duration: 0.5 }}
-  >
-    <motion.img
-      src={course.image}
-      alt={course.title}
-      className="w-full h-full object-cover"
-      whileHover={{ scale: 1.06 }}
-      transition={{ duration: 0.6 }}
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-  </motion.div>
-</div>
-
+            {/* Full-side Image */}
+            <div className="flex-1 w-full h-full">
+              <motion.div
+                className="relative w-full h-80 md:h-full rounded-3xl overflow-hidden shadow-xl"
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.img
+                  src={course.image}
+                  alt={course.title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.6 }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+              </motion.div>
+            </div>
           </motion.div>
         );
       })}
