@@ -1,16 +1,38 @@
 "use client";
 
-import Header from "@/components/Header/Header";
-import Hero from "@/components/Hero";
-import MessageFromRector from "@/components/about/MessageFromRector";
-import AboutDb from "@/components/about/AboutDb";
-import EventsAndNews from "@/components/EventsAndNews";
-import Footer from "@/components/Footer";
-import VisitorLogger from "@/components/VisitorLogger";
-import OurSponsors from "@/components/about/OurSponsers";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import PublicationsSection from "@/components/about/Publications";
-import CoursesPreview from "@/components/academics/CoursePreview";
+
+// Dynamic imports for client-only components
+const Header = dynamic(() => import("@/components/Header/Header"), {
+  ssr: false,
+});
+const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
+const MessageFromRector = dynamic(
+  () => import("@/components/about/MessageFromRector"),
+  { ssr: false }
+);
+const AboutDb = dynamic(() => import("@/components/about/AboutDb"), {
+  ssr: false,
+});
+const EventsAndNews = dynamic(() => import("@/components/EventsAndNews"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
+const VisitorLogger = dynamic(() => import("@/components/VisitorLogger"), {
+  ssr: false,
+});
+const OurSponsors = dynamic(() => import("@/components/about/OurSponsers"), {
+  ssr: false,
+});
+const PublicationsSection = dynamic(
+  () => import("@/components/about/Publications"),
+  { ssr: false }
+);
+const CoursesPreview = dynamic(
+  () => import("@/components/academics/CoursePreview"),
+  { ssr: false }
+);
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 80 },
@@ -47,6 +69,9 @@ export default function LandingPage() {
             className="py-12 px-6"
           >
             <div className="container mx-auto">
+              <h2 id="rector-heading" className="sr-only">
+                Message from Rector
+              </h2>
               <MessageFromRector />
             </div>
           </motion.section>
@@ -58,18 +83,10 @@ export default function LandingPage() {
             className="py-12 px-6 relative"
           >
             <div className="container mx-auto">
-              <h2
-                id="events-heading"
-                className="text-2xl font-bold text-end text-purple-800 mb-6"
-              >
-                Courses We Offer
-              </h2>
               <CoursesPreview />
             </div>
             <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-50 to-transparent" />
           </motion.section>
-
-          <PublicationsSection />
 
           {/* About Don Bosco */}
           <motion.section
@@ -78,9 +95,28 @@ export default function LandingPage() {
             className="bg-white py-12 px-6"
           >
             <div className="container mx-auto">
+              <h2 id="about-heading" className="sr-only">
+                About Don Bosco
+              </h2>
               <AboutDb />
             </div>
           </motion.section>
+
+          {/* Publications */}
+          <motion.section
+            aria-labelledby="about-heading"
+            {...sectionProps}
+            className="bg-white py-12 px-6"
+          >
+            <div className="container mx-auto">
+              <h2 id="about-heading" className="sr-only">
+               Publications
+              </h2>
+              <PublicationsSection />
+            </div>
+          </motion.section>
+
+
 
           {/* Events and News */}
           <motion.section
@@ -90,12 +126,6 @@ export default function LandingPage() {
             className="bg-gray-100 py-12 px-6"
           >
             <div className="container mx-auto">
-              <h2
-                id="events-heading"
-                className="text-2xl font-bold text-center mb-6"
-              >
-                Events & News
-              </h2>
               <EventsAndNews />
             </div>
           </motion.section>
@@ -109,11 +139,9 @@ export default function LandingPage() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInUp}
           >
-            {" "}
             <div className="container mx-auto">
-              {" "}
-              <OurSponsors />{" "}
-            </div>{" "}
+              <OurSponsors />
+            </div>
           </motion.section>
 
           {/* Footer */}

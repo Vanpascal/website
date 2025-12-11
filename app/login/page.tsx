@@ -24,21 +24,26 @@ const Login: React.FC = () => {
       const result = await loginUser(formData);
 
       if (!result.success) {
-        setError(
-          result.errors?.email?.[0] || result.error || "Failed to login."
-        );
-        setLoading(false);
+        const errors = result.errors || {};
+        const errorMessage =
+          ("email" in errors ? errors.email?.[0] : undefined) ||
+          ("general" in errors ? errors.general?.[0] : undefined) ||
+          result.error ||
+          "Failed to login.";
+
+        setError(errorMessage);
         return;
       }
 
-      // Handle successful login
-      console.log("Login successful:", result);
+      // Success
+      setEmail("");
+      setPassword("");
       router.push("/admin");
-    } catch (error) {
-      console.error("Error logging in:", error);
+    } catch (err) {
+      console.error("Login error:", err);
       setError("An unexpected error occurred.");
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 

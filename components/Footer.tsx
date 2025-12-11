@@ -31,10 +31,10 @@ function Footer() {
       Icon: FaInstagram,
       label: "Instagram",
     },
-    { href: "https://www.facebook.com", Icon: FaFacebook, label: "Facebook" },
-    { href: "https://www.linkedin.com", Icon: FaLinkedin, label: "LinkedIn" },
+    { href: "https://x.com/JohnBos91710750", Icon: FaFacebook, label: "Facebook" },
+    { href: "https://tz.linkedin.com/company/don-bosco-youth-training-centre-iringa", Icon: FaLinkedin, label: "LinkedIn" },
     { href: "https://twitter.com", Icon: FaTwitter, label: "Twitter" },
-    { href: "https://www.youtube.com", Icon: FaYoutube, label: "YouTube" },
+    { href: "https://www.youtube.com/@johnboscoiringa", Icon: FaYoutube, label: "YouTube" },
   ];
 
   const quickLinks = [

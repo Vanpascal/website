@@ -3,11 +3,17 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Player } from "@lottiefiles/react-lottie-player";
+import dynamic from "next/dynamic";
 import {
   fetchLongCourse,
   fetchShortCourse,
 } from "@/app/actions/coursesActions";
+
+// Dynamically import Player for client-only rendering
+const Player = dynamic(
+  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
+  { ssr: false }
+);
 
 // Course type
 type Course = {
@@ -54,8 +60,6 @@ const CourseCard = ({
         {course.description}
       </p>
     </div>
-
-    {/* Apply Button */}
     <div className="mt-4 w-full sm:w-auto sm:absolute sm:bottom-4 sm:right-4 px-6">
       <button
         onClick={onApply}
@@ -76,6 +80,7 @@ const CoursesPage = () => {
   const [showFilters, setShowFilters] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
+  // Fetch courses on client
   useEffect(() => {
     const getCourses = async () => {
       try {
@@ -107,9 +112,10 @@ const CoursesPage = () => {
     getCourses();
   }, []);
 
-  // Open admission system in a new tab
   const redirectToAdmissionSystem = () => {
-    window.open("https://oas.donboscoiringa.org", "_blank");
+    if (typeof window !== "undefined") {
+      window.open("https://oas.donboscoiringa.org", "_blank");
+    }
   };
 
   const filteredCourses =
@@ -117,8 +123,10 @@ const CoursesPage = () => {
       ? courses
       : courses.filter((course) => course.type === filter);
 
-  // Scroll effect for showing/hiding filters
+  // Scroll effect for filters (client-only)
   useEffect(() => {
+    if (typeof document === "undefined") return;
+
     const rightPanel = document.getElementById("coursesPanel");
     if (!rightPanel) return;
 

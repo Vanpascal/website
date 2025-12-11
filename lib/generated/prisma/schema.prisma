@@ -139,10 +139,10 @@ model mobilepayments {
   payments    payments @relation(fields: [paymentId], references: [id], onDelete: Cascade, map: "mobilePayments_paymentId_fkey")
 }
 
-model Publication {
+model publication {
   id        Int      @id @default(autoincrement())
   title     String
-  youtubeId String // e.g. "PR8WqifFiZY"
+  youtubeId String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now())
 }

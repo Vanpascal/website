@@ -6,28 +6,50 @@ import { loginUser } from "@/app/actions/authActions";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState<{
+    email?: string;
+    password?: string;
+    general?: string;
+  }>({});
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError({}); // reset errors
 
     const formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
 
-    const response = await loginUser(formData);
+    try {
+      const response = await loginUser(formData);
 
-    if (!response.success) {
-      setError(response.errors?.email?.[0] || response.error || "");
-    } else {
-      alert(response.message);
-      window.location.href = "/dashboard"; // Redirect after login
+      if (!response.success) {
+        const newErrors: typeof error = {};
+
+        if (response.errors) {
+          if ("email" in response.errors)
+            newErrors.email = response.errors.email?.[0];
+          if ("password" in response.errors)
+            newErrors.password = response.errors.password?.[0];
+          if ("general" in response.errors)
+            newErrors.general = response.errors.general?.[0];
+        }
+
+        if (response.error) newErrors.general = response.error;
+
+        setError(newErrors);
+      } else {
+        alert(response.message);
+        window.location.href = "/dashboard";
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError({ general: "An unexpected error occurred." });
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
@@ -54,6 +76,9 @@ const Login = () => {
               className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
               placeholder="Enter your email"
             />
+            {error.email && (
+              <p className="text-red-500 text-sm mt-1">{error.email}</p>
+            )}
           </div>
 
           {/* Password Input */}
@@ -73,15 +98,22 @@ const Login = () => {
               className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
               placeholder="Enter your password"
             />
+            {error.password && (
+              <p className="text-red-500 text-sm mt-1">{error.password}</p>
+            )}
           </div>
 
-          {/* Error Message */}
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {/* General Error */}
+          {error.general && (
+            <p className="text-red-500 text-sm">{error.general}</p>
+          )}
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
+            className={`w-full py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 transition duration-300 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             disabled={loading}
           >
             {loading ? "Logging in..." : "Login"}

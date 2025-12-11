@@ -79,10 +79,10 @@ export type bankpayments = $Result.DefaultSelection<Prisma.$bankpaymentsPayload>
  */
 export type mobilepayments = $Result.DefaultSelection<Prisma.$mobilepaymentsPayload>
 /**
- * Model Publication
+ * Model publication
  * 
  */
-export type Publication = $Result.DefaultSelection<Prisma.$PublicationPayload>
+export type publication = $Result.DefaultSelection<Prisma.$publicationPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -333,14 +333,14 @@ export class PrismaClient<
   get mobilepayments(): Prisma.mobilepaymentsDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.publication`: Exposes CRUD operations for the **Publication** model.
+   * `prisma.publication`: Exposes CRUD operations for the **publication** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Publications
     * const publications = await prisma.publication.findMany()
     * ```
     */
-  get publication(): Prisma.PublicationDelegate<ExtArgs, ClientOptions>;
+  get publication(): Prisma.publicationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -794,7 +794,7 @@ export namespace Prisma {
     payments: 'payments',
     bankpayments: 'bankpayments',
     mobilepayments: 'mobilepayments',
-    Publication: 'Publication'
+    publication: 'publication'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1675,68 +1675,68 @@ export namespace Prisma {
           }
         }
       }
-      Publication: {
-        payload: Prisma.$PublicationPayload<ExtArgs>
-        fields: Prisma.PublicationFieldRefs
+      publication: {
+        payload: Prisma.$publicationPayload<ExtArgs>
+        fields: Prisma.publicationFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.PublicationFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload> | null
+            args: Prisma.publicationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.PublicationFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload>
+            args: Prisma.publicationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload>
           }
           findFirst: {
-            args: Prisma.PublicationFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload> | null
+            args: Prisma.publicationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.PublicationFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload>
+            args: Prisma.publicationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload>
           }
           findMany: {
-            args: Prisma.PublicationFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload>[]
+            args: Prisma.publicationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload>[]
           }
           create: {
-            args: Prisma.PublicationCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload>
+            args: Prisma.publicationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload>
           }
           createMany: {
-            args: Prisma.PublicationCreateManyArgs<ExtArgs>
+            args: Prisma.publicationCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.PublicationDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload>
+            args: Prisma.publicationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload>
           }
           update: {
-            args: Prisma.PublicationUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload>
+            args: Prisma.publicationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload>
           }
           deleteMany: {
-            args: Prisma.PublicationDeleteManyArgs<ExtArgs>
+            args: Prisma.publicationDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.PublicationUpdateManyArgs<ExtArgs>
+            args: Prisma.publicationUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.PublicationUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PublicationPayload>
+            args: Prisma.publicationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$publicationPayload>
           }
           aggregate: {
             args: Prisma.PublicationAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregatePublication>
           }
           groupBy: {
-            args: Prisma.PublicationGroupByArgs<ExtArgs>
+            args: Prisma.publicationGroupByArgs<ExtArgs>
             result: $Utils.Optional<PublicationGroupByOutputType>[]
           }
           count: {
-            args: Prisma.PublicationCountArgs<ExtArgs>
+            args: Prisma.publicationCountArgs<ExtArgs>
             result: $Utils.Optional<PublicationCountAggregateOutputType> | number
           }
         }
@@ -1850,7 +1850,7 @@ export namespace Prisma {
     payments?: paymentsOmit
     bankpayments?: bankpaymentsOmit
     mobilepayments?: mobilepaymentsOmit
-    publication?: PublicationOmit
+    publication?: publicationOmit
   }
 
   /* Types for Logging */
@@ -14300,7 +14300,7 @@ export namespace Prisma {
 
 
   /**
-   * Model Publication
+   * Model publication
    */
 
   export type AggregatePublication = {
@@ -14380,37 +14380,37 @@ export namespace Prisma {
 
   export type PublicationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Publication to aggregate.
+     * Filter which publication to aggregate.
      */
-    where?: PublicationWhereInput
+    where?: publicationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Publications to fetch.
+     * Determine the order of publications to fetch.
      */
-    orderBy?: PublicationOrderByWithRelationInput | PublicationOrderByWithRelationInput[]
+    orderBy?: publicationOrderByWithRelationInput | publicationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: PublicationWhereUniqueInput
+    cursor?: publicationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Publications from the position of the cursor.
+     * Take `±n` publications from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Publications.
+     * Skip the first `n` publications.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Publications
+     * Count returned publications
     **/
     _count?: true | PublicationCountAggregateInputType
     /**
@@ -14450,11 +14450,11 @@ export namespace Prisma {
 
 
 
-  export type PublicationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PublicationWhereInput
-    orderBy?: PublicationOrderByWithAggregationInput | PublicationOrderByWithAggregationInput[]
+  export type publicationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: publicationWhereInput
+    orderBy?: publicationOrderByWithAggregationInput | publicationOrderByWithAggregationInput[]
     by: PublicationScalarFieldEnum[] | PublicationScalarFieldEnum
-    having?: PublicationScalarWhereWithAggregatesInput
+    having?: publicationScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: PublicationCountAggregateInputType | true
@@ -14477,7 +14477,7 @@ export namespace Prisma {
     _max: PublicationMaxAggregateOutputType | null
   }
 
-  type GetPublicationGroupByPayload<T extends PublicationGroupByArgs> = Prisma.PrismaPromise<
+  type GetPublicationGroupByPayload<T extends publicationGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<PublicationGroupByOutputType, T['by']> &
         {
@@ -14491,7 +14491,7 @@ export namespace Prisma {
     >
 
 
-  export type PublicationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type publicationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     youtubeId?: boolean
@@ -14501,7 +14501,7 @@ export namespace Prisma {
 
 
 
-  export type PublicationSelectScalar = {
+  export type publicationSelectScalar = {
     id?: boolean
     title?: boolean
     youtubeId?: boolean
@@ -14509,10 +14509,10 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PublicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "youtubeId" | "createdAt" | "updatedAt", ExtArgs["result"]["publication"]>
+  export type publicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "youtubeId" | "createdAt" | "updatedAt", ExtArgs["result"]["publication"]>
 
-  export type $PublicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Publication"
+  export type $publicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "publication"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -14524,18 +14524,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type PublicationGetPayload<S extends boolean | null | undefined | PublicationDefaultArgs> = $Result.GetResult<Prisma.$PublicationPayload, S>
+  type publicationGetPayload<S extends boolean | null | undefined | publicationDefaultArgs> = $Result.GetResult<Prisma.$publicationPayload, S>
 
-  type PublicationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PublicationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type publicationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<publicationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: PublicationCountAggregateInputType | true
     }
 
-  export interface PublicationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Publication'], meta: { name: 'Publication' } }
+  export interface publicationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['publication'], meta: { name: 'publication' } }
     /**
      * Find zero or one Publication that matches the filter.
-     * @param {PublicationFindUniqueArgs} args - Arguments to find a Publication
+     * @param {publicationFindUniqueArgs} args - Arguments to find a Publication
      * @example
      * // Get one Publication
      * const publication = await prisma.publication.findUnique({
@@ -14544,12 +14544,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends PublicationFindUniqueArgs>(args: SelectSubset<T, PublicationFindUniqueArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends publicationFindUniqueArgs>(args: SelectSubset<T, publicationFindUniqueArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Publication that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {PublicationFindUniqueOrThrowArgs} args - Arguments to find a Publication
+     * @param {publicationFindUniqueOrThrowArgs} args - Arguments to find a Publication
      * @example
      * // Get one Publication
      * const publication = await prisma.publication.findUniqueOrThrow({
@@ -14558,13 +14558,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends PublicationFindUniqueOrThrowArgs>(args: SelectSubset<T, PublicationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends publicationFindUniqueOrThrowArgs>(args: SelectSubset<T, publicationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Publication that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PublicationFindFirstArgs} args - Arguments to find a Publication
+     * @param {publicationFindFirstArgs} args - Arguments to find a Publication
      * @example
      * // Get one Publication
      * const publication = await prisma.publication.findFirst({
@@ -14573,14 +14573,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends PublicationFindFirstArgs>(args?: SelectSubset<T, PublicationFindFirstArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends publicationFindFirstArgs>(args?: SelectSubset<T, publicationFindFirstArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Publication that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PublicationFindFirstOrThrowArgs} args - Arguments to find a Publication
+     * @param {publicationFindFirstOrThrowArgs} args - Arguments to find a Publication
      * @example
      * // Get one Publication
      * const publication = await prisma.publication.findFirstOrThrow({
@@ -14589,13 +14589,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends PublicationFindFirstOrThrowArgs>(args?: SelectSubset<T, PublicationFindFirstOrThrowArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends publicationFindFirstOrThrowArgs>(args?: SelectSubset<T, publicationFindFirstOrThrowArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Publications that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PublicationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {publicationFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Publications
      * const publications = await prisma.publication.findMany()
@@ -14607,11 +14607,11 @@ export namespace Prisma {
      * const publicationWithIdOnly = await prisma.publication.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends PublicationFindManyArgs>(args?: SelectSubset<T, PublicationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends publicationFindManyArgs>(args?: SelectSubset<T, publicationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Publication.
-     * @param {PublicationCreateArgs} args - Arguments to create a Publication.
+     * @param {publicationCreateArgs} args - Arguments to create a Publication.
      * @example
      * // Create one Publication
      * const Publication = await prisma.publication.create({
@@ -14621,11 +14621,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends PublicationCreateArgs>(args: SelectSubset<T, PublicationCreateArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends publicationCreateArgs>(args: SelectSubset<T, publicationCreateArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Publications.
-     * @param {PublicationCreateManyArgs} args - Arguments to create many Publications.
+     * @param {publicationCreateManyArgs} args - Arguments to create many Publications.
      * @example
      * // Create many Publications
      * const publication = await prisma.publication.createMany({
@@ -14635,11 +14635,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends PublicationCreateManyArgs>(args?: SelectSubset<T, PublicationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends publicationCreateManyArgs>(args?: SelectSubset<T, publicationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a Publication.
-     * @param {PublicationDeleteArgs} args - Arguments to delete one Publication.
+     * @param {publicationDeleteArgs} args - Arguments to delete one Publication.
      * @example
      * // Delete one Publication
      * const Publication = await prisma.publication.delete({
@@ -14649,11 +14649,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends PublicationDeleteArgs>(args: SelectSubset<T, PublicationDeleteArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends publicationDeleteArgs>(args: SelectSubset<T, publicationDeleteArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Publication.
-     * @param {PublicationUpdateArgs} args - Arguments to update one Publication.
+     * @param {publicationUpdateArgs} args - Arguments to update one Publication.
      * @example
      * // Update one Publication
      * const publication = await prisma.publication.update({
@@ -14666,11 +14666,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends PublicationUpdateArgs>(args: SelectSubset<T, PublicationUpdateArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends publicationUpdateArgs>(args: SelectSubset<T, publicationUpdateArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Publications.
-     * @param {PublicationDeleteManyArgs} args - Arguments to filter Publications to delete.
+     * @param {publicationDeleteManyArgs} args - Arguments to filter Publications to delete.
      * @example
      * // Delete a few Publications
      * const { count } = await prisma.publication.deleteMany({
@@ -14680,13 +14680,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends PublicationDeleteManyArgs>(args?: SelectSubset<T, PublicationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends publicationDeleteManyArgs>(args?: SelectSubset<T, publicationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Publications.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PublicationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {publicationUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Publications
      * const publication = await prisma.publication.updateMany({
@@ -14699,11 +14699,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends PublicationUpdateManyArgs>(args: SelectSubset<T, PublicationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends publicationUpdateManyArgs>(args: SelectSubset<T, publicationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Publication.
-     * @param {PublicationUpsertArgs} args - Arguments to update or create a Publication.
+     * @param {publicationUpsertArgs} args - Arguments to update or create a Publication.
      * @example
      * // Update or create a Publication
      * const publication = await prisma.publication.upsert({
@@ -14718,14 +14718,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends PublicationUpsertArgs>(args: SelectSubset<T, PublicationUpsertArgs<ExtArgs>>): Prisma__PublicationClient<$Result.GetResult<Prisma.$PublicationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends publicationUpsertArgs>(args: SelectSubset<T, publicationUpsertArgs<ExtArgs>>): Prisma__publicationClient<$Result.GetResult<Prisma.$publicationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Publications.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PublicationCountArgs} args - Arguments to filter Publications to count.
+     * @param {publicationCountArgs} args - Arguments to filter Publications to count.
      * @example
      * // Count the number of Publications
      * const count = await prisma.publication.count({
@@ -14734,8 +14734,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends PublicationCountArgs>(
-      args?: Subset<T, PublicationCountArgs>,
+    count<T extends publicationCountArgs>(
+      args?: Subset<T, publicationCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -14774,7 +14774,7 @@ export namespace Prisma {
      * Group by Publication.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PublicationGroupByArgs} args - Group by arguments.
+     * @param {publicationGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -14789,14 +14789,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PublicationGroupByArgs,
+      T extends publicationGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PublicationGroupByArgs['orderBy'] }
-        : { orderBy?: PublicationGroupByArgs['orderBy'] },
+        ? { orderBy: publicationGroupByArgs['orderBy'] }
+        : { orderBy?: publicationGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -14845,20 +14845,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PublicationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPublicationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, publicationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPublicationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Publication model
+   * Fields of the publication model
    */
-  readonly fields: PublicationFieldRefs;
+  readonly fields: publicationFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Publication.
+   * The delegate class that acts as a "Promise-like" for publication.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PublicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__publicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -14886,332 +14886,332 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Publication model
+   * Fields of the publication model
    */
-  interface PublicationFieldRefs {
-    readonly id: FieldRef<"Publication", 'Int'>
-    readonly title: FieldRef<"Publication", 'String'>
-    readonly youtubeId: FieldRef<"Publication", 'String'>
-    readonly createdAt: FieldRef<"Publication", 'DateTime'>
-    readonly updatedAt: FieldRef<"Publication", 'DateTime'>
+  interface publicationFieldRefs {
+    readonly id: FieldRef<"publication", 'Int'>
+    readonly title: FieldRef<"publication", 'String'>
+    readonly youtubeId: FieldRef<"publication", 'String'>
+    readonly createdAt: FieldRef<"publication", 'DateTime'>
+    readonly updatedAt: FieldRef<"publication", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Publication findUnique
+   * publication findUnique
    */
-  export type PublicationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * Filter, which Publication to fetch.
+     * Filter, which publication to fetch.
      */
-    where: PublicationWhereUniqueInput
+    where: publicationWhereUniqueInput
   }
 
   /**
-   * Publication findUniqueOrThrow
+   * publication findUniqueOrThrow
    */
-  export type PublicationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * Filter, which Publication to fetch.
+     * Filter, which publication to fetch.
      */
-    where: PublicationWhereUniqueInput
+    where: publicationWhereUniqueInput
   }
 
   /**
-   * Publication findFirst
+   * publication findFirst
    */
-  export type PublicationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * Filter, which Publication to fetch.
+     * Filter, which publication to fetch.
      */
-    where?: PublicationWhereInput
+    where?: publicationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Publications to fetch.
+     * Determine the order of publications to fetch.
      */
-    orderBy?: PublicationOrderByWithRelationInput | PublicationOrderByWithRelationInput[]
+    orderBy?: publicationOrderByWithRelationInput | publicationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Publications.
+     * Sets the position for searching for publications.
      */
-    cursor?: PublicationWhereUniqueInput
+    cursor?: publicationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Publications from the position of the cursor.
+     * Take `±n` publications from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Publications.
+     * Skip the first `n` publications.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Publications.
+     * Filter by unique combinations of publications.
      */
     distinct?: PublicationScalarFieldEnum | PublicationScalarFieldEnum[]
   }
 
   /**
-   * Publication findFirstOrThrow
+   * publication findFirstOrThrow
    */
-  export type PublicationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * Filter, which Publication to fetch.
+     * Filter, which publication to fetch.
      */
-    where?: PublicationWhereInput
+    where?: publicationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Publications to fetch.
+     * Determine the order of publications to fetch.
      */
-    orderBy?: PublicationOrderByWithRelationInput | PublicationOrderByWithRelationInput[]
+    orderBy?: publicationOrderByWithRelationInput | publicationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Publications.
+     * Sets the position for searching for publications.
      */
-    cursor?: PublicationWhereUniqueInput
+    cursor?: publicationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Publications from the position of the cursor.
+     * Take `±n` publications from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Publications.
+     * Skip the first `n` publications.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Publications.
+     * Filter by unique combinations of publications.
      */
     distinct?: PublicationScalarFieldEnum | PublicationScalarFieldEnum[]
   }
 
   /**
-   * Publication findMany
+   * publication findMany
    */
-  export type PublicationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * Filter, which Publications to fetch.
+     * Filter, which publications to fetch.
      */
-    where?: PublicationWhereInput
+    where?: publicationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Publications to fetch.
+     * Determine the order of publications to fetch.
      */
-    orderBy?: PublicationOrderByWithRelationInput | PublicationOrderByWithRelationInput[]
+    orderBy?: publicationOrderByWithRelationInput | publicationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Publications.
+     * Sets the position for listing publications.
      */
-    cursor?: PublicationWhereUniqueInput
+    cursor?: publicationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Publications from the position of the cursor.
+     * Take `±n` publications from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Publications.
+     * Skip the first `n` publications.
      */
     skip?: number
     distinct?: PublicationScalarFieldEnum | PublicationScalarFieldEnum[]
   }
 
   /**
-   * Publication create
+   * publication create
    */
-  export type PublicationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * The data needed to create a Publication.
+     * The data needed to create a publication.
      */
-    data: XOR<PublicationCreateInput, PublicationUncheckedCreateInput>
+    data: XOR<publicationCreateInput, publicationUncheckedCreateInput>
   }
 
   /**
-   * Publication createMany
+   * publication createMany
    */
-  export type PublicationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Publications.
+     * The data used to create many publications.
      */
-    data: PublicationCreateManyInput | PublicationCreateManyInput[]
+    data: publicationCreateManyInput | publicationCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Publication update
+   * publication update
    */
-  export type PublicationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * The data needed to update a Publication.
+     * The data needed to update a publication.
      */
-    data: XOR<PublicationUpdateInput, PublicationUncheckedUpdateInput>
+    data: XOR<publicationUpdateInput, publicationUncheckedUpdateInput>
     /**
-     * Choose, which Publication to update.
+     * Choose, which publication to update.
      */
-    where: PublicationWhereUniqueInput
+    where: publicationWhereUniqueInput
   }
 
   /**
-   * Publication updateMany
+   * publication updateMany
    */
-  export type PublicationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Publications.
+     * The data used to update publications.
      */
-    data: XOR<PublicationUpdateManyMutationInput, PublicationUncheckedUpdateManyInput>
+    data: XOR<publicationUpdateManyMutationInput, publicationUncheckedUpdateManyInput>
     /**
-     * Filter which Publications to update
+     * Filter which publications to update
      */
-    where?: PublicationWhereInput
+    where?: publicationWhereInput
     /**
-     * Limit how many Publications to update.
+     * Limit how many publications to update.
      */
     limit?: number
   }
 
   /**
-   * Publication upsert
+   * publication upsert
    */
-  export type PublicationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * The filter to search for the Publication to update in case it exists.
+     * The filter to search for the publication to update in case it exists.
      */
-    where: PublicationWhereUniqueInput
+    where: publicationWhereUniqueInput
     /**
-     * In case the Publication found by the `where` argument doesn't exist, create a new Publication with this data.
+     * In case the publication found by the `where` argument doesn't exist, create a new publication with this data.
      */
-    create: XOR<PublicationCreateInput, PublicationUncheckedCreateInput>
+    create: XOR<publicationCreateInput, publicationUncheckedCreateInput>
     /**
-     * In case the Publication was found with the provided `where` argument, update it with this data.
+     * In case the publication was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<PublicationUpdateInput, PublicationUncheckedUpdateInput>
+    update: XOR<publicationUpdateInput, publicationUncheckedUpdateInput>
   }
 
   /**
-   * Publication delete
+   * publication delete
    */
-  export type PublicationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
     /**
-     * Filter which Publication to delete.
+     * Filter which publication to delete.
      */
-    where: PublicationWhereUniqueInput
+    where: publicationWhereUniqueInput
   }
 
   /**
-   * Publication deleteMany
+   * publication deleteMany
    */
-  export type PublicationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Publications to delete
+     * Filter which publications to delete
      */
-    where?: PublicationWhereInput
+    where?: publicationWhereInput
     /**
-     * Limit how many Publications to delete.
+     * Limit how many publications to delete.
      */
     limit?: number
   }
 
   /**
-   * Publication without action
+   * publication without action
    */
-  export type PublicationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type publicationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Publication
+     * Select specific fields to fetch from the publication
      */
-    select?: PublicationSelect<ExtArgs> | null
+    select?: publicationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Publication
+     * Omit specific fields from the publication
      */
-    omit?: PublicationOmit<ExtArgs> | null
+    omit?: publicationOmit<ExtArgs> | null
   }
 
 
@@ -15551,12 +15551,12 @@ export namespace Prisma {
   export type mobilepaymentsOrderByRelevanceFieldEnum = (typeof mobilepaymentsOrderByRelevanceFieldEnum)[keyof typeof mobilepaymentsOrderByRelevanceFieldEnum]
 
 
-  export const PublicationOrderByRelevanceFieldEnum: {
+  export const publicationOrderByRelevanceFieldEnum: {
     title: 'title',
     youtubeId: 'youtubeId'
   };
 
-  export type PublicationOrderByRelevanceFieldEnum = (typeof PublicationOrderByRelevanceFieldEnum)[keyof typeof PublicationOrderByRelevanceFieldEnum]
+  export type publicationOrderByRelevanceFieldEnum = (typeof publicationOrderByRelevanceFieldEnum)[keyof typeof publicationOrderByRelevanceFieldEnum]
 
 
   /**
@@ -16437,59 +16437,59 @@ export namespace Prisma {
     paymentId?: IntWithAggregatesFilter<"mobilepayments"> | number
   }
 
-  export type PublicationWhereInput = {
-    AND?: PublicationWhereInput | PublicationWhereInput[]
-    OR?: PublicationWhereInput[]
-    NOT?: PublicationWhereInput | PublicationWhereInput[]
-    id?: IntFilter<"Publication"> | number
-    title?: StringFilter<"Publication"> | string
-    youtubeId?: StringFilter<"Publication"> | string
-    createdAt?: DateTimeFilter<"Publication"> | Date | string
-    updatedAt?: DateTimeFilter<"Publication"> | Date | string
+  export type publicationWhereInput = {
+    AND?: publicationWhereInput | publicationWhereInput[]
+    OR?: publicationWhereInput[]
+    NOT?: publicationWhereInput | publicationWhereInput[]
+    id?: IntFilter<"publication"> | number
+    title?: StringFilter<"publication"> | string
+    youtubeId?: StringFilter<"publication"> | string
+    createdAt?: DateTimeFilter<"publication"> | Date | string
+    updatedAt?: DateTimeFilter<"publication"> | Date | string
   }
 
-  export type PublicationOrderByWithRelationInput = {
+  export type publicationOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     youtubeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _relevance?: PublicationOrderByRelevanceInput
+    _relevance?: publicationOrderByRelevanceInput
   }
 
-  export type PublicationWhereUniqueInput = Prisma.AtLeast<{
+  export type publicationWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: PublicationWhereInput | PublicationWhereInput[]
-    OR?: PublicationWhereInput[]
-    NOT?: PublicationWhereInput | PublicationWhereInput[]
-    title?: StringFilter<"Publication"> | string
-    youtubeId?: StringFilter<"Publication"> | string
-    createdAt?: DateTimeFilter<"Publication"> | Date | string
-    updatedAt?: DateTimeFilter<"Publication"> | Date | string
+    AND?: publicationWhereInput | publicationWhereInput[]
+    OR?: publicationWhereInput[]
+    NOT?: publicationWhereInput | publicationWhereInput[]
+    title?: StringFilter<"publication"> | string
+    youtubeId?: StringFilter<"publication"> | string
+    createdAt?: DateTimeFilter<"publication"> | Date | string
+    updatedAt?: DateTimeFilter<"publication"> | Date | string
   }, "id">
 
-  export type PublicationOrderByWithAggregationInput = {
+  export type publicationOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     youtubeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: PublicationCountOrderByAggregateInput
-    _avg?: PublicationAvgOrderByAggregateInput
-    _max?: PublicationMaxOrderByAggregateInput
-    _min?: PublicationMinOrderByAggregateInput
-    _sum?: PublicationSumOrderByAggregateInput
+    _count?: publicationCountOrderByAggregateInput
+    _avg?: publicationAvgOrderByAggregateInput
+    _max?: publicationMaxOrderByAggregateInput
+    _min?: publicationMinOrderByAggregateInput
+    _sum?: publicationSumOrderByAggregateInput
   }
 
-  export type PublicationScalarWhereWithAggregatesInput = {
-    AND?: PublicationScalarWhereWithAggregatesInput | PublicationScalarWhereWithAggregatesInput[]
-    OR?: PublicationScalarWhereWithAggregatesInput[]
-    NOT?: PublicationScalarWhereWithAggregatesInput | PublicationScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Publication"> | number
-    title?: StringWithAggregatesFilter<"Publication"> | string
-    youtubeId?: StringWithAggregatesFilter<"Publication"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Publication"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Publication"> | Date | string
+  export type publicationScalarWhereWithAggregatesInput = {
+    AND?: publicationScalarWhereWithAggregatesInput | publicationScalarWhereWithAggregatesInput[]
+    OR?: publicationScalarWhereWithAggregatesInput[]
+    NOT?: publicationScalarWhereWithAggregatesInput | publicationScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"publication"> | number
+    title?: StringWithAggregatesFilter<"publication"> | string
+    youtubeId?: StringWithAggregatesFilter<"publication"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"publication"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"publication"> | Date | string
   }
 
   export type announcementsCreateInput = {
@@ -17348,14 +17348,14 @@ export namespace Prisma {
     paymentId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type PublicationCreateInput = {
+  export type publicationCreateInput = {
     title: string
     youtubeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PublicationUncheckedCreateInput = {
+  export type publicationUncheckedCreateInput = {
     id?: number
     title: string
     youtubeId: string
@@ -17363,14 +17363,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PublicationUpdateInput = {
+  export type publicationUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     youtubeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PublicationUncheckedUpdateInput = {
+  export type publicationUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     youtubeId?: StringFieldUpdateOperationsInput | string
@@ -17378,7 +17378,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PublicationCreateManyInput = {
+  export type publicationCreateManyInput = {
     id?: number
     title: string
     youtubeId: string
@@ -17386,14 +17386,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PublicationUpdateManyMutationInput = {
+  export type publicationUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     youtubeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PublicationUncheckedUpdateManyInput = {
+  export type publicationUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     youtubeId?: StringFieldUpdateOperationsInput | string
@@ -18141,13 +18141,13 @@ export namespace Prisma {
     paymentId?: SortOrder
   }
 
-  export type PublicationOrderByRelevanceInput = {
-    fields: PublicationOrderByRelevanceFieldEnum | PublicationOrderByRelevanceFieldEnum[]
+  export type publicationOrderByRelevanceInput = {
+    fields: publicationOrderByRelevanceFieldEnum | publicationOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type PublicationCountOrderByAggregateInput = {
+  export type publicationCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     youtubeId?: SortOrder
@@ -18155,19 +18155,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PublicationAvgOrderByAggregateInput = {
+  export type publicationAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type PublicationMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    youtubeId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PublicationMinOrderByAggregateInput = {
+  export type publicationMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     youtubeId?: SortOrder
@@ -18175,7 +18167,15 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PublicationSumOrderByAggregateInput = {
+  export type publicationMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    youtubeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type publicationSumOrderByAggregateInput = {
     id?: SortOrder
   }
 

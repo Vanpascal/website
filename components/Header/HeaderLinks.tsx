@@ -1,62 +1,68 @@
+// HeaderLinks.ts
 export type DropdownItem = {
   href: string;
   label: string;
+  isExternal?: boolean; // auto-computed for external links
 };
 
-export const dropdowns = [
+export type DropdownMenu = {
+  label: string;
+  key: string;
+  items: DropdownItem[];
+};
+
+// Helper: mark external links
+const withExternalFlag = (items: DropdownItem[]): DropdownItem[] =>
+  items.map((item) => ({
+    ...item,
+    isExternal: item.href.startsWith("http"),
+  }));
+
+export const dropdowns: DropdownMenu[] = [
   {
     label: "About Us",
     key: "about",
-    items: [
+    items: withExternalFlag([
       { href: "/about", label: "About DB-Iringa" },
       { href: "/about/management", label: "Management & Staff" },
       { href: "/about/policies", label: "Our Policies" },
-    ],
+    ]),
   },
   {
     label: "Admission",
     key: "admission",
-    items: [
+    items: withExternalFlag([
       { href: "/admission", label: "Admission Information" },
-      { href: "/oas.donboscoiringa.org", label: "Online Admission System" },
-    ],
+      { href: "https://oas.donboscoiringa.org", label: "Online Admission System" },
+    ]),
   },
   {
     label: "Courses Offered",
     key: "courses",
-    items: [
+    items: withExternalFlag([
       { href: "/programs/long-courses", label: "Long Courses" },
       { href: "/programs/short-courses", label: "Short Courses" },
-    ],
+    ]),
   },
   {
     label: "Production Units",
     key: "production",
-    items: [
-      {
-        href: "/production-units/motor-vehicle",
-        label: "Motor Vehicle Mechanics",
-      },
+    items: withExternalFlag([
+      { href: "/production-units/motor-vehicle", label: "Motor Vehicle Mechanics" },
       { href: "/production-units/carpentry", label: "Carpentry & Joinery" },
       { href: "/production-units/printing", label: "Offset Machine Printing" },
-      {
-        href: "/production-units/welding",
-        label: "Welding & Metal Fabrication",
-      },
+      { href: "/production-units/welding", label: "Welding & Metal Fabrication" },
       { href: "/production-units/masonry", label: "Masonry & Bricklaying" },
       { href: "/production-units/tailoring", label: "DSCT (Tailoring)" },
-    ],
+    ]),
   },
   {
     label: "ICT Services",
     key: "ict",
-    items: [
-      { href: "oas.donboscoiringa.org", label: "Online Admission System" },
-      {
-        href: "domis.donboscoiringa.org",
-        label: "Don Bosco Iringa MIS (DOMIS)",
-      },
+    items: withExternalFlag([
+      { href: "https://oas.donboscoiringa.org", label: "Online Admission System" },
+      { href: "https://domis.donboscoiringa.org", label: "Don Bosco Iringa MIS (DOMIS)" },
       { href: "/admin", label: "Contents Management" },
-    ],
+    ]),
   },
 ];

@@ -7,15 +7,6 @@ import { FaYoutube } from "react-icons/fa";
 export default function MessageFromRector() {
   return (
     <section className="relative py-16 bg-gradient-to-b from-gray-100 to-white overflow-hidden">
-      {/* Background Pattern with animation */}
-      <motion.div
-        initial={{ backgroundPosition: "0px 0px" }}
-        animate={{ backgroundPosition: "200px 200px" }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 opacity-10 bg-[url('/patterns/geometry.svg')] bg-repeat bg-[length:220px_220px] mix-blend-multiply"
-        aria-hidden="true"
-      />
-
       {/* Gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-transparent pointer-events-none" />
 
@@ -30,7 +21,7 @@ export default function MessageFromRector() {
             className="flex-1 flex flex-col space-y-6"
           >
             <div className="flex items-center space-x-6">
-              <div className="relative w-32 h-32">
+              <div className="relative w-32 h-32 hover:scale-105 transition-transform duration-500">
                 <Image
                   src="/images/Principal.jpg"
                   alt="Rector"
@@ -43,10 +34,9 @@ export default function MessageFromRector() {
                 <h2 className="text-2xl md:text-3xl font-bold text-purple-900 mt-2">
                   Fr. Josephat Utouh SDB
                 </h2>
-                <p className="uppercase tracking-wide text-orange-500 font-bold">
-                  Fr. Rector & The Principal
+                <p className="uppercase tracking-wide text-orange-600 font-bold">
+                  The Director & Principal
                 </p>
-                {/* Motto */}
                 <p className="italic text-purple-700 font-semibold mt-1">
                   “Tulenge Juu Daima”
                 </p>
@@ -77,10 +67,9 @@ export default function MessageFromRector() {
               every young person who walks through our doors.
             </p>
 
-            {/* Call to Action Button */}
             <motion.a
-              href="/admissions"
-              whileHover={{ scale: 1.05 }}
+              href="/admission"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 20px #FF8C00" }}
               whileTap={{ scale: 0.95 }}
               className="self-start inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-purple-700 text-white font-bold shadow-lg hover:shadow-2xl transition-all duration-300"
             >
@@ -88,7 +77,7 @@ export default function MessageFromRector() {
             </motion.a>
           </motion.div>
 
-          {/* Right Column - Rector's Welcome Video */}
+          {/* Right Column - Video */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +85,7 @@ export default function MessageFromRector() {
             viewport={{ once: true }}
             className="flex-1 flex flex-col justify-center items-center md:items-start space-y-4 w-full"
           >
-            {/* Header Row with Subscribe Button */}
+            {/* Header + Subscribe */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -107,7 +96,6 @@ export default function MessageFromRector() {
                 Karibu Don Bosco Iringa!
               </h3>
 
-              {/* Responsive Subscribe Button */}
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px #FF0000" }}
                 animate={{
@@ -135,12 +123,12 @@ export default function MessageFromRector() {
               </motion.button>
             </motion.div>
 
-            {/* Responsive Video Container */}
+            {/* Video */}
             <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
               <iframe
-                className="absolute top-0 left-0 w-full h-full rounded-xl shadow-2xl border-4 border-[#FFD700]"
-                src="https://www.youtube.com/embed/YwXBjKqBrxQ?list=RDYwXBjKqBrxQ"
-                title="TULENGE JUU DAIMA | KARIBU DON BOSCO IRINGA"
+                className="absolute top-0 left-0 w-full h-full rounded-xl shadow-2xl border-4 border-[#FFD700] hover:scale-105 transition-transform duration-500"
+                src="https://www.youtube.com/embed/vSWAnQQCQ8k"
+                title="A Message from the Principal"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
