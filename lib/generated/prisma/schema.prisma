@@ -144,5 +144,5 @@ model publication {
   title     String
   youtubeId String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
