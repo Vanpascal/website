@@ -11,24 +11,39 @@ import { prisma } from "@/lib/prisma";
 // Create a new banner with a single photo
 export const createBanner = async (formData: FormData) => {
   try {
+    console.log("=== createBanner called ===");
+
     const title = formData.get("title");
-    const photo = formData.get("photo") as File;
+    const photo = formData.get("photo");
+
+    console.log("Title:", title);
+    console.log("Photo:", photo);
 
     if (typeof title !== "string" || title.trim() === "") {
-      throw new Error("Title is required and must be a string.");
+      throw new Error("Title is required.");
     }
 
     let photoLink: string | null = null;
 
-    if (photo && photo.size > 0) {
-      const photoBuffer = await photo.arrayBuffer();
+    if (photo instanceof File && photo.size > 0) {
+      console.log("Uploading:", photo.name, photo.size);
+
       const imagesDir = path.join(process.cwd(), "public/images/banners");
-      const uniqueFilename = `${randomUUID()}-${photo.name}`;
-      const filePath = path.join(imagesDir, uniqueFilename);
       await fs.mkdir(imagesDir, { recursive: true });
-      await fs.writeFile(filePath, Buffer.from(photoBuffer));
-      photoLink = `/images/banners/${uniqueFilename}`;
+
+      const filename = `${randomUUID()}-${photo.name}`;
+      const filePath = path.join(imagesDir, filename);
+
+      const buffer = Buffer.from(await photo.arrayBuffer());
+
+      await fs.writeFile(filePath, buffer);
+
+      photoLink = `/images/banners/${filename}`;
+
+      console.log("Saved:", photoLink);
     }
+
+    console.log("Creating database record...");
 
     await prisma.banners.create({
       data: {
@@ -37,9 +52,12 @@ export const createBanner = async (formData: FormData) => {
       },
     });
 
+    console.log("Database record created.");
+
     revalidatePath("/admin/settings/banners");
   } catch (error) {
-    console.error(getErrorMessages(error));
+    console.error("SERVER ACTION ERROR:");
+    console.error(error);
     throw error;
   }
 };
@@ -69,7 +87,7 @@ export const updateBanner = async (id: number, formData: FormData) => {
         const oldPhotoPath = path.join(
           process.cwd(),
           "public",
-          existingBanner.link
+          existingBanner.link,
         );
         try {
           await fs.unlink(oldPhotoPath);
