@@ -17,15 +17,15 @@ model announcements {
 }
 
 model banners {
-  id        Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  title     String
+  title String
 
-  subtitle  String?
+  subtitle String?
 
-  image     String
+  image String
 
-  category  BannerCategory @default(GENERAL)
+  category BannerCategory @default(GENERAL)
 
   primaryButtonText String?
   primaryButtonLink String?
@@ -42,14 +42,21 @@ model banners {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
 
+  @@index([isActive])
+  @@index([priority])
+  @@index([category])
+}
 
 enum BannerCategory {
   ADMISSION
+
   EVENT
+
   NEWS
+
   PROMOTION
+
   GENERAL
 }
 

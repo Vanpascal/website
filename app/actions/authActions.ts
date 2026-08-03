@@ -32,12 +32,13 @@ export const loginUser = async (formData: FormData) => {
         errors: { email: ["Invalid email or password"] },
       };
 
-    const isPasswordValid = await argon2.verify(user.password, password);
-    if (!isPasswordValid)
+    // const isPasswordValid = await argon2.verify(user.password, password);
+    if (user.password !== password) {
       return {
         success: false,
         errors: { email: ["Invalid email or password"] },
       };
+    }
 
     // Create session
     await createSession(user.id.toString());

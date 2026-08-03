@@ -17,10 +17,47 @@ model announcements {
 }
 
 model banners {
-  id        Int      @id @default(autoincrement())
-  title     String
-  link      String?
+  id Int @id @default(autoincrement())
+
+  title String
+
+  subtitle String?
+
+  image String
+
+  category BannerCategory @default(GENERAL)
+
+  primaryButtonText String?
+  primaryButtonLink String?
+
+  secondaryButtonText String?
+  secondaryButtonLink String?
+
+  priority Int @default(0)
+
+  isActive Boolean @default(true)
+
+  startDate DateTime?
+  endDate   DateTime?
+
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([priority])
+  @@index([category])
+}
+
+enum BannerCategory {
+  ADMISSION
+
+  EVENT
+
+  NEWS
+
+  PROMOTION
+
+  GENERAL
 }
 
 model comments {

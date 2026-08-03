@@ -85,6 +85,26 @@ export type mobilepayments = $Result.DefaultSelection<Prisma.$mobilepaymentsPayl
 export type publication = $Result.DefaultSelection<Prisma.$publicationPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const BannerCategory: {
+  ADMISSION: 'ADMISSION',
+  EVENT: 'EVENT',
+  NEWS: 'NEWS',
+  PROMOTION: 'PROMOTION',
+  GENERAL: 'GENERAL'
+};
+
+export type BannerCategory = (typeof BannerCategory)[keyof typeof BannerCategory]
+
+}
+
+export type BannerCategory = $Enums.BannerCategory
+
+export const BannerCategory: typeof $Enums.BannerCategory
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -399,8 +419,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.16.1
-   * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
+   * Prisma Client JS version: 6.19.3
+   * Query Engine version: c2990dca591cba766e3b7ef5d9e8a84796e47ab7
    */
   export type PrismaVersion = {
     client: string
@@ -413,6 +433,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -2865,62 +2886,132 @@ export namespace Prisma {
 
   export type BannersAvgAggregateOutputType = {
     id: number | null
+    priority: number | null
   }
 
   export type BannersSumAggregateOutputType = {
     id: number | null
+    priority: number | null
   }
 
   export type BannersMinAggregateOutputType = {
     id: number | null
     title: string | null
-    link: string | null
+    subtitle: string | null
+    image: string | null
+    category: $Enums.BannerCategory | null
+    primaryButtonText: string | null
+    primaryButtonLink: string | null
+    secondaryButtonText: string | null
+    secondaryButtonLink: string | null
+    priority: number | null
+    isActive: boolean | null
+    startDate: Date | null
+    endDate: Date | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type BannersMaxAggregateOutputType = {
     id: number | null
     title: string | null
-    link: string | null
+    subtitle: string | null
+    image: string | null
+    category: $Enums.BannerCategory | null
+    primaryButtonText: string | null
+    primaryButtonLink: string | null
+    secondaryButtonText: string | null
+    secondaryButtonLink: string | null
+    priority: number | null
+    isActive: boolean | null
+    startDate: Date | null
+    endDate: Date | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type BannersCountAggregateOutputType = {
     id: number
     title: number
-    link: number
+    subtitle: number
+    image: number
+    category: number
+    primaryButtonText: number
+    primaryButtonLink: number
+    secondaryButtonText: number
+    secondaryButtonLink: number
+    priority: number
+    isActive: number
+    startDate: number
+    endDate: number
     createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type BannersAvgAggregateInputType = {
     id?: true
+    priority?: true
   }
 
   export type BannersSumAggregateInputType = {
     id?: true
+    priority?: true
   }
 
   export type BannersMinAggregateInputType = {
     id?: true
     title?: true
-    link?: true
+    subtitle?: true
+    image?: true
+    category?: true
+    primaryButtonText?: true
+    primaryButtonLink?: true
+    secondaryButtonText?: true
+    secondaryButtonLink?: true
+    priority?: true
+    isActive?: true
+    startDate?: true
+    endDate?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type BannersMaxAggregateInputType = {
     id?: true
     title?: true
-    link?: true
+    subtitle?: true
+    image?: true
+    category?: true
+    primaryButtonText?: true
+    primaryButtonLink?: true
+    secondaryButtonText?: true
+    secondaryButtonLink?: true
+    priority?: true
+    isActive?: true
+    startDate?: true
+    endDate?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type BannersCountAggregateInputType = {
     id?: true
     title?: true
-    link?: true
+    subtitle?: true
+    image?: true
+    category?: true
+    primaryButtonText?: true
+    primaryButtonLink?: true
+    secondaryButtonText?: true
+    secondaryButtonLink?: true
+    priority?: true
+    isActive?: true
+    startDate?: true
+    endDate?: true
     createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -3013,8 +3104,19 @@ export namespace Prisma {
   export type BannersGroupByOutputType = {
     id: number
     title: string
-    link: string | null
+    subtitle: string | null
+    image: string
+    category: $Enums.BannerCategory
+    primaryButtonText: string | null
+    primaryButtonLink: string | null
+    secondaryButtonText: string | null
+    secondaryButtonLink: string | null
+    priority: number
+    isActive: boolean
+    startDate: Date | null
+    endDate: Date | null
     createdAt: Date
+    updatedAt: Date
     _count: BannersCountAggregateOutputType | null
     _avg: BannersAvgAggregateOutputType | null
     _sum: BannersSumAggregateOutputType | null
@@ -3039,8 +3141,19 @@ export namespace Prisma {
   export type bannersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    link?: boolean
+    subtitle?: boolean
+    image?: boolean
+    category?: boolean
+    primaryButtonText?: boolean
+    primaryButtonLink?: boolean
+    secondaryButtonText?: boolean
+    secondaryButtonLink?: boolean
+    priority?: boolean
+    isActive?: boolean
+    startDate?: boolean
+    endDate?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["banners"]>
 
 
@@ -3048,11 +3161,22 @@ export namespace Prisma {
   export type bannersSelectScalar = {
     id?: boolean
     title?: boolean
-    link?: boolean
+    subtitle?: boolean
+    image?: boolean
+    category?: boolean
+    primaryButtonText?: boolean
+    primaryButtonLink?: boolean
+    secondaryButtonText?: boolean
+    secondaryButtonLink?: boolean
+    priority?: boolean
+    isActive?: boolean
+    startDate?: boolean
+    endDate?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type bannersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "link" | "createdAt", ExtArgs["result"]["banners"]>
+  export type bannersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "subtitle" | "image" | "category" | "primaryButtonText" | "primaryButtonLink" | "secondaryButtonText" | "secondaryButtonLink" | "priority" | "isActive" | "startDate" | "endDate" | "createdAt" | "updatedAt", ExtArgs["result"]["banners"]>
 
   export type $bannersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "banners"
@@ -3060,8 +3184,19 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
-      link: string | null
+      subtitle: string | null
+      image: string
+      category: $Enums.BannerCategory
+      primaryButtonText: string | null
+      primaryButtonLink: string | null
+      secondaryButtonText: string | null
+      secondaryButtonLink: string | null
+      priority: number
+      isActive: boolean
+      startDate: Date | null
+      endDate: Date | null
       createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["banners"]>
     composites: {}
   }
@@ -3433,8 +3568,19 @@ export namespace Prisma {
   interface bannersFieldRefs {
     readonly id: FieldRef<"banners", 'Int'>
     readonly title: FieldRef<"banners", 'String'>
-    readonly link: FieldRef<"banners", 'String'>
+    readonly subtitle: FieldRef<"banners", 'String'>
+    readonly image: FieldRef<"banners", 'String'>
+    readonly category: FieldRef<"banners", 'BannerCategory'>
+    readonly primaryButtonText: FieldRef<"banners", 'String'>
+    readonly primaryButtonLink: FieldRef<"banners", 'String'>
+    readonly secondaryButtonText: FieldRef<"banners", 'String'>
+    readonly secondaryButtonLink: FieldRef<"banners", 'String'>
+    readonly priority: FieldRef<"banners", 'Int'>
+    readonly isActive: FieldRef<"banners", 'Boolean'>
+    readonly startDate: FieldRef<"banners", 'DateTime'>
+    readonly endDate: FieldRef<"banners", 'DateTime'>
     readonly createdAt: FieldRef<"banners", 'DateTime'>
+    readonly updatedAt: FieldRef<"banners", 'DateTime'>
   }
     
 
@@ -15243,8 +15389,19 @@ export namespace Prisma {
   export const BannersScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    link: 'link',
-    createdAt: 'createdAt'
+    subtitle: 'subtitle',
+    image: 'image',
+    category: 'category',
+    primaryButtonText: 'primaryButtonText',
+    primaryButtonLink: 'primaryButtonLink',
+    secondaryButtonText: 'secondaryButtonText',
+    secondaryButtonLink: 'secondaryButtonLink',
+    priority: 'priority',
+    isActive: 'isActive',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type BannersScalarFieldEnum = (typeof BannersScalarFieldEnum)[keyof typeof BannersScalarFieldEnum]
@@ -15432,7 +15589,12 @@ export namespace Prisma {
 
   export const bannersOrderByRelevanceFieldEnum: {
     title: 'title',
-    link: 'link'
+    subtitle: 'subtitle',
+    image: 'image',
+    primaryButtonText: 'primaryButtonText',
+    primaryButtonLink: 'primaryButtonLink',
+    secondaryButtonText: 'secondaryButtonText',
+    secondaryButtonLink: 'secondaryButtonLink'
   };
 
   export type bannersOrderByRelevanceFieldEnum = (typeof bannersOrderByRelevanceFieldEnum)[keyof typeof bannersOrderByRelevanceFieldEnum]
@@ -15586,6 +15748,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'BannerCategory'
+   */
+  export type EnumBannerCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BannerCategory'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -15656,15 +15832,37 @@ export namespace Prisma {
     NOT?: bannersWhereInput | bannersWhereInput[]
     id?: IntFilter<"banners"> | number
     title?: StringFilter<"banners"> | string
-    link?: StringNullableFilter<"banners"> | string | null
+    subtitle?: StringNullableFilter<"banners"> | string | null
+    image?: StringFilter<"banners"> | string
+    category?: EnumBannerCategoryFilter<"banners"> | $Enums.BannerCategory
+    primaryButtonText?: StringNullableFilter<"banners"> | string | null
+    primaryButtonLink?: StringNullableFilter<"banners"> | string | null
+    secondaryButtonText?: StringNullableFilter<"banners"> | string | null
+    secondaryButtonLink?: StringNullableFilter<"banners"> | string | null
+    priority?: IntFilter<"banners"> | number
+    isActive?: BoolFilter<"banners"> | boolean
+    startDate?: DateTimeNullableFilter<"banners"> | Date | string | null
+    endDate?: DateTimeNullableFilter<"banners"> | Date | string | null
     createdAt?: DateTimeFilter<"banners"> | Date | string
+    updatedAt?: DateTimeFilter<"banners"> | Date | string
   }
 
   export type bannersOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    link?: SortOrderInput | SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    image?: SortOrder
+    category?: SortOrder
+    primaryButtonText?: SortOrderInput | SortOrder
+    primaryButtonLink?: SortOrderInput | SortOrder
+    secondaryButtonText?: SortOrderInput | SortOrder
+    secondaryButtonLink?: SortOrderInput | SortOrder
+    priority?: SortOrder
+    isActive?: SortOrder
+    startDate?: SortOrderInput | SortOrder
+    endDate?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     _relevance?: bannersOrderByRelevanceInput
   }
 
@@ -15674,15 +15872,37 @@ export namespace Prisma {
     OR?: bannersWhereInput[]
     NOT?: bannersWhereInput | bannersWhereInput[]
     title?: StringFilter<"banners"> | string
-    link?: StringNullableFilter<"banners"> | string | null
+    subtitle?: StringNullableFilter<"banners"> | string | null
+    image?: StringFilter<"banners"> | string
+    category?: EnumBannerCategoryFilter<"banners"> | $Enums.BannerCategory
+    primaryButtonText?: StringNullableFilter<"banners"> | string | null
+    primaryButtonLink?: StringNullableFilter<"banners"> | string | null
+    secondaryButtonText?: StringNullableFilter<"banners"> | string | null
+    secondaryButtonLink?: StringNullableFilter<"banners"> | string | null
+    priority?: IntFilter<"banners"> | number
+    isActive?: BoolFilter<"banners"> | boolean
+    startDate?: DateTimeNullableFilter<"banners"> | Date | string | null
+    endDate?: DateTimeNullableFilter<"banners"> | Date | string | null
     createdAt?: DateTimeFilter<"banners"> | Date | string
+    updatedAt?: DateTimeFilter<"banners"> | Date | string
   }, "id">
 
   export type bannersOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    link?: SortOrderInput | SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    image?: SortOrder
+    category?: SortOrder
+    primaryButtonText?: SortOrderInput | SortOrder
+    primaryButtonLink?: SortOrderInput | SortOrder
+    secondaryButtonText?: SortOrderInput | SortOrder
+    secondaryButtonLink?: SortOrderInput | SortOrder
+    priority?: SortOrder
+    isActive?: SortOrder
+    startDate?: SortOrderInput | SortOrder
+    endDate?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: bannersCountOrderByAggregateInput
     _avg?: bannersAvgOrderByAggregateInput
     _max?: bannersMaxOrderByAggregateInput
@@ -15696,8 +15916,19 @@ export namespace Prisma {
     NOT?: bannersScalarWhereWithAggregatesInput | bannersScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"banners"> | number
     title?: StringWithAggregatesFilter<"banners"> | string
-    link?: StringNullableWithAggregatesFilter<"banners"> | string | null
+    subtitle?: StringNullableWithAggregatesFilter<"banners"> | string | null
+    image?: StringWithAggregatesFilter<"banners"> | string
+    category?: EnumBannerCategoryWithAggregatesFilter<"banners"> | $Enums.BannerCategory
+    primaryButtonText?: StringNullableWithAggregatesFilter<"banners"> | string | null
+    primaryButtonLink?: StringNullableWithAggregatesFilter<"banners"> | string | null
+    secondaryButtonText?: StringNullableWithAggregatesFilter<"banners"> | string | null
+    secondaryButtonLink?: StringNullableWithAggregatesFilter<"banners"> | string | null
+    priority?: IntWithAggregatesFilter<"banners"> | number
+    isActive?: BoolWithAggregatesFilter<"banners"> | boolean
+    startDate?: DateTimeNullableWithAggregatesFilter<"banners"> | Date | string | null
+    endDate?: DateTimeNullableWithAggregatesFilter<"banners"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"banners"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"banners"> | Date | string
   }
 
   export type commentsWhereInput = {
@@ -16547,48 +16778,125 @@ export namespace Prisma {
 
   export type bannersCreateInput = {
     title: string
-    link?: string | null
+    subtitle?: string | null
+    image: string
+    category?: $Enums.BannerCategory
+    primaryButtonText?: string | null
+    primaryButtonLink?: string | null
+    secondaryButtonText?: string | null
+    secondaryButtonLink?: string | null
+    priority?: number
+    isActive?: boolean
+    startDate?: Date | string | null
+    endDate?: Date | string | null
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type bannersUncheckedCreateInput = {
     id?: number
     title: string
-    link?: string | null
+    subtitle?: string | null
+    image: string
+    category?: $Enums.BannerCategory
+    primaryButtonText?: string | null
+    primaryButtonLink?: string | null
+    secondaryButtonText?: string | null
+    secondaryButtonLink?: string | null
+    priority?: number
+    isActive?: boolean
+    startDate?: Date | string | null
+    endDate?: Date | string | null
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type bannersUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    category?: EnumBannerCategoryFieldUpdateOperationsInput | $Enums.BannerCategory
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type bannersUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    category?: EnumBannerCategoryFieldUpdateOperationsInput | $Enums.BannerCategory
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type bannersCreateManyInput = {
     id?: number
     title: string
-    link?: string | null
+    subtitle?: string | null
+    image: string
+    category?: $Enums.BannerCategory
+    primaryButtonText?: string | null
+    primaryButtonLink?: string | null
+    secondaryButtonText?: string | null
+    secondaryButtonLink?: string | null
+    priority?: number
+    isActive?: boolean
+    startDate?: Date | string | null
+    endDate?: Date | string | null
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type bannersUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    category?: EnumBannerCategoryFieldUpdateOperationsInput | $Enums.BannerCategory
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type bannersUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    link?: NullableStringFieldUpdateOperationsInput | string | null
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    category?: EnumBannerCategoryFieldUpdateOperationsInput | $Enums.BannerCategory
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonLink?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type commentsCreateInput = {
@@ -17564,6 +17872,29 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type EnumBannerCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.BannerCategory | EnumBannerCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.BannerCategory[]
+    notIn?: $Enums.BannerCategory[]
+    not?: NestedEnumBannerCategoryFilter<$PrismaModel> | $Enums.BannerCategory
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type bannersOrderByRelevanceInput = {
     fields: bannersOrderByRelevanceFieldEnum | bannersOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -17573,30 +17904,97 @@ export namespace Prisma {
   export type bannersCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    link?: SortOrder
+    subtitle?: SortOrder
+    image?: SortOrder
+    category?: SortOrder
+    primaryButtonText?: SortOrder
+    primaryButtonLink?: SortOrder
+    secondaryButtonText?: SortOrder
+    secondaryButtonLink?: SortOrder
+    priority?: SortOrder
+    isActive?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type bannersAvgOrderByAggregateInput = {
     id?: SortOrder
+    priority?: SortOrder
   }
 
   export type bannersMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    link?: SortOrder
+    subtitle?: SortOrder
+    image?: SortOrder
+    category?: SortOrder
+    primaryButtonText?: SortOrder
+    primaryButtonLink?: SortOrder
+    secondaryButtonText?: SortOrder
+    secondaryButtonLink?: SortOrder
+    priority?: SortOrder
+    isActive?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type bannersMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    link?: SortOrder
+    subtitle?: SortOrder
+    image?: SortOrder
+    category?: SortOrder
+    primaryButtonText?: SortOrder
+    primaryButtonLink?: SortOrder
+    secondaryButtonText?: SortOrder
+    secondaryButtonLink?: SortOrder
+    priority?: SortOrder
+    isActive?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type bannersSumOrderByAggregateInput = {
     id?: SortOrder
+    priority?: SortOrder
+  }
+
+  export type EnumBannerCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BannerCategory | EnumBannerCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.BannerCategory[]
+    notIn?: $Enums.BannerCategory[]
+    not?: NestedEnumBannerCategoryWithAggregatesFilter<$PrismaModel> | $Enums.BannerCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumBannerCategoryFilter<$PrismaModel>
+    _max?: NestedEnumBannerCategoryFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type commentsOrderByRelevanceInput = {
@@ -18199,6 +18597,18 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type EnumBannerCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.BannerCategory
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type bankpaymentsCreateNestedOneWithoutPaymentsInput = {
     create?: XOR<bankpaymentsCreateWithoutPaymentsInput, bankpaymentsUncheckedCreateWithoutPaymentsInput>
     connectOrCreate?: bankpaymentsCreateOrConnectWithoutPaymentsInput
@@ -18437,6 +18847,61 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumBannerCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.BannerCategory | EnumBannerCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.BannerCategory[]
+    notIn?: $Enums.BannerCategory[]
+    not?: NestedEnumBannerCategoryFilter<$PrismaModel> | $Enums.BannerCategory
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedEnumBannerCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BannerCategory | EnumBannerCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.BannerCategory[]
+    notIn?: $Enums.BannerCategory[]
+    not?: NestedEnumBannerCategoryWithAggregatesFilter<$PrismaModel> | $Enums.BannerCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumBannerCategoryFilter<$PrismaModel>
+    _max?: NestedEnumBannerCategoryFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {

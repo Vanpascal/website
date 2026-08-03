@@ -113,7 +113,7 @@ export default function MessageFromRector() {
                 onClick={() =>
                   window.open(
                     "https://www.youtube.com/channel/UCFHzBoChAeE2VsKTw4apqXg?sub_confirmation=1",
-                    "_blank"
+                    "_blank",
                   )
                 }
                 className="flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-[#FF0000] to-[#CC0000] text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"

@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 const Header = dynamic(() => import("@/components/Header/Header"), {
   ssr: false,
 });
-const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
+const Hero = dynamic(() => import("@/components/hero/Hero"), { ssr: false });
 const MessageFromRector = dynamic(
   () => import("@/components/about/MessageFromRector"),
-  { ssr: false }
+  { ssr: false },
 );
 const AboutDb = dynamic(() => import("@/components/about/AboutDb"), {
   ssr: false,
@@ -27,11 +27,11 @@ const OurSponsors = dynamic(() => import("@/components/about/OurSponsers"), {
 });
 const PublicationsSection = dynamic(
   () => import("@/components/about/Publications"),
-  { ssr: false }
+  { ssr: false },
 );
 const CoursesPreview = dynamic(
   () => import("@/components/academics/CoursePreview"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const fadeInUp = {
@@ -110,13 +110,11 @@ export default function LandingPage() {
           >
             <div className="container mx-auto">
               <h2 id="about-heading" className="sr-only">
-               Publications
+                Publications
               </h2>
               <PublicationsSection />
             </div>
           </motion.section>
-
-
 
           {/* Events and News */}
           <motion.section
